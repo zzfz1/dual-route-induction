@@ -27,15 +27,15 @@ from datasets import load_dataset
 
 from utils import pile_chunk, json_tuple_keys, flatidx_to_grididx
 
-def flat_to_dict(flattensor):
+def flat_to_dict(flattensor, n_layers=32):
     d = {}
     for idx in range(len(flattensor)):
-        d[flatidx_to_grididx(idx)] = flattensor[idx].item()
+        d[flatidx_to_grididx(idx, n_layers)] = flattensor[idx].item()
     return d 
 
-def flat_to_ranking(flattensor):
+def flat_to_ranking(flattensor, n_layers=32):
     _, idxs = torch.topk(flattensor, k=len(flattensor))
-    return [flatidx_to_grididx(i) for i in idxs]
+    return [flatidx_to_grididx(i, n_layers) for i in idxs]
 
 class ChunkOutputSaver:
     def __init__(self, name, n_heads):
@@ -97,8 +97,9 @@ def generate_seq_batch(entities, pile, tok):
     return clean, corrupt
 
 def inference_logits(model, sequences):
+    remote = model.config._name_or_path == 'meta-llama/Meta-Llama-3.1-70B'
     with torch.no_grad():
-        with model.trace(sequences):
+        with model.trace(sequences, remote=remote):
             logits = model.output.logits.save()
     return logits.detach().cpu()
 
@@ -120,12 +121,13 @@ def no_patching(model, sequences, entities):
     return stats_from_logits(logits, entities)
 
 def get_head_activations(model, prompt, layer):
+    remote = model.config._name_or_path == 'meta-llama/Meta-Llama-3.1-70B'
     with torch.no_grad():
         if model.config._name_or_path == 'EleutherAI/pythia-6.9b':
-            with model.trace(prompt):
+            with model.trace(prompt, remote=remote):
                 o_proj_inp = model.gpt_neox.layers[layer].attention.dense.inputs[0][0].save()
         else: 
-            with model.trace(prompt):
+            with model.trace(prompt, remote=remote):
                 o_proj_inp = model.model.layers[layer].self_attn.o_proj.inputs[0][0].save()
                 
         # [bsz, seq_len, model_dim] -> [bsz, seq_len, n_heads, head_dim]
@@ -149,8 +151,9 @@ def patch_head_m2(model, clean_seq, corr_seq, entities):
         clean_heads = get_head_activations(model, clean_seq, layer)
         
         for head_idx in range(heads_per_layer):
+            remote = model.config._name_or_path == 'meta-llama/Meta-Llama-3.1-70B'
             with torch.no_grad():
-                with model.trace(corr_seq): 
+                with model.trace(corr_seq, remote=remote): 
                     if model.config._name_or_path == 'EleutherAI/pythia-6.9b': 
                         tup = model.gpt_neox.layers[layer].attention.dense.inputs
                     else: 
@@ -187,11 +190,13 @@ def main(args):
     model_name = args.model.split('/')[-1]
     assert args.bsz <= args.n // 4 
 
+    remote = args.model == 'meta-llama/Meta-Llama-3.1-70B'
+
     if args.ckpt is not None: 
         assert args.model in ['allenai/OLMo-2-1124-7B', 'EleutherAI/pythia-6.9b']
-        model = LanguageModel(args.model, device_map='cuda', revision=args.ckpt)
+        model = LanguageModel(args.model, device_map='auto', dispatch=(not remote), revision=args.ckpt)
     else: 
-        model = LanguageModel(args.model, device_map='cuda')
+        model = LanguageModel(args.model, device_map='auto', dispatch=(not remote), cache_dir='/share/u/models')
     tokenizer = model.tokenizer 
 
     # tokenization function for any model 
@@ -201,7 +206,7 @@ def main(args):
                 return model.tokenizer(s)['input_ids'][1:]
             else:
                 return model.tokenizer(s)['input_ids']
-        elif model.config._name_or_path in ['allenai/OLMo-2-1124-7B', 'EleutherAI/pythia-6.9b']:
+        elif 'OLMo' in model.config._name_or_path or 'pythia' in model.config._name_or_path:
             if not bos:
                 return model.tokenizer(s)['input_ids']
             else:
@@ -287,17 +292,19 @@ def main(args):
     scoretype = 'token' if args.random_tok_entities else 'concept'
 
     diff = patched_results.get_m1() - corrupt_results.get_m1()
-    copying_scores = flat_to_dict(diff)
+    copying_scores = flat_to_dict(diff, n_layers=model.config.num_hidden_layers)
     with open(path + f'{scoretype}_copying_{fname}.json', 'w') as f:
         json.dump(json_tuple_keys(copying_scores), f)
 
     # save head rankings  
     rank_path = f'../cache/head_orderings/{model_name}/'
     rank_path += f'{args.ckpt}/' if args.ckpt is not None else ''
-    os.makedirs(path, exist_ok=True)
+    os.makedirs(rank_path, exist_ok=True)
 
-    copying_rankings = flat_to_ranking(diff)
-    with open(rank_path + f'{scoretype}_copying_{fname}.json', 'w') as f:
+    copying_rankings = flat_to_ranking(diff, n_layers=model.config.num_hidden_layers)
+    json_name = f'{scoretype}_copying'
+    json_name += f'_{fname}.json' if (args.n != 1024 or args.sequence_len != 30) else '.json'
+    with open(rank_path + json_name, 'w') as f:
         json.dump(copying_rankings, f)
 
 
@@ -308,7 +315,9 @@ if __name__ == '__main__':
                             'meta-llama/Llama-2-7b-hf',
                             'meta-llama/Meta-Llama-3-8B',
                             'allenai/OLMo-2-1124-7B',
-                            'EleutherAI/pythia-6.9b'
+                            'EleutherAI/pythia-6.9b',
+                            'meta-llama/Meta-Llama-3.1-70B',
+                            'allenai/OLMo-2-0425-1B'
                             ])
     parser.add_argument('--ckpt', default=None, type=str)
     parser.add_argument('--n', default=1024, type=int)

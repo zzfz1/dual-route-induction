@@ -27,7 +27,8 @@ VALID_MODELS = [
     'meta-llama/Llama-2-7b-hf', 
     'meta-llama/Meta-Llama-3-8B',
     'EleutherAI/pythia-6.9b',
-    'allenai/OLMo-2-1124-7B'
+    'allenai/OLMo-2-1124-7B',
+    'allenai/OLMo-2-0425-1B'
 ]
 TOPKS = [0, 1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 128, 256, 512, 1024] 
 
@@ -52,8 +53,8 @@ class VocabListDataset(Dataset):
             self.word_pairs['to'] = self.word_pairs['en']
 
         elif self.language == 'en': # copying 
-            # nguyen words are probably better, but we used conneau words here. 
-            self.word_pairs = pd.read_csv(f'../data/conneauetal_2017/all_synonyms.csv')
+            # we used conneau words, but nguyen is probably better. 
+            self.word_pairs = pd.read_csv(f'../data/nguyenetal_2017/all_synonyms.csv')
             self.word_pairs['from'] = self.word_pairs['word1']
             self.word_pairs['to'] = self.word_pairs['word1']
         
@@ -218,7 +219,7 @@ class NonsenseListDataset(Dataset):
                 return self.tok(s)['input_ids'][1:]
             else:
                 return self.tok(s)['input_ids']
-        elif self.tok.name_or_path in ['allenai/OLMo-2-1124-7B', 'EleutherAI/pythia-6.9b']:
+        elif 'OLMo' in self.tok.name_or_path or 'pythia' in self.tok.name_or_path:
             if not bos:
                 return self.tok(s)['input_ids']
             else:
@@ -369,7 +370,7 @@ def main(args):
 
     # save information 
     path = f'../cache/vocablist_ablation/{model_name}/{args.task}/'
-    fname = f'wordlen{args.word_len}_seqlen{args.seq_len}_maxn{args.max_n}_{args.head_ordering}'
+    fname = f'wordlen{args.word_len}_seqlen{args.seq_len}_maxn{args.max_n}_{args.head_ordering}.json'
     os.makedirs(path, exist_ok=True)
 
     save_results(*evaluate_dataset(model, loader, heads_to_ablate, head_means), path + fname)

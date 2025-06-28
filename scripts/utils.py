@@ -17,15 +17,15 @@ def pile_chunk(random_len, pile, tok, shuf_pile=True):
             random.shuffle(sample)
     return sample 
 
-def flatidx_to_grididx(flat_idx):
+def flatidx_to_grididx(flat_idx, n_layers=32):
     if type(flat_idx) == torch.Tensor:
         flat_idx = flat_idx.item()
-    layer, head = divmod(flat_idx, 32)
+    layer, head = divmod(flat_idx, n_layers)
     return (layer, head)
 
-def grididx_to_flatidx(grid_idx):
+def grididx_to_flatidx(grid_idx, n_layers=32):
     layer, head = grid_idx
-    return layer * 32 + head 
+    return layer * n_layers + head 
 
 # function to load in the cached head means for ablation purposes
 def get_mean_head_values(model_name):

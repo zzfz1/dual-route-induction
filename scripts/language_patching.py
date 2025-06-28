@@ -102,7 +102,7 @@ def raw_head_activations(head, tokens, model):
     bsz = 1
 
     layer, head_idx = head 
-    n_heads = 32; head_dim = 128
+    n_heads = model.config.num_attention_heads; head_dim = model.config.hidden_size // n_heads
     if model.config._name_or_path == 'EleutherAI/pythia-6.9b':
         o_proj = model.gpt_neox.layers[layer].attention.dense
     else:
@@ -250,6 +250,7 @@ if __name__ == '__main__':
                             'meta-llama/Meta-Llama-3-8B',
                             'allenai/OLMo-2-1124-7B',
                             'EleutherAI/pythia-6.9b', 
+                            'allenai/OLMo-2-0425-1B'
                         ])
     parser.add_argument('--source_from', default='fr')
     parser.add_argument('--source_to', default='en')
