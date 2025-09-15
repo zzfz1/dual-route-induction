@@ -15,8 +15,8 @@ The folder `cache/causal_scores/[model_name]` contains saved results for causal 
 - `concept_copying_len30_n1024.json`
 
 Whereas `cache/attention_scores/[model_name]` contains results for attention-based scores from Section 3:
-- `nexttok_matching_n2048.json`
-- `lasttok_matching_n2048.json`
+- `n2048_seqlen30.json` - accessing `'end_tok_attn'` will give you LastTokenMatching scores
+- `n2048_seqlen30_randomtokents.json` - accessing `'next_tok_attn'` will give you NextTokenMatching scores
 
 As discussed in the paper, we focus on token induction scores over random tokens and concept induction scores over CounterFact ([Meng et al., 2022](https://rome.baulab.info/)) tokens. If you would like scores for the other two possiblities (next-token scores over entity tokens, or last-token scores over random tokens), please contact us over email.
 
