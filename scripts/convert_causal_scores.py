@@ -6,15 +6,15 @@ import torch
 from utils import flatidx_to_grididx, json_tuple_keys
 from causal_scores import ChunkOutputSaver
 
-def flat_to_dict(flattensor):
+def flat_to_dict(flattensor, n_heads=32):
     d = {}
     for idx in range(len(flattensor)):
-        d[flatidx_to_grididx(idx)] = flattensor[idx].item()
+        d[flatidx_to_grididx(idx, n_heads)] = flattensor[idx].item()
     return d 
 
-def flat_to_ranking(flattensor):
+def flat_to_ranking(flattensor, n_heads=32):
     _, idxs = torch.topk(flattensor, k=len(flattensor))
-    return [flatidx_to_grididx(i) for i in idxs]
+    return [flatidx_to_grididx(i, n_heads) for i in idxs]
 
 def main(args):
     if args.ckpt is not None: 

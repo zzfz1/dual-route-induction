@@ -27,15 +27,15 @@ from datasets import load_dataset
 
 from utils import pile_chunk, json_tuple_keys, flatidx_to_grididx
 
-def flat_to_dict(flattensor, n_layers=32):
+def flat_to_dict(flattensor, n_heads=32):
     d = {}
     for idx in range(len(flattensor)):
-        d[flatidx_to_grididx(idx, n_layers)] = flattensor[idx].item()
+        d[flatidx_to_grididx(idx, n_heads)] = flattensor[idx].item()
     return d 
 
-def flat_to_ranking(flattensor, n_layers=32):
+def flat_to_ranking(flattensor, n_heads=32):
     _, idxs = torch.topk(flattensor, k=len(flattensor))
-    return [flatidx_to_grididx(i, n_layers) for i in idxs]
+    return [flatidx_to_grididx(i, n_heads) for i in idxs]
 
 class ChunkOutputSaver:
     def __init__(self, name, n_heads):
@@ -280,7 +280,6 @@ def main(args):
     os.makedirs(path, exist_ok=True)
 
     fname = f'len{args.sequence_len}_n{args.n}'
-    fname += '_randoments' if args.random_tok_entities else ''
 
     # save all results just in case 
     print(path + fname + '.pkl')
@@ -292,7 +291,7 @@ def main(args):
     scoretype = 'token' if args.random_tok_entities else 'concept'
 
     diff = patched_results.get_m1() - corrupt_results.get_m1()
-    copying_scores = flat_to_dict(diff, n_layers=model.config.num_hidden_layers)
+    copying_scores = flat_to_dict(diff, n_heads=model.config.num_attention_heads)
     with open(path + f'{scoretype}_copying_{fname}.json', 'w') as f:
         json.dump(json_tuple_keys(copying_scores), f)
 
@@ -301,7 +300,7 @@ def main(args):
     rank_path += f'{args.ckpt}/' if args.ckpt is not None else ''
     os.makedirs(rank_path, exist_ok=True)
 
-    copying_rankings = flat_to_ranking(diff, n_layers=model.config.num_hidden_layers)
+    copying_rankings = flat_to_ranking(diff, n_heads=model.config.num_attention_heads)
     json_name = f'{scoretype}_copying'
     json_name += f'_{fname}.json' if (args.n != 1024 or args.sequence_len != 30) else '.json'
     with open(rank_path + json_name, 'w') as f:
@@ -317,7 +316,8 @@ if __name__ == '__main__':
                             'allenai/OLMo-2-1124-7B',
                             'EleutherAI/pythia-6.9b',
                             'meta-llama/Meta-Llama-3.1-70B',
-                            'allenai/OLMo-2-0425-1B'
+                            'meta-llama/Llama-3.2-3B',
+                            'allenai/OLMo-2-0425-1B',
                             ])
     parser.add_argument('--ckpt', default=None, type=str)
     parser.add_argument('--n', default=1024, type=int)
