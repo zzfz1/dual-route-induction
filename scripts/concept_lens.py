@@ -26,6 +26,7 @@ def gqa_repeat(attn_module, config):
     You only need to do this for v_proj and k_proj, not query or output. 
     128 * 8 # = 1024, so 8 is the number of actual value vectors there are. `num_key_value_heads`
     32 / 8 # = 4, so there are now four query vectors per value vector. `query_group_size` (misnomer num_key_value_groups)
+    There are only eight v_proj heads. To match with the 32 query heads, each of these eight guys is re-used four times.
     '''
     query_group_size = attn_module.num_key_value_groups
     num_kv_heads = config.num_key_value_heads
@@ -43,6 +44,10 @@ def get_ov_sum(model, k, head_ordering='concept'):
 
     if head_ordering == 'all':
         to_sum = [(l, h) for l in range(model.config.num_hidden_layers) for h in range(model.config.num_attention_heads)]
+    elif head_ordering == 'function':
+        with open(f'../cache/head_orderings/{model_name}/fv.json', 'r') as f: 
+            tups = json.load(f)
+        to_sum = [(l, h) for l, h in tups][:k]
     else: 
         with open(f'../cache/causal_scores/{model_name}/{head_ordering}_copying_len30_n1024.json', 'r') as f: 
             temp = json.load(f)
@@ -81,13 +86,14 @@ def proj_onto_ov(w, model, layer_idx, offset=-1, head_ordering='concept', k=80):
             state = model.model.layers[layer_idx].output[0].squeeze()[offset].save()
     return torch.matmul(ov_sum, state), state
 
-def ov_lens(w, model, k=80, head_ordering='concept', print_k=5, offset=-1, raw=False):
+def ov_lens(w, model, k=80, head_ordering='concept', print_k=5, offset=-1, raw=False, max_layer=None):
     cjk_font = font_manager.FontProperties(fname='/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc')
 
     cmap = {
         'concept' : 'Reds',
         'token' : 'Blues',
-        'all' : 'Purples'
+        'all' : 'Purples',
+        'function' : 'Greens'
     }[head_ordering]
 
     to_print = [model.tokenizer.decode(t) for t in model.tokenizer(w)['input_ids']]
@@ -106,7 +112,15 @@ def ov_lens(w, model, k=80, head_ordering='concept', print_k=5, offset=-1, raw=F
         probss.append(probs)
         idxss.append([model.tokenizer.decode(t) for t in idxs])
     
-    _, ax = plt.subplots(figsize=(10,10))
+    if max_layer is not None:
+        probss = probss[:max_layer + 1]
+        idxss = idxss[:max_layer + 1]
+    
+    # Adjust figure height based on number of layers
+    num_layers = len(probss)
+    fig_height = max(3, num_layers * 0.3)  # Scale height with layers, minimum 3
+    fig_width = max(5, print_k * 2)
+    _, ax = plt.subplots(figsize=(fig_width, fig_height))
     sns.heatmap(probss, annot=idxss, fmt='', ax=ax, vmin=0, vmax=1.0, cmap=cmap)
     for text in ax.texts:
         text.set_fontproperties(cjk_font)
