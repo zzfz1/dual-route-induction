@@ -57,7 +57,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--model_name', type=str, default='Llama-2-7b-hf',
-                        choices=['Llama-2-7b-hf', 'Meta-Llama-3-8B', 'OLMo-2-1124-7B', 'pythia-6.9b'])
+                        choices=['Llama-2-7b-hf', 'Meta-Llama-3-8B', 'Llama-3.1-8B', 'OLMo-2-1124-7B', 'pythia-6.9b'])
     parser.add_argument('--ckpt', type=str, default=None)
     parser.add_argument('--head_orderings', action='store_true')
     parser.set_defaults(head_orderings=False)
