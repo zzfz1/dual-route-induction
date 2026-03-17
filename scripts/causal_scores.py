@@ -30,6 +30,11 @@ import utils
 from ndif import load_remote_model
 from utils import pile_chunk, json_tuple_keys, flatidx_to_grididx
 
+# Empirically, NDIF can sustain 16-example remote microbatches with 5 patched heads
+# per trace on Llama-3.1-8B; larger settings such as 16x6 or 32x3 hit OOM on later layers.
+REMOTE_MAX_BATCH_SIZE = 16
+REMOTE_PATCH_BATCH_TARGET = 80
+
 
 def flat_to_dict(flattensor, n_heads=32):
     d = {}
@@ -146,6 +151,23 @@ class ChunkOutputSaver:
         self.m1_logit += m1_logit.sum(dim=0)
         self.m2_logit += m2_logit.sum(dim=0)
 
+    def update_sums(self, count, correct, m1_prob, m2_prob, m1_logit, m2_logit):
+        """
+        Each input array should be shape (n_heads,)
+        """
+        tensors = [
+            torch.as_tensor(x, dtype=torch.float32).reshape(-1).cpu()
+            for x in (correct, m1_prob, m2_prob, m1_logit, m2_logit)
+        ]
+        assert all(t.shape == (self.n_heads,) for t in tensors)
+
+        self.n += count
+        self.correct += tensors[0]
+        self.m1_prob += tensors[1]
+        self.m2_prob += tensors[2]
+        self.m1_logit += tensors[3]
+        self.m2_logit += tensors[4]
+
     def get_acc(self):
         return self.correct / self.n
 
@@ -184,6 +206,30 @@ def is_remote_model(model):
     return getattr(model, "_ndif_remote", False)
 
 
+def get_o_proj_inputs(model, layer):
+    if model.config._name_or_path == "EleutherAI/pythia-6.9b":
+        return model.gpt_neox.layers[layer].attention.dense.inputs
+    return model.model.layers[layer].self_attn.o_proj.inputs
+
+
+def set_o_proj_inputs(model, layer, new_tup):
+    if model.config._name_or_path == "EleutherAI/pythia-6.9b":
+        model.gpt_neox.layers[layer].attention.dense.inputs = new_tup
+    else:
+        model.model.layers[layer].self_attn.o_proj.inputs = new_tup
+
+
+def get_o_proj_input_tensor(model, layer):
+    return get_o_proj_inputs(model, layer)[0][0]
+
+
+def get_remote_head_chunk_size(batch_size, heads_per_layer):
+    return max(
+        1,
+        min(heads_per_layer, REMOTE_PATCH_BATCH_TARGET // max(1, batch_size)),
+    )
+
+
 def inference_logits(model, sequences):
     remote = is_remote_model(model)
     with torch.no_grad():
@@ -193,17 +239,98 @@ def inference_logits(model, sequences):
 
 
 def stats_from_logits(logits, entities):
+    if not torch.is_tensor(entities):
+        entities = torch.tensor(entities, dtype=torch.long, device=logits.device)
+    else:
+        entities = entities.to(logits.device)
+
     # trying to predict the second token of the entity
-    correct = logits[:, -1].argmax(dim=-1) == entities[:, 1]
+    batch = torch.arange(entities.shape[0], device=logits.device)
+    last_logits = logits[:, -1, :]
+    prev_logits = logits[:, -2, :]
 
-    probs = logits.softmax(dim=-1)
-    m1_probs = probs[torch.arange(len(entities)), -1, entities[:, 1]]
-    m2_probs = probs[torch.arange(len(entities)), -2, entities[:, 0]]
-
-    m1_logits = logits[torch.arange(len(entities)), -1, entities[:, 1]]
-    m2_logits = logits[torch.arange(len(entities)), -2, entities[:, 0]]
+    correct = (last_logits.argmax(dim=-1) == entities[:, 1]).float()
+    m1_logits = last_logits[batch, entities[:, 1]]
+    m2_logits = prev_logits[batch, entities[:, 0]]
+    m1_probs = (m1_logits - last_logits.logsumexp(dim=-1)).exp()
+    m2_probs = (m2_logits - prev_logits.logsumexp(dim=-1)).exp()
 
     return correct, m1_probs, m2_probs, m1_logits, m2_logits
+
+
+def sum_stats(stats, n_groups=None):
+    if n_groups is None:
+        return tuple(stat.sum() for stat in stats)
+
+    group_size = stats[0].shape[0] // n_groups
+    return tuple(stat.reshape(n_groups, group_size).sum(dim=1) for stat in stats)
+
+
+def saved_to_cpu(saved):
+    tensor = saved.detach().cpu()
+    if tensor.ndim == 0:
+        return tensor.reshape(1)
+    return tensor
+
+
+def add_stats(accum, stats):
+    stats = tuple(torch.as_tensor(stat, dtype=torch.float32).cpu() for stat in stats)
+    if accum is None:
+        return tuple(stat.clone() for stat in stats)
+    return tuple(a + b for a, b in zip(accum, stats))
+
+
+def stats_from_saved_components(saved_stats, entities):
+    if not torch.is_tensor(entities):
+        entities = torch.tensor(entities, dtype=torch.long)
+    else:
+        entities = entities.to(dtype=torch.long)
+
+    pred_ids, m1_logits, m2_logits, last_lse, prev_lse = saved_stats
+    entities = entities.to(pred_ids.device)
+    pred_ids = pred_ids.to(dtype=torch.long).reshape(-1)
+    m1_logits = m1_logits.to(dtype=torch.float32).reshape(-1)
+    m2_logits = m2_logits.to(dtype=torch.float32).reshape(-1)
+    last_lse = last_lse.to(dtype=torch.float32).reshape(-1)
+    prev_lse = prev_lse.to(dtype=torch.float32).reshape(-1)
+
+    correct = (pred_ids == entities[:, 1]).float()
+    m1_probs = (m1_logits - last_lse).exp()
+    m2_probs = (m2_logits - prev_lse).exp()
+    return correct, m1_probs, m2_probs, m1_logits, m2_logits
+
+
+def remote_sum_stats(model, sequences, entities):
+    remote = is_remote_model(model)
+    with torch.no_grad():
+        with model.trace(sequences, remote=remote):
+            logits = model.output.logits[:, -2:, :]
+            ent = entities.to(logits.device)
+            batch = torch.arange(ent.shape[0], device=logits.device)
+            last_logits = logits[:, -1, :]
+            prev_logits = logits[:, -2, :]
+            pred_ids_saved = last_logits.argmax(dim=-1).save()
+            m1_logits_saved = last_logits[batch, ent[:, 1]].save()
+            m2_logits_saved = prev_logits[batch, ent[:, 0]].save()
+            last_lse_saved = last_logits.logsumexp(dim=-1).save()
+            prev_lse_saved = prev_logits.logsumexp(dim=-1).save()
+
+    saved_stats_cpu = tuple(
+        saved_to_cpu(saved)
+        for saved in (
+            pred_ids_saved,
+            m1_logits_saved,
+            m2_logits_saved,
+            last_lse_saved,
+            prev_lse_saved,
+        )
+    )
+    return sum_stats(stats_from_saved_components(saved_stats_cpu, entities))
+
+
+def is_remote_oom(exc):
+    msg = str(exc)
+    return "OutOfMemoryError" in msg or "CUDA out of memory" in msg
 
 
 def no_patching(model, sequences, entities):
@@ -214,21 +341,115 @@ def no_patching(model, sequences, entities):
 def get_head_activations(model, prompt, layer):
     remote = is_remote_model(model)
     with torch.no_grad():
-        if model.config._name_or_path == "EleutherAI/pythia-6.9b":
-            with model.trace(prompt, remote=remote):
-                o_proj_inp = (
-                    model.gpt_neox.layers[layer].attention.dense.inputs[0][0].save()
-                )
-        else:
-            with model.trace(prompt, remote=remote):
-                o_proj_inp = (
-                    model.model.layers[layer].self_attn.o_proj.inputs[0][0].save()
-                )
+        with model.trace(prompt, remote=remote):
+            o_proj_inp = get_o_proj_input_tensor(model, layer).save()
 
         # [bsz, seq_len, model_dim] -> [bsz, seq_len, n_heads, head_dim]
         heads_per_layer = model.config.num_attention_heads
         head_dim = model.config.hidden_size // heads_per_layer
         return o_proj_inp.view(*o_proj_inp.shape[:-1], heads_per_layer, head_dim)
+
+
+def remote_patch_chunk_stats(
+    model,
+    layer,
+    corr_seq,
+    entities,
+    clean_heads,
+    batch_size,
+    heads_per_layer,
+    head_dim,
+    chunk_heads,
+):
+    chunk_size = chunk_heads.shape[0]
+    expanded_corr_seq = corr_seq * chunk_size
+    expanded_entities = entities.repeat(chunk_size, 1)
+
+    try:
+        with torch.no_grad():
+            with model.trace(expanded_corr_seq, remote=True):
+                # Grab the traced input tuple for this layer's output projection.
+                tup = get_o_proj_inputs(model, layer)
+                # The first tensor in that tuple is the actual o_proj input we will patch.
+                original = tup[0][0]
+                original_shape = original.shape
+                chunk_batch = original_shape[
+                    0
+                ]  # should be equal to batch_size * chunk_size.
+
+                # View model_dim as [n_heads, head_dim] so we can patch a specific head slice.
+                sub = original.view(
+                    chunk_batch, original_shape[1], heads_per_layer, head_dim
+                )
+                # Row indices over the expanded batch dimension.
+                batch_idx = torch.arange(chunk_batch, device=original.device)
+                # For each repeated example, choose which head in this chunk should be patched.
+                head_idx = chunk_heads.to(original.device).repeat_interleave(batch_size)
+                patch_values = (
+                    clean_heads[:, chunk_heads, :]
+                    .transpose(0, 1)
+                    .reshape(chunk_batch, head_dim)
+                    .to(original.device)
+                )
+                # Patch the selected heads for all repeated examples in the expanded batch at once.
+                sub[batch_idx, -2, head_idx, :] = patch_values
+                set_o_proj_inputs(model, layer, ((sub.view(original_shape),), tup[1]))
+                logits = model.output.logits[:, -2:, :]
+                ent = expanded_entities.to(logits.device)
+                batch = torch.arange(ent.shape[0], device=logits.device)
+                last_logits = logits[:, -1, :]
+                prev_logits = logits[:, -2, :]
+                pred_ids_saved = last_logits.argmax(dim=-1).save()
+                m1_logits_saved = last_logits[batch, ent[:, 1]].save()
+                m2_logits_saved = prev_logits[batch, ent[:, 0]].save()
+                last_lse_saved = last_logits.logsumexp(dim=-1).save()
+                prev_lse_saved = prev_logits.logsumexp(dim=-1).save()
+    except Exception as exc:
+        # If we get an OOM error from NDIF, it's likely because the expanded batch size after patching is too large.
+        # In that case, we can split the head chunk into smaller pieces and recursively call this function on each piece to reduce the batch size.
+        if is_remote_oom(exc) and chunk_size > 1:
+            mid = chunk_size // 2
+            left = remote_patch_chunk_stats(
+                model,
+                layer,
+                corr_seq,
+                entities,
+                clean_heads,
+                batch_size,
+                heads_per_layer,
+                head_dim,
+                chunk_heads[:mid],
+            )
+            right = remote_patch_chunk_stats(
+                model,
+                layer,
+                corr_seq,
+                entities,
+                clean_heads,
+                batch_size,
+                heads_per_layer,
+                head_dim,
+                chunk_heads[mid:],
+            )
+            return tuple(torch.cat((l, r)) for l, r in zip(left, right))
+        raise
+
+    return sum_stats(
+        stats_from_saved_components(
+            tuple(
+                saved_to_cpu(saved)
+                for saved in (
+                    pred_ids_saved,
+                    m1_logits_saved,
+                    m2_logits_saved,
+                    last_lse_saved,
+                    prev_lse_saved,
+                )
+            ),
+            expanded_entities,
+        ),
+        n_groups=chunk_size,
+    )
 
 
 # patches the -2 index for a batch of sequences
@@ -250,11 +471,7 @@ def patch_head_m2(model, clean_seq, corr_seq, entities):
             remote = is_remote_model(model)
             with torch.no_grad():
                 with model.trace(corr_seq, remote=remote):
-                    if model.config._name_or_path == "EleutherAI/pythia-6.9b":
-                        tup = model.gpt_neox.layers[layer].attention.dense.inputs
-                    else:
-                        tup = model.model.layers[layer].self_attn.o_proj.inputs
-
+                    tup = get_o_proj_inputs(model, layer)
                     original_shape = tup[0][0].shape  # [bsz, seq_len, model_dim]
                     sub = tup[0][0].view(
                         original_shape[0], original_shape[1], heads_per_layer, head_dim
@@ -263,11 +480,7 @@ def patch_head_m2(model, clean_seq, corr_seq, entities):
                     sub[:, -2, head_idx, :] = clean_heads[:, -2, head_idx, :]
                     sub = sub.view(original_shape)
                     new_tup = ((sub,), tup[1])
-
-                    if model.config._name_or_path == "EleutherAI/pythia-6.9b":
-                        model.gpt_neox.layers[layer].attention.dense.inputs = new_tup
-                    else:
-                        model.model.layers[layer].self_attn.o_proj.inputs = new_tup
+                    set_o_proj_inputs(model, layer, new_tup)
 
                     logits = model.output.logits.save()
 
@@ -287,6 +500,71 @@ def patch_head_m2(model, clean_seq, corr_seq, entities):
         torch.stack(m1_logits).T,
         torch.stack(m2_logits).T,
     )
+
+
+def remote_batch_scores(model, clean_seq, corr_seq, entities):
+    """
+    Run a causal-score batch on NDIF using compact remote stat saves.
+
+    This avoids downloading full vocab logits and patches multiple heads at
+    once by expanding the corrupt batch over larger head chunks.
+    """
+    batch_size = len(clean_seq)
+    entities = torch.as_tensor(entities, dtype=torch.long)
+    # if the batch size is too large, break it into smaller batches to avoid NDIF OOM errors.
+    if batch_size > REMOTE_MAX_BATCH_SIZE:
+        clean_total = None
+        corrupt_total = None
+        patched_total = None
+        for start in range(0, batch_size, REMOTE_MAX_BATCH_SIZE):
+            stop = min(start + REMOTE_MAX_BATCH_SIZE, batch_size)
+            clean_stats, corrupt_stats, patched_stats = remote_batch_scores(
+                model,
+                clean_seq[start:stop],
+                corr_seq[start:stop],
+                entities[start:stop],
+            )
+            clean_total = add_stats(clean_total, clean_stats)
+            corrupt_total = add_stats(corrupt_total, corrupt_stats)
+            patched_total = add_stats(patched_total, patched_stats)
+        return clean_total, corrupt_total, patched_total
+
+    heads_per_layer = model.config.num_attention_heads
+    head_dim = model.config.hidden_size // heads_per_layer
+    n_layers = model.config.num_hidden_layers
+    head_chunk_size = get_remote_head_chunk_size(batch_size, heads_per_layer)
+
+    clean = remote_sum_stats(model, clean_seq, entities)
+    corrupt = remote_sum_stats(model, corr_seq, entities)
+
+    patched_chunks = [[], [], [], [], []]
+    for layer in range(n_layers):
+        clean_heads = get_head_activations(model, clean_seq, layer)[:, -2, :, :]
+
+        for head_start in range(0, heads_per_layer, head_chunk_size):
+            head_stop = min(head_start + head_chunk_size, heads_per_layer)
+            chunk_heads = torch.arange(head_start, head_stop, dtype=torch.long)
+            chunk_stats_cpu = remote_patch_chunk_stats(
+                model,
+                layer,
+                corr_seq,
+                entities,
+                clean_heads,
+                batch_size,
+                heads_per_layer,
+                head_dim,
+                chunk_heads,
+            )
+            for chunk_list, stat in zip(patched_chunks, chunk_stats_cpu):
+                chunk_list.append(stat)
+
+    if not patched_chunks[0]:
+        raise RuntimeError(
+            "remote_batch_scores produced no patched chunks; "
+            "the patched remote traces did not execute."
+        )
+    patched = tuple(torch.cat(chunks) for chunks in patched_chunks)
+    return clean, corrupt, patched
 
 
 def build_work_items(args, pile, tok):
@@ -432,19 +710,27 @@ def main(args):
                 last_label = item["label"]
 
             batch_ents = torch.tensor(item["batch_ents"], dtype=torch.long)
-            clean_results.update(
-                *no_patching(model, item["batch_clean"], batch_ents)
-            )
-            corrupt_results.update(
-                *no_patching(model, item["batch_corr"], batch_ents)
-            )
-
-            # patch outputs of each head from [-2] index
-            patched_results.update(
-                *patch_head_m2(
+            if remote:
+                clean_stats, corrupt_stats, patched_stats = remote_batch_scores(
                     model, item["batch_clean"], item["batch_corr"], batch_ents
                 )
-            )
+                clean_results.update_sums(len(batch_ents), *clean_stats)
+                corrupt_results.update_sums(len(batch_ents), *corrupt_stats)
+                patched_results.update_sums(len(batch_ents), *patched_stats)
+            else:
+                clean_results.update(
+                    *no_patching(model, item["batch_clean"], batch_ents)
+                )
+                corrupt_results.update(
+                    *no_patching(model, item["batch_corr"], batch_ents)
+                )
+
+                # patch outputs of each head from [-2] index
+                patched_results.update(
+                    *patch_head_m2(
+                        model, item["batch_clean"], item["batch_corr"], batch_ents
+                    )
+                )
             save_resume_state(
                 paths["resume_pkl"],
                 args,
@@ -467,7 +753,10 @@ def main(args):
     # convert to dictionaries with (layer, head_idx) tuples
     scoretype = paths["scoretype"]
 
-    diff = patched_results.get_m1() - corrupt_results.get_m1()
+    if scoretype == "token":
+        diff = patched_results.get_m2() - corrupt_results.get_m2()
+    else:
+        diff = patched_results.get_m1() - corrupt_results.get_m1()
     copying_scores = flat_to_dict(diff, n_heads=model.config.num_attention_heads)
     with open(paths["scores_json"], "w") as f:
         json.dump(json_tuple_keys(copying_scores), f)
