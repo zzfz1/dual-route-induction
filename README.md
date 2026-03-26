@@ -53,6 +53,15 @@ Results are saved as json files in `cache/attention_scores`.
 ### Section 5: Patching
 `scripts/language_patching.py` patches the top-*k* heads based on some ranking from one translation prompt to another, based on work from Dumas et al. (2025). You must run this script for each individual value of *k* you want to test: e.g. for k=80, run `python language_patching.py --source_from es --source_to it --base_from ja --base_to zh --head_ordering concept_copying --k 80`. 
 
+### Improbable Bigrams
+For Llama-3.1-8B improbable-bigram experiments that use the task list from `../improbable-bigram-causality/data/llama3.1_tasks.json`, use the dedicated scripts in this repo instead of the generic Section 2/3 drivers:
+- `scripts/improbable_bigram_generate_tasks.py` samples random two-token English phrases directly from the tokenizer vocabulary and writes a task file compatible with the trace pipeline. It keeps only phrases whose two token IDs are complete English words and satisfy both `encode(decode(A, B)) == [A, B]` and `encode("\"" + decode(A, B) + "\"") == ['"', A, B, '"']`.
+- `scripts/improbable_bigram_trace.py` builds the literal Table 1 repetition prompt, runs traces, and saves reusable per-example local artifacts for later analysis.
+- `scripts/improbable_bigram_scores.py` loads those artifacts and computes the proposal-aligned LastTokenMatching and modified NextTokenMatching scores.
+- `scripts/improbable_bigram_dla.py` loads the saved states plus model weights and computes offline direct logit attribution for the second-token decision.
+
+These scripts write under `cache/improbable_bigrams/Llama-3.1-8B/table1_literal/` by default.
+
 
 ## Data
 In the `data` folder we provide datasets from previous work, preprocessed to suit the needs of our experiments.
