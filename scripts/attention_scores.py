@@ -37,6 +37,7 @@ from datasets import load_dataset
 
 import utils
 from ndif import load_remote_model
+from seed_utils import set_random_seed
 from utils import (
     pile_chunk,
     get_l2_attn_weights,
@@ -97,9 +98,7 @@ def normalize(d, total):
 
 
 def main(args):
-    random.seed(8)
-    torch.manual_seed(8)
-    np.random.seed(8)
+    set_random_seed(args.seed)
 
     if args.remote:
         if args.ckpt is not None:
@@ -293,6 +292,7 @@ if __name__ == "__main__":
     parser.add_argument("--sequence_len", default=30, type=int)
     parser.add_argument("--remote", action="store_true")
     parser.add_argument("--random_tok_entities", action="store_true")
+    parser.add_argument("--seed", default=8, type=int)
     parser.set_defaults(random_tok_entities=False, remote=False)
     args = parser.parse_args()
 
