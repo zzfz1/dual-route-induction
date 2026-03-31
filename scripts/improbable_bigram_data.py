@@ -24,7 +24,10 @@ DEFAULT_TRACE_ROOT = (
     / "table1_literal"
 )
 DEFAULT_RANDOM_TASKS_PATH = (
-    PROJECT_ROOT / "dual-route-induction" / "data" / "llama3.1_random_two_token_tasks.json"
+    PROJECT_ROOT
+    / "dual-route-induction"
+    / "data"
+    / "llama3.1_random_two_token_tasks.json"
 )
 PROMPT_STYLE = "table1_literal"
 
@@ -63,7 +66,8 @@ def build_table1_prompt_lines(bigram: str) -> list[str]:
         f"{bigram}\n",
         f"{bigram}\n",
         f"{bigram}\n",
-        f"I will repeat the phrase {bigram} four times\n",
+        f"I will repeat the phrase {bigram} five times\n",
+        f"{bigram}\n",
         f"{bigram}\n",
         f"{bigram}\n",
         f"{bigram}\n",
