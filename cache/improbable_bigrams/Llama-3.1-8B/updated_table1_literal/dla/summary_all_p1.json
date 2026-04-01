@@ -1,0 +1,8 @@
+{
+  "subset": "all",
+  "pass_name": "p1",
+  "n_examples": 100,
+  "n_hallucinated_examples": 33,
+  "per_example_path": "D:\\uni\\courses\\S2026\\CS_7180\\Project\\dual-route-induction\\cache\\improbable_bigrams\\Llama-3.1-8B\\updated_table1_literal\\dla\\per_example_all_p1.pt",
+  "per_head_path": "D:\\uni\\courses\\S2026\\CS_7180\\Project\\dual-route-induction\\cache\\improbable_bigrams\\Llama-3.1-8B\\updated_table1_literal\\dla\\per_head_all_p1.json"
+}
