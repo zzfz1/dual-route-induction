@@ -1,8 +1,0 @@
-{
-  "subset": "hallucinated_second_token",
-  "pass_name": "p1",
-  "n_examples": 35,
-  "n_hallucinated_examples": 35,
-  "per_example_path": "D:\\uni\\courses\\S2026\\CS_7180\\Project\\dual-route-induction\\cache\\improbable_bigrams\\Llama-3.1-8B\\table1_literal\\dla\\per_example_hallucinated_second_token_p1.pt",
-  "per_head_path": "D:\\uni\\courses\\S2026\\CS_7180\\Project\\dual-route-induction\\cache\\improbable_bigrams\\Llama-3.1-8B\\table1_literal\\dla\\per_head_hallucinated_second_token_p1.json"
-}

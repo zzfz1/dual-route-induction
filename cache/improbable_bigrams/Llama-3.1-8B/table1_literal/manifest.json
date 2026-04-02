@@ -1,8 +1,0 @@
-{
-  "created_at_utc": "2026-03-31T04:27:50.395196+00:00",
-  "model": "meta-llama/Llama-3.1-8B",
-  "remote": true,
-  "prompt_style": "table1_literal",
-  "tasks_path": "D:\\uni\\courses\\S2026\\CS_7180\\Project\\improbable-bigram-causality\\data\\llama3.1_tasks.json",
-  "total_tasks": 100
-}

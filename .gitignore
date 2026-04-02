@@ -175,3 +175,4 @@ cython_debug/
 .env
 
 cache/improbable_bigrams/Llama-3.1-8B/**/0*/
+cache/backups/

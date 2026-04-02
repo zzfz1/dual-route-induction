@@ -1,6 +1,0 @@
-{
-  "subset": "all",
-  "n_examples": 100,
-  "per_example_path": "D:\\uni\\courses\\S2026\\CS_7180\\Project\\dual-route-induction\\cache\\improbable_bigrams\\Llama-3.1-8B\\table1_literal\\scores\\per_example_all.pt",
-  "per_head_path": "D:\\uni\\courses\\S2026\\CS_7180\\Project\\dual-route-induction\\cache\\improbable_bigrams\\Llama-3.1-8B\\table1_literal\\scores\\per_head_all.json"
-}
