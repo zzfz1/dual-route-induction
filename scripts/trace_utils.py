@@ -34,8 +34,10 @@ def is_remote_transport_error(exc):
         "WriteTimeout",
         "ReadTimeout",
         "ConnectTimeout",
+        "ConnectError",
         "ConnectionError",
         "DisconnectedError",
+        "Connection reset by peer",
         "socket closed",
         "timed out",
     )
@@ -44,6 +46,7 @@ def is_remote_transport_error(exc):
         "WriteTimeout",
         "ReadTimeout",
         "ConnectTimeout",
+        "ConnectError",
         "ConnectionError",
         "DisconnectedError",
     }

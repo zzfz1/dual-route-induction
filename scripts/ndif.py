@@ -3,7 +3,10 @@ from pathlib import Path
 
 from nnsight import CONFIG, LanguageModel
 
-REMOTE_MODEL_NAME = "meta-llama/Llama-3.1-8B"
+REMOTE_MODEL_NAMES = {
+    "meta-llama/Llama-3.1-8B",
+    "meta-llama/Llama-3.1-70B",
+}
 
 
 def _iter_env_candidates():
@@ -47,9 +50,9 @@ def _ensure_remote_env_loaded():
 
 
 def load_remote_model(model_name, module=None):
-    if model_name != REMOTE_MODEL_NAME:
+    if model_name not in REMOTE_MODEL_NAMES:
         raise ValueError(
-            f"Remote execution is only supported for {REMOTE_MODEL_NAME} in this script, got {model_name}."
+            f"Remote execution is only supported for {REMOTE_MODEL_NAMES}, got {model_name}."
         )
 
     _ensure_remote_env_loaded()
@@ -69,3 +72,5 @@ def load_remote_model(model_name, module=None):
 
     CONFIG.set_default_api_key(os.environ["NDIF_API_KEY"])
     return LanguageModel(model_name, device_map="cuda", attn_implementation="eager")
+
+

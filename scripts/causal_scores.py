@@ -705,7 +705,7 @@ if __name__ == "__main__":
             "allenai/OLMo-2-1124-7B",
             "EleutherAI/pythia-6.9b",
             "meta-llama/Llama-3.1-8B",
-            "meta-llama/Meta-Llama-3.1-70B",
+            "meta-llama/Llama-3.1-70B",
             "meta-llama/Llama-3.2-3B",
             "allenai/OLMo-2-0425-1B",
         ],

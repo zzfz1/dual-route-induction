@@ -1,0 +1,8 @@
+{
+  "created_at_utc": "2026-04-06T04:41:47.163866+00:00",
+  "model": "meta-llama/Llama-3.1-8B",
+  "remote": true,
+  "prompt_style": "table1_literal",
+  "tasks_path": "/Users/random/interp_project/improbable-bigram-causality/dual-route-induction/data/llama3.1_concepts.json",
+  "total_tasks": 100
+}

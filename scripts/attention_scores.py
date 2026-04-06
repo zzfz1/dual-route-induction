@@ -24,6 +24,7 @@ Then I'll be able to suss out the
 
 import json
 import os
+import pickle
 import argparse
 import torch
 import random
@@ -95,6 +96,54 @@ def normalize(d, total):
     for k in d.keys():
         d[k] /= total
     return d
+
+
+def atomic_pickle_dump(obj, path):
+    tmp_path = path + ".tmp"
+    with open(tmp_path, "wb") as f:
+        pickle.dump(obj, f)
+    os.replace(tmp_path, path)
+
+
+def get_checkpoint_path(out_path, fname):
+    return os.path.join(out_path, fname.replace(".json", "_checkpoint.pkl"))
+
+
+def save_checkpoint(ckpt_path, next_tok_attn, end_tok_attn, total_examples, next_batch_idx, work_items):
+    state = {
+        "next_tok_attn": dict(next_tok_attn),
+        "end_tok_attn": dict(end_tok_attn),
+        "total_examples": total_examples,
+        "next_batch_idx": next_batch_idx,
+        "work_items": work_items,
+    }
+    atomic_pickle_dump(state, ckpt_path)
+
+
+def load_checkpoint(ckpt_path):
+    with open(ckpt_path, "rb") as f:
+        return pickle.load(f)
+
+
+def build_work_items(sorted_entities, pile, tok, args):
+    work_items = []
+    for l, ents in sorted_entities.items():
+        selected_ents = ents[: args.n // 4]
+        n_batches = len(selected_ents) // args.bsz
+        for batch_idx in range(n_batches):
+            batch_ents = selected_ents[batch_idx * args.bsz : (batch_idx + 1) * args.bsz]
+            batch_seqs, start_idxs, end_idxs, pad_offsets = generate_ragged_batch(
+                batch_ents, pile, tok, args.sequence_len
+            )
+            work_items.append({
+                "l": l,
+                "batch_seqs": batch_seqs,
+                "start_idxs": start_idxs,
+                "end_idxs": end_idxs,
+                "pad_offsets": pad_offsets,
+                "n_ents": len(batch_ents),
+            })
+    return work_items
 
 
 def main(args):
@@ -183,34 +232,46 @@ def main(args):
             elif len(toks) == 5:
                 sorted_entities["fivegram"].append(toks)
 
-    # For each head, save the stuff
-    total_examples = 0
-    next_tok_attn = defaultdict(int)
-    end_tok_attn = defaultdict(int)
+    path = f"../cache/attention_scores/{model_name}/"
+    path += f"{args.ckpt}/" if args.ckpt is not None else ""
+    os.makedirs(path, exist_ok=True)
 
-    # I guess we're doing each batch is the same length entity
-    for l, ents in sorted_entities.items():
-        selected_ents = ents[: args.n // 4]
-        n_batches = len(selected_ents) // args.bsz
-        print("attention for", l, model.tokenizer.decode(selected_ents[0]))
+    fname = f"n{args.n}_seqlen{args.sequence_len}"
+    fname += f"_randomtokents" if args.random_tok_entities else ""
+    fname += ".json"
+    ckpt_path = get_checkpoint_path(path, fname)
 
-        for batch_idx in tqdm(range(n_batches)):
-            batch_ents = selected_ents[
-                batch_idx * args.bsz : (batch_idx + 1) * args.bsz
-            ]
-            batch_seqs, start_idxs, end_idxs, pad_offsets = generate_ragged_batch(
-                batch_ents, pile, tok, args.sequence_len
-            )
+    if args.resume and os.path.exists(ckpt_path):
+        state = load_checkpoint(ckpt_path)
+        next_tok_attn = defaultdict(int, state["next_tok_attn"])
+        end_tok_attn = defaultdict(int, state["end_tok_attn"])
+        total_examples = state["total_examples"]
+        next_batch_idx = state["next_batch_idx"]
+        work_items = state["work_items"]
+        print(f"resuming from batch {next_batch_idx}/{len(work_items)}")
+    else:
+        print("building work items...")
+        work_items = build_work_items(sorted_entities, pile, tok, args)
+        next_tok_attn = defaultdict(int)
+        end_tok_attn = defaultdict(int)
+        total_examples = 0
+        next_batch_idx = 0
+        save_checkpoint(ckpt_path, next_tok_attn, end_tok_attn, total_examples, next_batch_idx, work_items)
+        print(f"starting with {len(work_items)} total batches")
 
-            print(repr(model.tokenizer.decode(batch_seqs[0])))
-            print(
-                start_idxs[0].item(),
-                end_idxs[0].item(),
-                model.tokenizer.decode(batch_seqs[0][start_idxs[0]]),
-                model.tokenizer.decode(batch_seqs[0][end_idxs[0]]),
-            )
+    last_l = None
+    try:
+        for batch_idx in tqdm(range(next_batch_idx, len(work_items)), initial=next_batch_idx, total=len(work_items)):
+            item = work_items[batch_idx]
+            batch_seqs = item["batch_seqs"]
+            start_idxs = item["start_idxs"]
+            end_idxs = item["end_idxs"]
+            pad_offsets = item["pad_offsets"]
 
-            # get attention patterns for each head and example
+            if item["l"] != last_l:
+                print("attention for", item["l"], model.tokenizer.decode(batch_seqs[0][:5]))
+                last_l = item["l"]
+
             if args.remote:
                 next_sums, end_sums = collect_attention_sums(
                     model,
@@ -225,50 +286,33 @@ def main(args):
                         end_tok_attn[(layer, head)] += end_sums[layer, head].item()
             else:
                 for layer in range(model.config.num_hidden_layers):
-                    # [bsz, n_heads, seq_from, seq_to]
                     attns = retrieve_attention(model, batch_seqs, layer)
-
-                    # index in and save beginnings, ends
                     for head in range(model.config.num_attention_heads):
                         next_tok_attn[(layer, head)] += (
-                            attns[
-                                torch.arange(len(attns)),
-                                head,
-                                -1,
-                                start_idxs + pad_offsets,
-                            ]
-                            .sum()
-                            .item()
+                            attns[torch.arange(len(attns)), head, -1, start_idxs + pad_offsets].sum().item()
                         )
                         end_tok_attn[(layer, head)] += (
-                            attns[
-                                torch.arange(len(attns)),
-                                head,
-                                -1,
-                                end_idxs + pad_offsets,
-                            ]
-                            .sum()
-                            .item()
+                            attns[torch.arange(len(attns)), head, -1, end_idxs + pad_offsets].sum().item()
                         )
 
-            total_examples += len(batch_ents)
+            total_examples += item["n_ents"]
+            save_checkpoint(ckpt_path, next_tok_attn, end_tok_attn, total_examples, batch_idx + 1, work_items)
+
+    except Exception:
+        print(f"checkpoint saved to {ckpt_path}; rerun with --resume to continue")
+        raise
 
     results = {
         "next_tok_attn": json_tuple_keys(normalize(next_tok_attn, total_examples)),
         "end_tok_attn": json_tuple_keys(normalize(end_tok_attn, total_examples)),
     }
 
-    path = f"../cache/attention_scores/{model_name}/"
-    path += f"{args.ckpt}/" if args.ckpt is not None else ""
-    os.makedirs(path, exist_ok=True)
-
-    fname = f"n{args.n}_seqlen{args.sequence_len}"
-    fname += f"_randomtokents" if args.random_tok_entities else ""
-    fname += ".json"
     print(path + fname)
-
     with open(path + fname, "w") as f:
         json.dump(results, f)
+
+    if os.path.exists(ckpt_path):
+        os.remove(ckpt_path)
 
 
 if __name__ == "__main__":
@@ -281,6 +325,7 @@ if __name__ == "__main__":
             "allenai/OLMo-2-1124-7B",
             "meta-llama/Meta-Llama-3-8B",
             "meta-llama/Llama-3.1-8B",
+            "meta-llama/Llama-3.1-70B",
             "EleutherAI/pythia-6.9b",
         ],
     )
@@ -291,9 +336,10 @@ if __name__ == "__main__":
     )
     parser.add_argument("--sequence_len", default=30, type=int)
     parser.add_argument("--remote", action="store_true")
+    parser.add_argument("--resume", action="store_true")
     parser.add_argument("--random_tok_entities", action="store_true")
     parser.add_argument("--seed", default=8, type=int)
-    parser.set_defaults(random_tok_entities=False, remote=False)
+    parser.set_defaults(random_tok_entities=False, remote=False, resume=False)
     args = parser.parse_args()
 
     main(args)

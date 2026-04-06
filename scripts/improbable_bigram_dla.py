@@ -2,26 +2,12 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 from pathlib import Path
 
 import torch
-from transformers import AutoModelForCausalLM
-from transformers.utils import logging as hf_logging
 
 from improbable_bigram_data import DEFAULT_TRACE_ROOT, load_trace_index
 from seed_utils import set_random_seed
-
-
-def parse_dtype(name: str):
-    mapping = {
-        "float32": torch.float32,
-        "float16": torch.float16,
-        "bfloat16": torch.bfloat16,
-    }
-    if name not in mapping:
-        raise ValueError(f"Unsupported dtype: {name}")
-    return mapping[name]
 
 
 def load_entries(trace_dir: Path, subset: str):
@@ -51,103 +37,23 @@ def load_entries(trace_dir: Path, subset: str):
     raise ValueError(f"Unsupported subset: {subset}")
 
 
-def load_model(args):
-    hf_token = os.environ.get("HF_TOKEN")
-    kwargs = {
-        "dtype": parse_dtype(args.dtype),
-        "low_cpu_mem_usage": True,
-        "token": hf_token,
-    }
-    if args.device_map != "none":
-        kwargs["device_map"] = args.device_map
+def load_dla_from_state(state: dict, meta: dict) -> tuple[torch.Tensor, torch.Tensor]:
+    """Read pre-computed DLA scores embedded in the trace state.
 
-    previous_verbosity = hf_logging.get_verbosity()
-    hf_logging.set_verbosity_error()
-    try:
-        model = AutoModelForCausalLM.from_pretrained(args.model, **kwargs)
-    finally:
-        hf_logging.set_verbosity(previous_verbosity)
-    if args.device_map == "none":
-        model.to(torch.device(args.device))
-    model.eval()
-    return model
+    The trace script computes these server-side via the block-diagonal o_proj trick:
+      - dla_correct: [n_layers, n_heads] — per-head logit contribution to the target token
+      - dla_wrong:   [n_layers, n_heads] — per-head logit contribution to the predicted token
 
-
-def final_norm_scale(resid_pre: torch.Tensor, rmsnorm) -> torch.Tensor:
-    eps = getattr(rmsnorm, "variance_epsilon", None)
-    if eps is None:
-        eps = getattr(rmsnorm, "eps")
-    return torch.rsqrt(resid_pre.pow(2).mean() + eps)
-
-
-def materialize_module_tensor(module, tensor_name: str, device: torch.device, dtype: torch.dtype):
-    tensor = getattr(module, tensor_name)
-    if isinstance(tensor, torch.nn.Parameter):
-        tensor = tensor.detach()
-    if not getattr(tensor, "is_meta", False):
-        return tensor.to(device=device, dtype=dtype)
-
-    hook = getattr(module, "_hf_hook", None)
-    weights_map = getattr(hook, "weights_map", None)
-    if weights_map is None:
-        raise RuntimeError(
-            f"Tensor {module.__class__.__name__}.{tensor_name} is on the meta device "
-            "and no Accelerate weights_map is available to materialize it."
+    Raises ValueError if the state was produced by an older trace run that did not
+    embed DLA scores. Re-run improbable_bigram_trace.py --overwrite to regenerate.
+    """
+    if "dla_correct" not in state or "dla_wrong" not in state:
+        raise ValueError(
+            f"State file for task {meta['task_idx']} ({meta['bigram']!r}) does not contain "
+            "pre-computed DLA scores. Re-run improbable_bigram_trace.py --overwrite to "
+            "regenerate traces with DLA computation enabled."
         )
-
-    realized = weights_map[tensor_name]
-    if isinstance(realized, torch.nn.Parameter):
-        realized = realized.detach()
-    if getattr(realized, "is_meta", False):
-        raise RuntimeError(
-            f"Tensor {module.__class__.__name__}.{tensor_name} is still meta after "
-            "looking it up in Accelerate weights_map."
-        )
-    return realized.to(device=device, dtype=dtype)
-
-
-def compute_example_dla(model, state, meta, compute_device: torch.device):
-    core_model = model.model
-    rmsnorm = core_model.norm
-    lm_head = model.lm_head
-
-    norm_weight = materialize_module_tensor(
-        rmsnorm, "weight", compute_device, torch.float32
-    )
-    resid_pre = state["resid_pre_final_norm"].to(compute_device, dtype=torch.float32)
-    scale = final_norm_scale(resid_pre, rmsnorm)
-
-    correct_token_id = int(meta["p2"]["target_token_id"])
-    wrong_token_id = int(meta["p2"]["predicted_token_id"])
-
-    lm_head_weight = materialize_module_tensor(
-        lm_head, "weight", compute_device, torch.float32
-    )
-    correct_unembed = lm_head_weight[correct_token_id]
-    wrong_unembed = lm_head_weight[wrong_token_id]
-
-    head_inputs = state["head_o_proj_in"]
-    n_layers, n_heads, head_dim = head_inputs.shape
-    hidden_size = model.config.hidden_size
-
-    correct_scores = torch.empty((n_layers, n_heads), dtype=torch.float32)
-    wrong_scores = torch.empty((n_layers, n_heads), dtype=torch.float32)
-
-    for layer_idx in range(n_layers):
-        o_proj = materialize_module_tensor(
-            core_model.layers[layer_idx].self_attn.o_proj,
-            "weight",
-            compute_device,
-            torch.float32,
-        )
-        o_proj_blocks = o_proj.view(hidden_size, n_heads, head_dim).permute(1, 0, 2)
-        layer_head_inputs = head_inputs[layer_idx].to(compute_device, dtype=torch.float32)
-        head_resid = torch.einsum("hod,hd->ho", o_proj_blocks, layer_head_inputs)
-        normalized = head_resid * scale * norm_weight.unsqueeze(0)
-        correct_scores[layer_idx] = normalized @ correct_unembed
-        wrong_scores[layer_idx] = normalized @ wrong_unembed
-
-    return correct_scores.cpu(), wrong_scores.cpu()
+    return state["dla_correct"], state["dla_wrong"]
 
 
 def flatten_rows(score_tensor: torch.Tensor, metric_name: str):
@@ -186,9 +92,6 @@ def main(args):
     if not entries:
         raise ValueError(f"No traced examples matched subset={args.subset}.")
 
-    model = load_model(args)
-    compute_device = torch.device(args.compute_device)
-
     correct_scores = []
     wrong_scores = []
     per_example_meta = []
@@ -200,7 +103,7 @@ def main(args):
             meta = json.load(f)
         state = torch.load(example_dir / state_name, map_location="cpu")
 
-        correct_dla, wrong_dla = compute_example_dla(model, state, meta, compute_device)
+        correct_dla, wrong_dla = load_dla_from_state(state, meta)
         correct_scores.append(correct_dla)
         wrong_scores.append(wrong_dla)
         per_example_meta.append(
@@ -272,15 +175,6 @@ if __name__ == "__main__":
         choices=["all", "copied", "hallucinated_second_token"],
     )
     parser.add_argument("--out-dir", default=None)
-    parser.add_argument(
-        "--model",
-        default="meta-llama/Llama-3.1-8B",
-        choices=["meta-llama/Llama-3.1-8B"],
-    )
     parser.add_argument("--pass-name", default="p1", choices=["xn", "p1"])
-    parser.add_argument("--dtype", default="float32", choices=["float32", "float16", "bfloat16"])
-    parser.add_argument("--device-map", default="auto")
-    parser.add_argument("--device", default="cpu")
-    parser.add_argument("--compute-device", default="cpu")
     parser.add_argument("--seed", default=8, type=int)
     main(parser.parse_args())

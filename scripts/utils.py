@@ -313,9 +313,11 @@ def collect_attention_sums(
         raise ValueError(
             "collect_attention_sums is only intended for remote execution in this minimal patch."
         )
-    if model.config._name_or_path != "meta-llama/Llama-3.1-8B":
+    _llama3_remote_models = {"meta-llama/Llama-3.1-8B", "meta-llama/Llama-3.1-70B"}
+    if model.config._name_or_path not in _llama3_remote_models:
         raise ValueError(
-            "Remote execution is only supported for meta-llama/Llama-3.1-8B."
+            f"Remote execution is only supported for {_llama3_remote_models}, "
+            f"got {model.config._name_or_path}."
         )
 
     source_positions = torch.as_tensor(source_positions, dtype=torch.long)
