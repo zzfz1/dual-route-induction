@@ -42,6 +42,8 @@ def is_remote_transport_error(exc):
         "Connection reset by peer",
         "socket closed",
         "timed out",
+        "NNsightException",
+        "RemoteException",
     )
     class_markers = {
         "RemoteProtocolError",
@@ -51,6 +53,8 @@ def is_remote_transport_error(exc):
         "ConnectError",
         "ConnectionError",
         "DisconnectedError",
+        "NNsightException",
+        "RemoteException",
     }
 
     stack = [exc]

@@ -1,0 +1,8 @@
+{
+  "subset": "all",
+  "pass_name": "xn",
+  "n_examples": 100,
+  "n_hallucinated_examples": 0,
+  "per_example_path": "/Users/random/interp_project/improbable-bigram-causality/dual-route-induction/cache/improbable_bigrams/Llama-3.1-8B/concepts/dla/per_example_all_xn.pt",
+  "per_head_path": "/Users/random/interp_project/improbable-bigram-causality/dual-route-induction/cache/improbable_bigrams/Llama-3.1-8B/concepts/dla/per_head_all_xn.json"
+}

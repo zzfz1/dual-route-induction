@@ -717,7 +717,7 @@ if __name__ == "__main__":
     parser.add_argument("--remote", action="store_true")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--random_tok_entities", action="store_true")
-    parser.add_argument("--remote-max-retries", default=4, type=int)
+    parser.add_argument("--remote-max-retries", default=10, type=int)
     parser.add_argument("--remote-backoff-base", default=2.0, type=float)
     parser.add_argument("--remote-backoff-max", default=30.0, type=float)
     parser.add_argument("--seed", default=8, type=int)

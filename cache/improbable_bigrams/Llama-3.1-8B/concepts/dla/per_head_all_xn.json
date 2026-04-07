@@ -1,0 +1,6146 @@
+[
+  {
+    "layer": 0,
+    "head_idx": 0,
+    "correct_token_dla": 0.0007821497274562716,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 1,
+    "correct_token_dla": -0.0009851717622950673,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 2,
+    "correct_token_dla": 0.0005117558175697923,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 3,
+    "correct_token_dla": -3.20243852911517e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 4,
+    "correct_token_dla": -3.8705693441443145e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 5,
+    "correct_token_dla": -3.926336648873985e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 6,
+    "correct_token_dla": 8.688271009305026e-06,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 7,
+    "correct_token_dla": 5.901456006540684e-06,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 8,
+    "correct_token_dla": -0.00020996569946873933,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 9,
+    "correct_token_dla": -0.0009192252182401717,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 10,
+    "correct_token_dla": -1.3984739780426025e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 11,
+    "correct_token_dla": -3.565162478480488e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 12,
+    "correct_token_dla": 0.00039290188578888774,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 13,
+    "correct_token_dla": 0.00012034028623020276,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 14,
+    "correct_token_dla": -0.0004015332378912717,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 15,
+    "correct_token_dla": 4.559397712000646e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 16,
+    "correct_token_dla": 6.603710062336177e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 17,
+    "correct_token_dla": -0.00023006201081443578,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 18,
+    "correct_token_dla": -9.690355909697246e-06,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 19,
+    "correct_token_dla": -0.0004076063632965088,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 20,
+    "correct_token_dla": 0.0007203149725683033,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 21,
+    "correct_token_dla": -0.0003581136406864971,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 22,
+    "correct_token_dla": 5.468472954817116e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 23,
+    "correct_token_dla": -0.0016976130427792668,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 24,
+    "correct_token_dla": 3.251135422033258e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 25,
+    "correct_token_dla": -3.085210846620612e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 26,
+    "correct_token_dla": -0.00022946119133848697,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 27,
+    "correct_token_dla": -0.00029514581547118723,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 28,
+    "correct_token_dla": -0.0002473497297614813,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 29,
+    "correct_token_dla": -0.00018319487571716309,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 30,
+    "correct_token_dla": -0.00031166180269792676,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 0,
+    "head_idx": 31,
+    "correct_token_dla": -0.0003766061272472143,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 0,
+    "correct_token_dla": -0.0008737754542380571,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 1,
+    "correct_token_dla": 9.857743862085044e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 2,
+    "correct_token_dla": 9.911656525218859e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 3,
+    "correct_token_dla": 0.0001994156773434952,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 4,
+    "correct_token_dla": -9.768232848728076e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 5,
+    "correct_token_dla": 7.837202429072931e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 6,
+    "correct_token_dla": -0.00027445837622508407,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 7,
+    "correct_token_dla": -0.00035694122198037803,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 8,
+    "correct_token_dla": -0.0011078676907345653,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 9,
+    "correct_token_dla": -0.00010717273107729852,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 10,
+    "correct_token_dla": 0.0005635973648168147,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 11,
+    "correct_token_dla": -0.0005772789008915424,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 12,
+    "correct_token_dla": 7.781088061165065e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 13,
+    "correct_token_dla": -0.0003789675247389823,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 14,
+    "correct_token_dla": -4.238456313032657e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 15,
+    "correct_token_dla": -0.00040814399835653603,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 16,
+    "correct_token_dla": -0.0007508754497393966,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 17,
+    "correct_token_dla": 0.00019636750221252441,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 18,
+    "correct_token_dla": -0.00035035560722462833,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 19,
+    "correct_token_dla": 0.0006152063724584877,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 20,
+    "correct_token_dla": 3.2610892958473414e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 21,
+    "correct_token_dla": -0.0002669334353413433,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 22,
+    "correct_token_dla": -0.0009607363026589155,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 23,
+    "correct_token_dla": 0.0014251661486923695,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 24,
+    "correct_token_dla": -0.00024482040316797793,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 25,
+    "correct_token_dla": -0.00043192505836486816,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 26,
+    "correct_token_dla": 4.55245390185155e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 27,
+    "correct_token_dla": -6.724089325871319e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 28,
+    "correct_token_dla": -0.00047139168600551784,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 29,
+    "correct_token_dla": 0.00014880896196700633,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 30,
+    "correct_token_dla": 0.00010812848631758243,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 1,
+    "head_idx": 31,
+    "correct_token_dla": 0.00010969445429509506,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 0,
+    "correct_token_dla": -0.00014372081204783171,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 1,
+    "correct_token_dla": 0.0008936500526033342,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 2,
+    "correct_token_dla": -0.0012209033593535423,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 3,
+    "correct_token_dla": -0.0004718065320048481,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 4,
+    "correct_token_dla": -0.0003270387533120811,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 5,
+    "correct_token_dla": 0.0008162331650964916,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 6,
+    "correct_token_dla": -0.0013705575838685036,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 7,
+    "correct_token_dla": 0.000375546223949641,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 8,
+    "correct_token_dla": -0.0004814243293367326,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 9,
+    "correct_token_dla": -0.0007601155084557831,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 10,
+    "correct_token_dla": -0.0005328106926754117,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 11,
+    "correct_token_dla": -0.00030414818320423365,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 12,
+    "correct_token_dla": 0.0005876481300219893,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 13,
+    "correct_token_dla": -0.0012057817075401545,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 14,
+    "correct_token_dla": 4.6436787670245394e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 15,
+    "correct_token_dla": -0.0006985568907111883,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 16,
+    "correct_token_dla": -8.112550131045282e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 17,
+    "correct_token_dla": -0.00015414298104587942,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 18,
+    "correct_token_dla": -0.0002229219680884853,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 19,
+    "correct_token_dla": 0.00066375732421875,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 20,
+    "correct_token_dla": 0.00013384252088144422,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 21,
+    "correct_token_dla": 0.0001548567379359156,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 22,
+    "correct_token_dla": -0.0022394515108317137,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 23,
+    "correct_token_dla": -0.0004874592996202409,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 24,
+    "correct_token_dla": -0.0010567080462351441,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 25,
+    "correct_token_dla": 0.00020118028623983264,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 26,
+    "correct_token_dla": 0.0011757392203435302,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 27,
+    "correct_token_dla": 0.0013102948432788253,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 28,
+    "correct_token_dla": 0.00021625756926368922,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 29,
+    "correct_token_dla": -6.0804934037150815e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 30,
+    "correct_token_dla": 0.00020995840895920992,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 2,
+    "head_idx": 31,
+    "correct_token_dla": -5.0445200031390414e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 0,
+    "correct_token_dla": 9.5757917733863e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 1,
+    "correct_token_dla": -0.0005125212483108044,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 2,
+    "correct_token_dla": 0.0004114001931156963,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 3,
+    "correct_token_dla": -0.0016910219565033913,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 4,
+    "correct_token_dla": -0.0006650173454545438,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 5,
+    "correct_token_dla": -0.00012365341535769403,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 6,
+    "correct_token_dla": -0.00026223226450383663,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 7,
+    "correct_token_dla": -0.00024470165953971446,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 8,
+    "correct_token_dla": 0.0005070328479632735,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 9,
+    "correct_token_dla": -0.002805683994665742,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 10,
+    "correct_token_dla": 0.0003677427885122597,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 11,
+    "correct_token_dla": -0.0005046081496402621,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 12,
+    "correct_token_dla": 0.0006078079459257424,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 13,
+    "correct_token_dla": -0.00031548916012980044,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 14,
+    "correct_token_dla": -8.666575013194233e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 15,
+    "correct_token_dla": -0.00034316061646677554,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 16,
+    "correct_token_dla": -7.240772538352758e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 17,
+    "correct_token_dla": 0.00029547660960815847,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 18,
+    "correct_token_dla": 0.0003815817763097584,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 19,
+    "correct_token_dla": -0.0001373851264361292,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 20,
+    "correct_token_dla": 0.0003065764904022217,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 21,
+    "correct_token_dla": 0.00010933398880297318,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 22,
+    "correct_token_dla": 1.3566017514676787e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 23,
+    "correct_token_dla": -0.0008196019916795194,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 24,
+    "correct_token_dla": 9.589418914401904e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 25,
+    "correct_token_dla": -0.0002797840570565313,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 26,
+    "correct_token_dla": 0.00014611244841944426,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 27,
+    "correct_token_dla": -0.001836490584537387,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 28,
+    "correct_token_dla": 7.902145443949848e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 29,
+    "correct_token_dla": -0.0007716012187302113,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 30,
+    "correct_token_dla": 0.0002514648367650807,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 3,
+    "head_idx": 31,
+    "correct_token_dla": 0.0005938971298746765,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 0,
+    "correct_token_dla": -0.0006864476017653942,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 1,
+    "correct_token_dla": 0.0003201007784809917,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 2,
+    "correct_token_dla": 2.328157506781281e-06,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 3,
+    "correct_token_dla": -0.0014947872841730714,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 4,
+    "correct_token_dla": -0.0006135845324024558,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 5,
+    "correct_token_dla": -0.000139316325658001,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 6,
+    "correct_token_dla": 3.5482047678669915e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 7,
+    "correct_token_dla": -2.7542113457457162e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 8,
+    "correct_token_dla": 0.0005758189945481718,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 9,
+    "correct_token_dla": -0.003327981336042285,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 10,
+    "correct_token_dla": -0.0005065322038717568,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 11,
+    "correct_token_dla": -0.00011051319597754627,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 12,
+    "correct_token_dla": -0.000517537584528327,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 13,
+    "correct_token_dla": 0.0007223630091175437,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 14,
+    "correct_token_dla": -0.0003999877080786973,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 15,
+    "correct_token_dla": 0.0013202452100813389,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 16,
+    "correct_token_dla": 0.003493058728054166,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 17,
+    "correct_token_dla": -0.0009591865818947554,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 18,
+    "correct_token_dla": -0.0005002832622267306,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 19,
+    "correct_token_dla": -0.0015349865425378084,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 20,
+    "correct_token_dla": -0.00018250405264552683,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 21,
+    "correct_token_dla": -0.00042369842412881553,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 22,
+    "correct_token_dla": -0.0019349395297467709,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 23,
+    "correct_token_dla": 0.001446931972168386,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 24,
+    "correct_token_dla": -0.00028274834039621055,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 25,
+    "correct_token_dla": 0.003343285294249654,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 26,
+    "correct_token_dla": 0.001874255482107401,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 27,
+    "correct_token_dla": -0.0005807238630950451,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 28,
+    "correct_token_dla": -0.0005913770291954279,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 29,
+    "correct_token_dla": -0.0016334819374606013,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 30,
+    "correct_token_dla": 0.0024551390670239925,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 4,
+    "head_idx": 31,
+    "correct_token_dla": 0.00021763742552138865,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 0,
+    "correct_token_dla": -0.0008949470357038081,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 1,
+    "correct_token_dla": -0.001104361959733069,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 2,
+    "correct_token_dla": 0.005069761071354151,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 3,
+    "correct_token_dla": 0.002417623996734619,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 4,
+    "correct_token_dla": 0.0015353250782936811,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 5,
+    "correct_token_dla": 0.0008202147437259555,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 6,
+    "correct_token_dla": 7.512569573009387e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 7,
+    "correct_token_dla": -0.00046473502879962325,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 8,
+    "correct_token_dla": 1.1532306416484062e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 9,
+    "correct_token_dla": 0.0011735283769667149,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 10,
+    "correct_token_dla": -0.00024379015667364,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 11,
+    "correct_token_dla": 0.003249864559620619,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 12,
+    "correct_token_dla": -0.00040589331183582544,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 13,
+    "correct_token_dla": -0.00036892236676067114,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 14,
+    "correct_token_dla": 0.000749203551094979,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 15,
+    "correct_token_dla": -0.0025790738873183727,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 16,
+    "correct_token_dla": 0.0007356929709203541,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 17,
+    "correct_token_dla": 0.002799444133415818,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 18,
+    "correct_token_dla": 0.000144367222674191,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 19,
+    "correct_token_dla": -0.003954930230975151,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 20,
+    "correct_token_dla": 7.369518425548449e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 21,
+    "correct_token_dla": -0.0004882514476776123,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 22,
+    "correct_token_dla": 0.0004231739148963243,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 23,
+    "correct_token_dla": -0.0010687607573345304,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 24,
+    "correct_token_dla": -0.00037672280450351536,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 25,
+    "correct_token_dla": 0.0003149783588014543,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 26,
+    "correct_token_dla": 0.00015174626605585217,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 27,
+    "correct_token_dla": 0.002410000888630748,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 28,
+    "correct_token_dla": 0.0010808039223775268,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 29,
+    "correct_token_dla": -0.00011098384857177734,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 30,
+    "correct_token_dla": -0.0014735126169398427,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 5,
+    "head_idx": 31,
+    "correct_token_dla": -0.00047304629697464406,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 0,
+    "correct_token_dla": 0.0005039596580900252,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 1,
+    "correct_token_dla": 0.00272696977481246,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 2,
+    "correct_token_dla": -0.0011619472643360496,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 3,
+    "correct_token_dla": -0.002144451253116131,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 4,
+    "correct_token_dla": -0.0006672912859357893,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 5,
+    "correct_token_dla": -0.0008420491358265281,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 6,
+    "correct_token_dla": 0.0014909171732142568,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 7,
+    "correct_token_dla": -0.0010987394489347935,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 8,
+    "correct_token_dla": -0.0014567971229553223,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 9,
+    "correct_token_dla": 9.714365296531469e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 10,
+    "correct_token_dla": -0.0009564733481965959,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 11,
+    "correct_token_dla": 0.0006986939697526395,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 12,
+    "correct_token_dla": -0.0011231016833335161,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 13,
+    "correct_token_dla": 0.0016956799663603306,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 14,
+    "correct_token_dla": -0.004292035009711981,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 15,
+    "correct_token_dla": 0.0022225570864975452,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 16,
+    "correct_token_dla": 0.001947022625245154,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 17,
+    "correct_token_dla": -0.004630784969776869,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 18,
+    "correct_token_dla": -0.0017630767542868853,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 19,
+    "correct_token_dla": -0.0008527660393156111,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 20,
+    "correct_token_dla": 0.0023492013569921255,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 21,
+    "correct_token_dla": -0.004913063254207373,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 22,
+    "correct_token_dla": 0.0023889208678156137,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 23,
+    "correct_token_dla": -0.004329090006649494,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 24,
+    "correct_token_dla": -0.0002317905455129221,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 25,
+    "correct_token_dla": -0.00032516851206310093,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 26,
+    "correct_token_dla": -0.00042529107304289937,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 27,
+    "correct_token_dla": 0.001403296017087996,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 28,
+    "correct_token_dla": 0.0004816424916498363,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 29,
+    "correct_token_dla": 0.00033680081833153963,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 30,
+    "correct_token_dla": -0.00014493227354250848,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 6,
+    "head_idx": 31,
+    "correct_token_dla": -0.00021268367709126323,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 0,
+    "correct_token_dla": -0.0007187915034592152,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 1,
+    "correct_token_dla": 0.0009786224691197276,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 2,
+    "correct_token_dla": -0.004541394766420126,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 3,
+    "correct_token_dla": -0.0013940238859504461,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 4,
+    "correct_token_dla": 0.0013231468619778752,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 5,
+    "correct_token_dla": -0.005187587812542915,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 6,
+    "correct_token_dla": 0.0004986858111806214,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 7,
+    "correct_token_dla": 0.0011711693368852139,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 8,
+    "correct_token_dla": -0.0014636230189353228,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 9,
+    "correct_token_dla": -0.00023086548026185483,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 10,
+    "correct_token_dla": 0.002523489063605666,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 11,
+    "correct_token_dla": 0.0009576368611305952,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 12,
+    "correct_token_dla": -0.0006691217422485352,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 13,
+    "correct_token_dla": 0.00120754714589566,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 14,
+    "correct_token_dla": -0.003074121428653598,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 15,
+    "correct_token_dla": -0.001962900161743164,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 16,
+    "correct_token_dla": 0.0012432619696483016,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 17,
+    "correct_token_dla": 0.0008852076716721058,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 18,
+    "correct_token_dla": -0.0008087015012279153,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 19,
+    "correct_token_dla": -0.00033966050250455737,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 20,
+    "correct_token_dla": 7.073879532981664e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 21,
+    "correct_token_dla": 0.0002725696540437639,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 22,
+    "correct_token_dla": 0.0007765484042465687,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 23,
+    "correct_token_dla": -0.00442085275426507,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 24,
+    "correct_token_dla": 0.0017024168046191335,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 25,
+    "correct_token_dla": -0.00038173675420694053,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 26,
+    "correct_token_dla": -0.0032669948413968086,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 27,
+    "correct_token_dla": -0.0021803665440529585,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 28,
+    "correct_token_dla": -0.0011979102855548263,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 29,
+    "correct_token_dla": 0.0010143113322556019,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 30,
+    "correct_token_dla": 0.002756748115643859,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 7,
+    "head_idx": 31,
+    "correct_token_dla": 0.001163136912509799,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 0,
+    "correct_token_dla": -0.00022682189592160285,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 1,
+    "correct_token_dla": -0.00013849258539266884,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 2,
+    "correct_token_dla": 0.003693532897159457,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 3,
+    "correct_token_dla": 0.0007060718489810824,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 4,
+    "correct_token_dla": -0.0011299049947410822,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 5,
+    "correct_token_dla": 0.0005517101380974054,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 6,
+    "correct_token_dla": 0.0031309460755437613,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 7,
+    "correct_token_dla": 0.004386038985103369,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 8,
+    "correct_token_dla": -0.0019243478309363127,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 9,
+    "correct_token_dla": 0.0022591257002204657,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 10,
+    "correct_token_dla": -0.000539484026376158,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 11,
+    "correct_token_dla": -0.006774053443223238,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 12,
+    "correct_token_dla": -0.0007513600867241621,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 13,
+    "correct_token_dla": -0.0004858589090872556,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 14,
+    "correct_token_dla": -0.0007010492845438421,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 15,
+    "correct_token_dla": 0.0003886628255713731,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 16,
+    "correct_token_dla": -0.003596830414608121,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 17,
+    "correct_token_dla": 0.0011472845217213035,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 18,
+    "correct_token_dla": -0.0012177741155028343,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 19,
+    "correct_token_dla": 0.0023442553356289864,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 20,
+    "correct_token_dla": 0.003441066714003682,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 21,
+    "correct_token_dla": 0.004085817374289036,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 22,
+    "correct_token_dla": 0.00011934697977267206,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 23,
+    "correct_token_dla": 0.0015851593343541026,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 24,
+    "correct_token_dla": 0.0014515685616061091,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 25,
+    "correct_token_dla": 0.0007251787465065718,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 26,
+    "correct_token_dla": 0.002217254601418972,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 27,
+    "correct_token_dla": -0.001561582088470459,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 28,
+    "correct_token_dla": 0.0009800409898161888,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 29,
+    "correct_token_dla": 0.0012859570560976863,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 30,
+    "correct_token_dla": -0.006583398673683405,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 8,
+    "head_idx": 31,
+    "correct_token_dla": 0.0037538527976721525,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 0,
+    "correct_token_dla": -0.003733978373929858,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 1,
+    "correct_token_dla": -0.0003630769206210971,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 2,
+    "correct_token_dla": -0.0008724689250811934,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 3,
+    "correct_token_dla": 0.0010318350978195667,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 4,
+    "correct_token_dla": 0.0024565886706113815,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 5,
+    "correct_token_dla": 7.381439354503527e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 6,
+    "correct_token_dla": -0.0003456449485383928,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 7,
+    "correct_token_dla": 0.0006611645221710205,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 8,
+    "correct_token_dla": -0.00233939359895885,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 9,
+    "correct_token_dla": 0.0018650818383321166,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 10,
+    "correct_token_dla": 0.008134989999234676,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 11,
+    "correct_token_dla": -0.004061469808220863,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 12,
+    "correct_token_dla": 0.0025851719547063112,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 13,
+    "correct_token_dla": -0.006481456570327282,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 14,
+    "correct_token_dla": -0.012567100115120411,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 15,
+    "correct_token_dla": -0.006331310141831636,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 16,
+    "correct_token_dla": -0.0007214832585304976,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 17,
+    "correct_token_dla": 0.0003549557877704501,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 18,
+    "correct_token_dla": -0.0007854747818782926,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 19,
+    "correct_token_dla": -0.0007269382476806641,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 20,
+    "correct_token_dla": 0.0008589982753619552,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 21,
+    "correct_token_dla": 5.2194594900356606e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 22,
+    "correct_token_dla": 0.0034587716218084097,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 23,
+    "correct_token_dla": -0.002911672694608569,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 24,
+    "correct_token_dla": 0.0015364837599918246,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 25,
+    "correct_token_dla": 0.0033109569922089577,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 26,
+    "correct_token_dla": -0.0021082323510199785,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 27,
+    "correct_token_dla": -0.004949760623276234,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 28,
+    "correct_token_dla": -0.0013781595043838024,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 29,
+    "correct_token_dla": 0.004780993331223726,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 30,
+    "correct_token_dla": 0.0017263698391616344,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 9,
+    "head_idx": 31,
+    "correct_token_dla": 0.0013757324777543545,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 0,
+    "correct_token_dla": 0.005765704903751612,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 1,
+    "correct_token_dla": 0.001067152014002204,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 2,
+    "correct_token_dla": -0.002407665364444256,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 3,
+    "correct_token_dla": 0.0027496719267219305,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 4,
+    "correct_token_dla": 0.0007328796200454235,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 5,
+    "correct_token_dla": 0.003607683116570115,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 6,
+    "correct_token_dla": -0.00018885612371377647,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 7,
+    "correct_token_dla": 0.0006123638013377786,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 8,
+    "correct_token_dla": 0.004412813112139702,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 9,
+    "correct_token_dla": 0.004637775477021933,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 10,
+    "correct_token_dla": 0.003635385073721409,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 11,
+    "correct_token_dla": -0.005042009521275759,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 12,
+    "correct_token_dla": 0.0020841979421675205,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 13,
+    "correct_token_dla": -5.011081520933658e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 14,
+    "correct_token_dla": -0.00222187046892941,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 15,
+    "correct_token_dla": -0.0006291198660619557,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 16,
+    "correct_token_dla": 0.0010009503457695246,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 17,
+    "correct_token_dla": -0.0039465902373194695,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 18,
+    "correct_token_dla": 0.0019062805222347379,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 19,
+    "correct_token_dla": 0.0015738820657134056,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 20,
+    "correct_token_dla": 0.001041381387040019,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 21,
+    "correct_token_dla": -0.0006464656908065081,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 22,
+    "correct_token_dla": -0.0011426258133724332,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 23,
+    "correct_token_dla": 0.0009373092907480896,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 24,
+    "correct_token_dla": -0.0008057212689891458,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 25,
+    "correct_token_dla": -0.00383011344820261,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 26,
+    "correct_token_dla": -0.003218264551833272,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 27,
+    "correct_token_dla": 0.00042192815453745425,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 28,
+    "correct_token_dla": -0.0003890895750373602,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 29,
+    "correct_token_dla": 0.0006484563928097486,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 30,
+    "correct_token_dla": 0.005330333486199379,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 10,
+    "head_idx": 31,
+    "correct_token_dla": 0.002866486320272088,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 0,
+    "correct_token_dla": -0.0017251145327463746,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 1,
+    "correct_token_dla": 0.0031611633021384478,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 2,
+    "correct_token_dla": 0.003400955116376281,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 3,
+    "correct_token_dla": -0.00512273795902729,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 4,
+    "correct_token_dla": -0.0006257432978600264,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 5,
+    "correct_token_dla": 0.003360004397109151,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 6,
+    "correct_token_dla": -0.0010852431878447533,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 7,
+    "correct_token_dla": -0.000232790713198483,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 8,
+    "correct_token_dla": 0.010236549191176891,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 9,
+    "correct_token_dla": 0.008352651260793209,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 10,
+    "correct_token_dla": 0.0016203499399125576,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 11,
+    "correct_token_dla": -0.00976188201457262,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 12,
+    "correct_token_dla": 0.0024867868050932884,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 13,
+    "correct_token_dla": 0.002672042930498719,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 14,
+    "correct_token_dla": 0.00039619446033611894,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 15,
+    "correct_token_dla": 0.004590530414134264,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 16,
+    "correct_token_dla": 0.0030795668717473745,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 17,
+    "correct_token_dla": 0.001012276392430067,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 18,
+    "correct_token_dla": 0.0019876861479133368,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 19,
+    "correct_token_dla": 0.00023151397181209177,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 20,
+    "correct_token_dla": 0.0002132177323801443,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 21,
+    "correct_token_dla": -0.001450228737667203,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 22,
+    "correct_token_dla": -0.005028815474361181,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 23,
+    "correct_token_dla": 0.0011991881765425205,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 24,
+    "correct_token_dla": -0.003866705810651183,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 25,
+    "correct_token_dla": -0.004859380889683962,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 26,
+    "correct_token_dla": 0.006076679099351168,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 27,
+    "correct_token_dla": 0.000590524694416672,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 28,
+    "correct_token_dla": 0.0025162696838378906,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 29,
+    "correct_token_dla": 0.0015676403418183327,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 30,
+    "correct_token_dla": -0.0007312297821044922,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 11,
+    "head_idx": 31,
+    "correct_token_dla": 0.0017369270790368319,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 0,
+    "correct_token_dla": 0.0007382964831776917,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 1,
+    "correct_token_dla": -0.0004251575446687639,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 2,
+    "correct_token_dla": -0.002170075196772814,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 3,
+    "correct_token_dla": -0.0026042205281555653,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 4,
+    "correct_token_dla": 0.0016208505257964134,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 5,
+    "correct_token_dla": -0.0005414819461293519,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 6,
+    "correct_token_dla": -0.0014796782052144408,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 7,
+    "correct_token_dla": -0.001870231586508453,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 8,
+    "correct_token_dla": -0.004993243142962456,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 9,
+    "correct_token_dla": 0.0034376811236143112,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 10,
+    "correct_token_dla": 0.012569951824843884,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 11,
+    "correct_token_dla": -0.004387917462736368,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 12,
+    "correct_token_dla": 0.004341602325439453,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 13,
+    "correct_token_dla": -0.0002200758463004604,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 14,
+    "correct_token_dla": -0.0047613526694476604,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 15,
+    "correct_token_dla": -0.002252778969705105,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 16,
+    "correct_token_dla": 0.0027139950543642044,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 17,
+    "correct_token_dla": 0.0054473113268613815,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 18,
+    "correct_token_dla": 0.0004660439444705844,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 19,
+    "correct_token_dla": -0.0022755623795092106,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 20,
+    "correct_token_dla": 0.001299953437410295,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 21,
+    "correct_token_dla": -0.0005637764697894454,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 22,
+    "correct_token_dla": -0.003463840577751398,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 23,
+    "correct_token_dla": -0.0007378006121143699,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 24,
+    "correct_token_dla": 0.004250726662576199,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 25,
+    "correct_token_dla": 0.0009077644208446145,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 26,
+    "correct_token_dla": -0.0019997740164399147,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 27,
+    "correct_token_dla": -0.0028440188616514206,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 28,
+    "correct_token_dla": 0.002102107973769307,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 29,
+    "correct_token_dla": 0.0028091049753129482,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 30,
+    "correct_token_dla": -0.002830944024026394,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 12,
+    "head_idx": 31,
+    "correct_token_dla": 0.0017878103535622358,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 0,
+    "correct_token_dla": -0.0026478958316147327,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 1,
+    "correct_token_dla": 0.0038754164706915617,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 2,
+    "correct_token_dla": 0.0019717884715646505,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 3,
+    "correct_token_dla": -0.0013942265650257468,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 4,
+    "correct_token_dla": 0.005726423114538193,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 5,
+    "correct_token_dla": -0.00011813223682111129,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 6,
+    "correct_token_dla": -0.0005039483075961471,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 7,
+    "correct_token_dla": 0.0009719204972498119,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 8,
+    "correct_token_dla": 0.0042758844792842865,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 9,
+    "correct_token_dla": -0.004203853663057089,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 10,
+    "correct_token_dla": 0.00037080884794704616,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 11,
+    "correct_token_dla": 0.0026645087637007236,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 12,
+    "correct_token_dla": -0.0018864297308027744,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 13,
+    "correct_token_dla": 0.0007636547088623047,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 14,
+    "correct_token_dla": 0.0020015763584524393,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 15,
+    "correct_token_dla": 0.002054405165836215,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 16,
+    "correct_token_dla": -0.0019628906156867743,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 17,
+    "correct_token_dla": 0.00037097930908203125,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 18,
+    "correct_token_dla": 0.003420600900426507,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 19,
+    "correct_token_dla": -0.0034466362558305264,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 20,
+    "correct_token_dla": -0.008652586489915848,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 21,
+    "correct_token_dla": 0.0025865936186164618,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 22,
+    "correct_token_dla": -0.002701292047277093,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 23,
+    "correct_token_dla": -0.0014214133843779564,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 24,
+    "correct_token_dla": -0.004816256929188967,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 25,
+    "correct_token_dla": 0.0009922599419951439,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 26,
+    "correct_token_dla": -0.00029668808565475047,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 27,
+    "correct_token_dla": -0.0017321932828053832,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 28,
+    "correct_token_dla": 0.0006714939954690635,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 29,
+    "correct_token_dla": -0.001409068121574819,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 30,
+    "correct_token_dla": -0.0005613994435407221,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 13,
+    "head_idx": 31,
+    "correct_token_dla": 0.0030240707565099,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 0,
+    "correct_token_dla": -0.0006859219283796847,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 1,
+    "correct_token_dla": -0.0002340126084163785,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 2,
+    "correct_token_dla": -0.0024861812125891447,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 3,
+    "correct_token_dla": 0.0050424193032085896,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 4,
+    "correct_token_dla": -0.0031175995245575905,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 5,
+    "correct_token_dla": 0.0020254612900316715,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 6,
+    "correct_token_dla": -0.0012594243744388223,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 7,
+    "correct_token_dla": 0.002260665874928236,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 8,
+    "correct_token_dla": 0.0031998921185731888,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 9,
+    "correct_token_dla": -0.007675705011934042,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 10,
+    "correct_token_dla": 0.007054977584630251,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 11,
+    "correct_token_dla": 0.0018771934555843472,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 12,
+    "correct_token_dla": 0.0033753395546227694,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 13,
+    "correct_token_dla": 0.0030078028794378042,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 14,
+    "correct_token_dla": -0.0025993918534368277,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 15,
+    "correct_token_dla": -0.003154473379254341,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 16,
+    "correct_token_dla": -0.0041634561493992805,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 17,
+    "correct_token_dla": 0.00014856935013085604,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 18,
+    "correct_token_dla": 0.0004433798894751817,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 19,
+    "correct_token_dla": -0.0026938796509057283,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 20,
+    "correct_token_dla": 0.0024008608888834715,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 21,
+    "correct_token_dla": -0.009435310028493404,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 22,
+    "correct_token_dla": 0.0005630397936329246,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 23,
+    "correct_token_dla": 0.007251434493809938,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 24,
+    "correct_token_dla": -3.396987813175656e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 25,
+    "correct_token_dla": 0.004177020862698555,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 26,
+    "correct_token_dla": 0.0020234871190041304,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 27,
+    "correct_token_dla": -0.0029441642109304667,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 28,
+    "correct_token_dla": -0.006668624933809042,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 29,
+    "correct_token_dla": 0.009882316924631596,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 30,
+    "correct_token_dla": -4.92107865284197e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 14,
+    "head_idx": 31,
+    "correct_token_dla": -0.00021365642896853387,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 0,
+    "correct_token_dla": 0.0024086094927042723,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 1,
+    "correct_token_dla": 0.007234201300889254,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 2,
+    "correct_token_dla": -0.0027852917555719614,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 3,
+    "correct_token_dla": 0.0012853741645812988,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 4,
+    "correct_token_dla": -0.0019913625437766314,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 5,
+    "correct_token_dla": -0.0005122959846630692,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 6,
+    "correct_token_dla": 0.007380415219813585,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 7,
+    "correct_token_dla": -0.0015109634259715676,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 8,
+    "correct_token_dla": -0.0032895661424845457,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 9,
+    "correct_token_dla": -0.0021951294038444757,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 10,
+    "correct_token_dla": -0.005599288735538721,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 11,
+    "correct_token_dla": 0.004706501495093107,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 12,
+    "correct_token_dla": -0.0010872387792915106,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 13,
+    "correct_token_dla": -0.0006099343299865723,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 14,
+    "correct_token_dla": -0.000792446720879525,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 15,
+    "correct_token_dla": -0.00019841194443870336,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 16,
+    "correct_token_dla": 0.015909232199192047,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 17,
+    "correct_token_dla": 0.01040266826748848,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 18,
+    "correct_token_dla": -0.018699264153838158,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 19,
+    "correct_token_dla": 0.008510869927704334,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 20,
+    "correct_token_dla": -0.003926501143723726,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 21,
+    "correct_token_dla": 0.0028169392608106136,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 22,
+    "correct_token_dla": 0.0008813476306386292,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 23,
+    "correct_token_dla": -0.0016647434094920754,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 24,
+    "correct_token_dla": 0.0007224178407341242,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 25,
+    "correct_token_dla": 0.0025309156626462936,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 26,
+    "correct_token_dla": 0.0015839945990592241,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 27,
+    "correct_token_dla": 0.0019794844556599855,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 28,
+    "correct_token_dla": 0.018912505358457565,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 29,
+    "correct_token_dla": -0.0028973007574677467,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 30,
+    "correct_token_dla": 0.015252785757184029,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 15,
+    "head_idx": 31,
+    "correct_token_dla": 0.0009931582026183605,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 0,
+    "correct_token_dla": -0.04347774386405945,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 1,
+    "correct_token_dla": 0.021339930593967438,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 2,
+    "correct_token_dla": -0.031170958653092384,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 3,
+    "correct_token_dla": 0.0652407854795456,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 4,
+    "correct_token_dla": -0.0035435198806226254,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 5,
+    "correct_token_dla": 0.0026967620942741632,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 6,
+    "correct_token_dla": 0.004152689129114151,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 7,
+    "correct_token_dla": -0.00012520313612185419,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 8,
+    "correct_token_dla": 0.00543789379298687,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 9,
+    "correct_token_dla": 0.00028066159575246274,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 10,
+    "correct_token_dla": 6.12449657637626e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 11,
+    "correct_token_dla": -0.00029329778044484556,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 12,
+    "correct_token_dla": 0.004036376252770424,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 13,
+    "correct_token_dla": -0.0031182479579001665,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 14,
+    "correct_token_dla": -0.0020765112712979317,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 15,
+    "correct_token_dla": 0.008306646719574928,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 16,
+    "correct_token_dla": -9.799003601074219e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 17,
+    "correct_token_dla": -0.0035243863239884377,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 18,
+    "correct_token_dla": 0.0022377062123268843,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 19,
+    "correct_token_dla": -0.0023764418438076973,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 20,
+    "correct_token_dla": 0.06331876665353775,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 21,
+    "correct_token_dla": 0.0014511566841974854,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 22,
+    "correct_token_dla": 0.0018218767363578081,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 23,
+    "correct_token_dla": -0.0003031605447176844,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 24,
+    "correct_token_dla": -0.002761230571195483,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 25,
+    "correct_token_dla": -0.0015482783783227205,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 26,
+    "correct_token_dla": 0.0026571822818368673,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 27,
+    "correct_token_dla": -0.0012874030508100986,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 28,
+    "correct_token_dla": -0.003444383153691888,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 29,
+    "correct_token_dla": -0.00631511677056551,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 30,
+    "correct_token_dla": -0.004093179479241371,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 16,
+    "head_idx": 31,
+    "correct_token_dla": 0.0016849422827363014,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 0,
+    "correct_token_dla": 0.003085033968091011,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 1,
+    "correct_token_dla": -0.0008280348847620189,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 2,
+    "correct_token_dla": 0.0009568003006279469,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 3,
+    "correct_token_dla": -0.0006924628978595138,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 4,
+    "correct_token_dla": 0.0018024331657215953,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 5,
+    "correct_token_dla": 0.002761783543974161,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 6,
+    "correct_token_dla": -0.005838699173182249,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 7,
+    "correct_token_dla": -0.003540134523063898,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 8,
+    "correct_token_dla": 0.0031784260645508766,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 9,
+    "correct_token_dla": 0.00027271031285636127,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 10,
+    "correct_token_dla": -0.0001779842423275113,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 11,
+    "correct_token_dla": 0.003118271939456463,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 12,
+    "correct_token_dla": -0.00023014069302007556,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 13,
+    "correct_token_dla": -0.00025294304941780865,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 14,
+    "correct_token_dla": 0.001021370873786509,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 15,
+    "correct_token_dla": 0.006678066216409206,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 16,
+    "correct_token_dla": 0.0007372975233010948,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 17,
+    "correct_token_dla": 0.0007463294314220548,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 18,
+    "correct_token_dla": -0.0016731643117964268,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 19,
+    "correct_token_dla": 0.001520347548648715,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 20,
+    "correct_token_dla": -0.0004081869265064597,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 21,
+    "correct_token_dla": 0.0015828132163733244,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 22,
+    "correct_token_dla": 0.0018582248594611883,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 23,
+    "correct_token_dla": 0.0066262888722121716,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 24,
+    "correct_token_dla": 0.03131425753235817,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 25,
+    "correct_token_dla": 0.006359386257827282,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 26,
+    "correct_token_dla": 0.0036541330628097057,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 27,
+    "correct_token_dla": -0.04027320817112923,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 28,
+    "correct_token_dla": -4.2366980778751895e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 29,
+    "correct_token_dla": 0.0002902984560932964,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 30,
+    "correct_token_dla": 0.0005401754169724882,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 17,
+    "head_idx": 31,
+    "correct_token_dla": 0.0011500978143885732,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 0,
+    "correct_token_dla": -0.00548600684851408,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 1,
+    "correct_token_dla": -0.0005265855579636991,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 2,
+    "correct_token_dla": 0.0003643369709607214,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 3,
+    "correct_token_dla": 8.404254913330078e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 4,
+    "correct_token_dla": 4.7127006837399676e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 5,
+    "correct_token_dla": -0.00027960361330769956,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 6,
+    "correct_token_dla": -0.0005179071449674666,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 7,
+    "correct_token_dla": -5.8734192862175405e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 8,
+    "correct_token_dla": -0.0011804986279457808,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 9,
+    "correct_token_dla": 0.0029579163528978825,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 10,
+    "correct_token_dla": -0.000701632525306195,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 11,
+    "correct_token_dla": -0.003043222473934293,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 12,
+    "correct_token_dla": -0.0017841720255091786,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 13,
+    "correct_token_dla": -0.0006806013989262283,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 14,
+    "correct_token_dla": 0.006946868728846312,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 15,
+    "correct_token_dla": 0.0002191522653447464,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 16,
+    "correct_token_dla": 0.010116682387888432,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 17,
+    "correct_token_dla": 2.703189784369897e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 18,
+    "correct_token_dla": -0.0015615320298820734,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 19,
+    "correct_token_dla": -0.00035480380756780505,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 20,
+    "correct_token_dla": 0.009136490523815155,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 21,
+    "correct_token_dla": 0.0007479417254216969,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 22,
+    "correct_token_dla": -0.027316970750689507,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 23,
+    "correct_token_dla": 0.0069603812880814075,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 24,
+    "correct_token_dla": -0.0019491338171064854,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 25,
+    "correct_token_dla": 0.0029316663276404142,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 26,
+    "correct_token_dla": -0.0014390993164852262,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 27,
+    "correct_token_dla": -0.0017845917027443647,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 28,
+    "correct_token_dla": 0.014904155395925045,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 29,
+    "correct_token_dla": -0.03414537385106087,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 30,
+    "correct_token_dla": -0.006436691153794527,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 18,
+    "head_idx": 31,
+    "correct_token_dla": -0.0017989086918532848,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 0,
+    "correct_token_dla": 0.011979246512055397,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 1,
+    "correct_token_dla": 0.00907162670046091,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 2,
+    "correct_token_dla": 0.002539954148232937,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 3,
+    "correct_token_dla": -0.008677062578499317,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 4,
+    "correct_token_dla": 0.000904726970475167,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 5,
+    "correct_token_dla": 0.002427523024380207,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 6,
+    "correct_token_dla": 0.0031365901231765747,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 7,
+    "correct_token_dla": -0.0009643363882787526,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 8,
+    "correct_token_dla": 0.0008021044777706265,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 9,
+    "correct_token_dla": 0.0011589425848796964,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 10,
+    "correct_token_dla": 0.0027680671773850918,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 11,
+    "correct_token_dla": -0.0021547270007431507,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 12,
+    "correct_token_dla": 0.014512243680655956,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 13,
+    "correct_token_dla": 0.009751110337674618,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 14,
+    "correct_token_dla": -0.012991257011890411,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 15,
+    "correct_token_dla": 0.0051150512881577015,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 16,
+    "correct_token_dla": 0.001282418961636722,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 17,
+    "correct_token_dla": 0.0005685114883817732,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 18,
+    "correct_token_dla": -0.0014993452932685614,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 19,
+    "correct_token_dla": 0.0005034208297729492,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 20,
+    "correct_token_dla": 0.03132057189941406,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 21,
+    "correct_token_dla": -6.015777762513608e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 22,
+    "correct_token_dla": 0.003255987074226141,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 23,
+    "correct_token_dla": -0.031591109931468964,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 24,
+    "correct_token_dla": 0.00041288428474217653,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 25,
+    "correct_token_dla": 0.0044419108889997005,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 26,
+    "correct_token_dla": -0.00010673522774595767,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 27,
+    "correct_token_dla": 0.0030669874977320433,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 28,
+    "correct_token_dla": 0.00020836711337324232,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 29,
+    "correct_token_dla": 0.001564449048601091,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 30,
+    "correct_token_dla": 0.002122211502864957,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 19,
+    "head_idx": 31,
+    "correct_token_dla": 0.0004113175382371992,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 0,
+    "correct_token_dla": 0.000593450095038861,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 1,
+    "correct_token_dla": 0.01369301788508892,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 2,
+    "correct_token_dla": 0.003651466453447938,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 3,
+    "correct_token_dla": 0.001943302107974887,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 4,
+    "correct_token_dla": -0.0001917362242238596,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 5,
+    "correct_token_dla": 0.0009178995969705284,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 6,
+    "correct_token_dla": 0.0002632593968883157,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 7,
+    "correct_token_dla": -6.422639125958085e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 8,
+    "correct_token_dla": -0.002677908865734935,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 9,
+    "correct_token_dla": 0.0018951415549963713,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 10,
+    "correct_token_dla": 0.0019905471708625555,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 11,
+    "correct_token_dla": 0.0003663301467895508,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 12,
+    "correct_token_dla": 0.0056176092475652695,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 13,
+    "correct_token_dla": -0.004669161047786474,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 14,
+    "correct_token_dla": -0.03598838672041893,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 15,
+    "correct_token_dla": -0.0019137572962790728,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 16,
+    "correct_token_dla": 0.008130921982228756,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 17,
+    "correct_token_dla": 0.0038371109403669834,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 18,
+    "correct_token_dla": 0.0029908560682088137,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 19,
+    "correct_token_dla": -0.0009357666713185608,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 20,
+    "correct_token_dla": 0.0025528573896735907,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 21,
+    "correct_token_dla": 0.007543887943029404,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 22,
+    "correct_token_dla": -0.004236326087266207,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 23,
+    "correct_token_dla": 0.009351186454296112,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 24,
+    "correct_token_dla": -0.0006538534071296453,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 25,
+    "correct_token_dla": -0.0004382657934911549,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 26,
+    "correct_token_dla": 0.00481617683544755,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 27,
+    "correct_token_dla": -0.012852394953370094,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 28,
+    "correct_token_dla": -0.0008488589664921165,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 29,
+    "correct_token_dla": -0.0022411691024899483,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 30,
+    "correct_token_dla": -0.00018678665219340473,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 20,
+    "head_idx": 31,
+    "correct_token_dla": 0.0031935004517436028,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 0,
+    "correct_token_dla": -0.0020933342166244984,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 1,
+    "correct_token_dla": 0.0205739364027977,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 2,
+    "correct_token_dla": 0.01768673025071621,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 3,
+    "correct_token_dla": -0.015389633364975452,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 4,
+    "correct_token_dla": 0.0016915106680244207,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 5,
+    "correct_token_dla": -0.001762371975928545,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 6,
+    "correct_token_dla": -0.0006401062128134072,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 7,
+    "correct_token_dla": -0.0031314801890403032,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 8,
+    "correct_token_dla": -0.0008551788050681353,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 9,
+    "correct_token_dla": -0.0008352214354090393,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 10,
+    "correct_token_dla": -0.002538762055337429,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 11,
+    "correct_token_dla": 0.0007445645169354975,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 12,
+    "correct_token_dla": 0.003469600575044751,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 13,
+    "correct_token_dla": 0.0013855122961103916,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 14,
+    "correct_token_dla": 0.021627826616168022,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 15,
+    "correct_token_dla": 0.012547288089990616,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 16,
+    "correct_token_dla": 0.0014746999368071556,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 17,
+    "correct_token_dla": 0.0008271110127680004,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 18,
+    "correct_token_dla": -0.0026651991065591574,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 19,
+    "correct_token_dla": 0.0008259439491666853,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 20,
+    "correct_token_dla": 0.0005546975298784673,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 21,
+    "correct_token_dla": 0.0006271142046898603,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 22,
+    "correct_token_dla": 0.0006961035542190075,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 23,
+    "correct_token_dla": -0.0017985344165936112,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 24,
+    "correct_token_dla": 0.0042753322049975395,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 25,
+    "correct_token_dla": -0.0011233139084652066,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 26,
+    "correct_token_dla": 0.013591344468295574,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 27,
+    "correct_token_dla": -0.0033131884410977364,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 28,
+    "correct_token_dla": 0.0018892872612923384,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 29,
+    "correct_token_dla": 0.005537865217775106,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 30,
+    "correct_token_dla": 0.006393009331077337,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 21,
+    "head_idx": 31,
+    "correct_token_dla": 0.0004887080285698175,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 0,
+    "correct_token_dla": 0.0005952829378657043,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 1,
+    "correct_token_dla": 0.017399458214640617,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 2,
+    "correct_token_dla": 0.035408515483140945,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 3,
+    "correct_token_dla": -0.0024913621600717306,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 4,
+    "correct_token_dla": -0.004221708979457617,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 5,
+    "correct_token_dla": -0.00019019603496417403,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 6,
+    "correct_token_dla": -0.0017904090927913785,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 7,
+    "correct_token_dla": 0.0061472500674426556,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 8,
+    "correct_token_dla": 0.004207321908324957,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 9,
+    "correct_token_dla": -0.006430530454963446,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 10,
+    "correct_token_dla": -0.002608212176710367,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 11,
+    "correct_token_dla": 0.009813614189624786,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 12,
+    "correct_token_dla": 0.010892105288803577,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 13,
+    "correct_token_dla": 0.025835737586021423,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 14,
+    "correct_token_dla": 0.08923298865556717,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 15,
+    "correct_token_dla": 0.009743724018335342,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 16,
+    "correct_token_dla": 0.0004552173486445099,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 17,
+    "correct_token_dla": -0.00020835637405980378,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 18,
+    "correct_token_dla": -0.011351871304214,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 19,
+    "correct_token_dla": 0.020124606788158417,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 20,
+    "correct_token_dla": 0.001402463880367577,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 21,
+    "correct_token_dla": -0.0001982181565836072,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 22,
+    "correct_token_dla": 0.0010426747612655163,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 23,
+    "correct_token_dla": 0.002157150534912944,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 24,
+    "correct_token_dla": -0.0023972124326974154,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 25,
+    "correct_token_dla": 0.0027674841694533825,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 26,
+    "correct_token_dla": -7.869482215028256e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 27,
+    "correct_token_dla": 0.006035852245986462,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 28,
+    "correct_token_dla": 0.002299175364896655,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 29,
+    "correct_token_dla": 0.0318218432366848,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 30,
+    "correct_token_dla": -0.0029500580858439207,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 22,
+    "head_idx": 31,
+    "correct_token_dla": 0.014264855533838272,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 0,
+    "correct_token_dla": -0.00020899831724818796,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 1,
+    "correct_token_dla": -0.002322502201423049,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 2,
+    "correct_token_dla": -0.0007683515432290733,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 3,
+    "correct_token_dla": -0.0010123252868652344,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 4,
+    "correct_token_dla": -0.006783848628401756,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 5,
+    "correct_token_dla": 0.04656899347901344,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 6,
+    "correct_token_dla": 0.12801289558410645,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 7,
+    "correct_token_dla": 0.0038346147630363703,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 8,
+    "correct_token_dla": 0.01737906225025654,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 9,
+    "correct_token_dla": 0.0026559734251350164,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 10,
+    "correct_token_dla": -0.0006929290248081088,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 11,
+    "correct_token_dla": 0.0006519865710288286,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 12,
+    "correct_token_dla": 0.015608620829880238,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 13,
+    "correct_token_dla": 0.06841938197612762,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 14,
+    "correct_token_dla": 0.013541527092456818,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 15,
+    "correct_token_dla": 0.0003129899560008198,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 16,
+    "correct_token_dla": -0.0005952689098194242,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 17,
+    "correct_token_dla": 0.0005934262298978865,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 18,
+    "correct_token_dla": 0.0024012457579374313,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 19,
+    "correct_token_dla": 0.0006511816172860563,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 20,
+    "correct_token_dla": 0.023313462734222412,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 21,
+    "correct_token_dla": -0.002972618443891406,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 22,
+    "correct_token_dla": 0.030863413587212563,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 23,
+    "correct_token_dla": 0.0011398502392694354,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 24,
+    "correct_token_dla": -0.005491271149367094,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 25,
+    "correct_token_dla": 0.08061292767524719,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 26,
+    "correct_token_dla": 0.0018543815240263939,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 27,
+    "correct_token_dla": 0.05745062977075577,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 28,
+    "correct_token_dla": 0.0036554336547851562,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 29,
+    "correct_token_dla": -3.324747012811713e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 30,
+    "correct_token_dla": -0.00011069297761423513,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 23,
+    "head_idx": 31,
+    "correct_token_dla": 0.0010445165680721402,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 0,
+    "correct_token_dla": -0.0003599241317715496,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 1,
+    "correct_token_dla": 0.007035346236079931,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 2,
+    "correct_token_dla": -0.010749277658760548,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 3,
+    "correct_token_dla": 0.1388920396566391,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 4,
+    "correct_token_dla": -0.0009796810336411,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 5,
+    "correct_token_dla": -0.00022508024994749576,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 6,
+    "correct_token_dla": 0.00033345402334816754,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 7,
+    "correct_token_dla": 0.0012692260788753629,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 8,
+    "correct_token_dla": -0.00027746916748583317,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 9,
+    "correct_token_dla": 0.00030917287222109735,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 10,
+    "correct_token_dla": -0.0005569224595092237,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 11,
+    "correct_token_dla": 0.00013607979053631425,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 12,
+    "correct_token_dla": 5.184173642192036e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 13,
+    "correct_token_dla": -0.0037577056791633368,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 14,
+    "correct_token_dla": -0.005420978181064129,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 15,
+    "correct_token_dla": -0.0003455823753029108,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 16,
+    "correct_token_dla": 0.0257653146982193,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 17,
+    "correct_token_dla": 0.027780359610915184,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 18,
+    "correct_token_dla": 0.032838236540555954,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 19,
+    "correct_token_dla": -0.002189886523410678,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 20,
+    "correct_token_dla": 0.12545086443424225,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 21,
+    "correct_token_dla": -0.00561803113669157,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 22,
+    "correct_token_dla": 0.11604112386703491,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 23,
+    "correct_token_dla": 0.13327664136886597,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 24,
+    "correct_token_dla": 0.2035359889268875,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 25,
+    "correct_token_dla": 0.09572581946849823,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 26,
+    "correct_token_dla": 0.023012252524495125,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 27,
+    "correct_token_dla": -0.025790367275476456,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 28,
+    "correct_token_dla": 0.00119104387704283,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 29,
+    "correct_token_dla": -0.002719974610954523,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 30,
+    "correct_token_dla": 0.0004552459577098489,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 24,
+    "head_idx": 31,
+    "correct_token_dla": 0.0020548594184219837,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 0,
+    "correct_token_dla": 0.002132727997377515,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 1,
+    "correct_token_dla": -0.003141148015856743,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 2,
+    "correct_token_dla": 0.0030369223095476627,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 3,
+    "correct_token_dla": -0.00047672033542767167,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 4,
+    "correct_token_dla": 0.1822504848241806,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 5,
+    "correct_token_dla": 0.13150444626808167,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 6,
+    "correct_token_dla": 0.08046551793813705,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 7,
+    "correct_token_dla": 0.1586914211511612,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 8,
+    "correct_token_dla": -0.00045161484740674496,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 9,
+    "correct_token_dla": -0.0006462764577008784,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 10,
+    "correct_token_dla": -0.00026331900153309107,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 11,
+    "correct_token_dla": 0.0013445711228996515,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 12,
+    "correct_token_dla": 0.08888912945985794,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 13,
+    "correct_token_dla": 0.11839587986469269,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 14,
+    "correct_token_dla": 0.0752253606915474,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 15,
+    "correct_token_dla": 0.05019940063357353,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 16,
+    "correct_token_dla": -0.0010676681995391846,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 17,
+    "correct_token_dla": 0.005434236489236355,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 18,
+    "correct_token_dla": 0.022546110674738884,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 19,
+    "correct_token_dla": 0.00128345494158566,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 20,
+    "correct_token_dla": -0.0009841156424954534,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 21,
+    "correct_token_dla": -8.630275988252833e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 22,
+    "correct_token_dla": 0.00032761573675088584,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 23,
+    "correct_token_dla": 0.008465353399515152,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 24,
+    "correct_token_dla": -0.00011992215877398849,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 25,
+    "correct_token_dla": -0.00011158585402881727,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 26,
+    "correct_token_dla": -7.558576726296451e-06,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 27,
+    "correct_token_dla": 0.0007128393626771867,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 28,
+    "correct_token_dla": 0.0002874135971069336,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 29,
+    "correct_token_dla": 0.00045375822810456157,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 30,
+    "correct_token_dla": 0.0005513810901902616,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 25,
+    "head_idx": 31,
+    "correct_token_dla": 0.0005338359042070806,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 0,
+    "correct_token_dla": -0.02552063949406147,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 1,
+    "correct_token_dla": -0.07108447700738907,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 2,
+    "correct_token_dla": -0.03318973630666733,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 3,
+    "correct_token_dla": 0.18599243462085724,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 4,
+    "correct_token_dla": -0.0006441557197831571,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 5,
+    "correct_token_dla": -0.000681486155372113,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 6,
+    "correct_token_dla": -0.0002900886465795338,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 7,
+    "correct_token_dla": 0.0001209640468005091,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 8,
+    "correct_token_dla": -0.0010465622181072831,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 9,
+    "correct_token_dla": 0.001043788157403469,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 10,
+    "correct_token_dla": 0.005679464433342218,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 11,
+    "correct_token_dla": -1.0261535862809978e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 12,
+    "correct_token_dla": 0.24915257096290588,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 13,
+    "correct_token_dla": 0.02568698488175869,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 14,
+    "correct_token_dla": 0.19261854887008667,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 15,
+    "correct_token_dla": -0.07555679231882095,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 16,
+    "correct_token_dla": 0.000546736700925976,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 17,
+    "correct_token_dla": 0.0027485848404467106,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 18,
+    "correct_token_dla": -0.0006965637439861894,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 19,
+    "correct_token_dla": 0.00601131422445178,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 20,
+    "correct_token_dla": -0.0032539928797632456,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 21,
+    "correct_token_dla": 0.005938088987022638,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 22,
+    "correct_token_dla": -0.007737083360552788,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 23,
+    "correct_token_dla": 0.005774488672614098,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 24,
+    "correct_token_dla": 0.00042732327710837126,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 25,
+    "correct_token_dla": 9.40001045819372e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 26,
+    "correct_token_dla": 0.00028243957785889506,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 27,
+    "correct_token_dla": 0.039439450949430466,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 28,
+    "correct_token_dla": -0.03438074514269829,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 29,
+    "correct_token_dla": 0.3180849850177765,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 30,
+    "correct_token_dla": 0.0318899005651474,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 26,
+    "head_idx": 31,
+    "correct_token_dla": 0.08270148932933807,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 0,
+    "correct_token_dla": -0.0007000184268690646,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 1,
+    "correct_token_dla": -0.0023478937800973654,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 2,
+    "correct_token_dla": -0.0024296713527292013,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 3,
+    "correct_token_dla": 0.0002803969255182892,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 4,
+    "correct_token_dla": 0.05593149736523628,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 5,
+    "correct_token_dla": 0.64813232421875,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 6,
+    "correct_token_dla": 0.10625389218330383,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 7,
+    "correct_token_dla": -0.11350464075803757,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 8,
+    "correct_token_dla": 0.018143577501177788,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 9,
+    "correct_token_dla": -0.0034631157759577036,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 10,
+    "correct_token_dla": 0.0028662204276770353,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 11,
+    "correct_token_dla": -0.0052078962326049805,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 12,
+    "correct_token_dla": 0.0016094971215352416,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 13,
+    "correct_token_dla": -0.0007416725275106728,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 14,
+    "correct_token_dla": -0.00304100988432765,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 15,
+    "correct_token_dla": -0.0057831574231386185,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 16,
+    "correct_token_dla": 0.07104256004095078,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 17,
+    "correct_token_dla": -0.001216249424032867,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 18,
+    "correct_token_dla": 0.006916589569300413,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 19,
+    "correct_token_dla": 0.0007287663174793124,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 20,
+    "correct_token_dla": 0.6606548428535461,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 21,
+    "correct_token_dla": -0.015927962958812714,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 22,
+    "correct_token_dla": 0.025673752650618553,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 23,
+    "correct_token_dla": 0.22585590183734894,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 24,
+    "correct_token_dla": -0.002514470834285021,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 25,
+    "correct_token_dla": 9.850146307144314e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 26,
+    "correct_token_dla": -0.0022481847554445267,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 27,
+    "correct_token_dla": -0.003235998097807169,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 28,
+    "correct_token_dla": 0.09290702641010284,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 29,
+    "correct_token_dla": 0.0018340731039643288,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 30,
+    "correct_token_dla": -0.013358979485929012,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 27,
+    "head_idx": 31,
+    "correct_token_dla": -0.0018504714826121926,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 0,
+    "correct_token_dla": 0.1481896936893463,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 1,
+    "correct_token_dla": -0.001980047207325697,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 2,
+    "correct_token_dla": -0.001758308382704854,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 3,
+    "correct_token_dla": -0.044625625014305115,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 4,
+    "correct_token_dla": -0.000475275213830173,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 5,
+    "correct_token_dla": 0.00441043870523572,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 6,
+    "correct_token_dla": -0.008159885182976723,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 7,
+    "correct_token_dla": 0.0010955763282254338,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 8,
+    "correct_token_dla": -0.0010240745032206178,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 9,
+    "correct_token_dla": 0.0007394528365693986,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 10,
+    "correct_token_dla": 0.042937926948070526,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 11,
+    "correct_token_dla": -0.03368602693080902,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 12,
+    "correct_token_dla": -0.010312233120203018,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 13,
+    "correct_token_dla": 0.07860343158245087,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 14,
+    "correct_token_dla": -0.01869494467973709,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 15,
+    "correct_token_dla": -0.20345079898834229,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 16,
+    "correct_token_dla": -0.002795629436150193,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 17,
+    "correct_token_dla": -0.031609222292900085,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 18,
+    "correct_token_dla": 0.06606094539165497,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 19,
+    "correct_token_dla": -0.0030959653668105602,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 20,
+    "correct_token_dla": 0.008208380080759525,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 21,
+    "correct_token_dla": -0.020254530012607574,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 22,
+    "correct_token_dla": 0.005257015116512775,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 23,
+    "correct_token_dla": 0.016717376187443733,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 24,
+    "correct_token_dla": -0.003678913228213787,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 25,
+    "correct_token_dla": -0.0059162951074540615,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 26,
+    "correct_token_dla": 0.0019056361634284258,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 27,
+    "correct_token_dla": 0.09866777062416077,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 28,
+    "correct_token_dla": 0.004763979930430651,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 29,
+    "correct_token_dla": 0.006353297270834446,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 30,
+    "correct_token_dla": 0.005322098731994629,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 28,
+    "head_idx": 31,
+    "correct_token_dla": 0.0012229537824168801,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 0,
+    "correct_token_dla": -0.0010272478684782982,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 1,
+    "correct_token_dla": -0.00030118049471639097,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 2,
+    "correct_token_dla": -0.0009054589318111539,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 3,
+    "correct_token_dla": -0.00010556347842793912,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 4,
+    "correct_token_dla": -0.0004901850479654968,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 5,
+    "correct_token_dla": 0.00017057418881449848,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 6,
+    "correct_token_dla": 3.554821159923449e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 7,
+    "correct_token_dla": -0.0005960416747257113,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 8,
+    "correct_token_dla": 0.22530952095985413,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 9,
+    "correct_token_dla": 0.08056823909282684,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 10,
+    "correct_token_dla": -0.5062426924705505,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 11,
+    "correct_token_dla": 0.5131882429122925,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 12,
+    "correct_token_dla": -4.628479655366391e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 13,
+    "correct_token_dla": -0.0004650116025004536,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 14,
+    "correct_token_dla": 0.0009315591887570918,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 15,
+    "correct_token_dla": -0.00028530240524560213,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 16,
+    "correct_token_dla": -0.0003352832864038646,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 17,
+    "correct_token_dla": -0.0007821178296580911,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 18,
+    "correct_token_dla": 0.0024645423982292414,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 19,
+    "correct_token_dla": -0.0011968851322308183,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 20,
+    "correct_token_dla": -0.05247325822710991,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 21,
+    "correct_token_dla": 0.25374576449394226,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 22,
+    "correct_token_dla": -0.03339824825525284,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 23,
+    "correct_token_dla": -0.07469825446605682,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 24,
+    "correct_token_dla": -0.0016818428412079811,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 25,
+    "correct_token_dla": -0.004880581051111221,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 26,
+    "correct_token_dla": -4.945844557369128e-05,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 27,
+    "correct_token_dla": -0.0025583268143236637,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 28,
+    "correct_token_dla": 0.02467372827231884,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 29,
+    "correct_token_dla": -0.0013086759718135,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 30,
+    "correct_token_dla": 0.04273940995335579,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 29,
+    "head_idx": 31,
+    "correct_token_dla": 0.04786323383450508,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 0,
+    "correct_token_dla": -0.13705527782440186,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 1,
+    "correct_token_dla": 0.11364524811506271,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 2,
+    "correct_token_dla": 0.18837320804595947,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 3,
+    "correct_token_dla": 0.022845353931188583,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 4,
+    "correct_token_dla": -0.018391475081443787,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 5,
+    "correct_token_dla": -0.013751406222581863,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 6,
+    "correct_token_dla": 0.057753488421440125,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 7,
+    "correct_token_dla": -0.016898727044463158,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 8,
+    "correct_token_dla": -0.07097695022821426,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 9,
+    "correct_token_dla": 0.054042719304561615,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 10,
+    "correct_token_dla": 0.019492892548441887,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 11,
+    "correct_token_dla": 0.5142311453819275,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 12,
+    "correct_token_dla": 0.09475503861904144,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 13,
+    "correct_token_dla": -0.05867118760943413,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 14,
+    "correct_token_dla": 0.48725709319114685,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 15,
+    "correct_token_dla": -0.020375747233629227,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 16,
+    "correct_token_dla": 0.013522796332836151,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 17,
+    "correct_token_dla": -0.02268659509718418,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 18,
+    "correct_token_dla": 0.0026810455601662397,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 19,
+    "correct_token_dla": 0.009169161319732666,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 20,
+    "correct_token_dla": 0.009850225411355495,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 21,
+    "correct_token_dla": 0.16791468858718872,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 22,
+    "correct_token_dla": 0.02263236977159977,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 23,
+    "correct_token_dla": 0.0013276481768116355,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 24,
+    "correct_token_dla": -0.09241119027137756,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 25,
+    "correct_token_dla": -0.9012792706489563,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 26,
+    "correct_token_dla": 0.6127853393554688,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 27,
+    "correct_token_dla": 0.6945239305496216,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 28,
+    "correct_token_dla": -0.0003320980176795274,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 29,
+    "correct_token_dla": 0.20932608842849731,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 30,
+    "correct_token_dla": 0.16489917039871216,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 30,
+    "head_idx": 31,
+    "correct_token_dla": -0.019118404015898705,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 0,
+    "correct_token_dla": -0.10987304896116257,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 1,
+    "correct_token_dla": 0.23490314185619354,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 2,
+    "correct_token_dla": -0.1888769268989563,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 3,
+    "correct_token_dla": 0.39793699979782104,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 4,
+    "correct_token_dla": -0.005153408274054527,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 5,
+    "correct_token_dla": -0.03411402553319931,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 6,
+    "correct_token_dla": 0.06347870081663132,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 7,
+    "correct_token_dla": 0.3007144033908844,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 8,
+    "correct_token_dla": 0.0027116285637021065,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 9,
+    "correct_token_dla": -0.010297698900103569,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 10,
+    "correct_token_dla": -0.0006547808879986405,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 11,
+    "correct_token_dla": -0.02462897263467312,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 12,
+    "correct_token_dla": 0.10575935244560242,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 13,
+    "correct_token_dla": 0.09492424130439758,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 14,
+    "correct_token_dla": -0.1416754126548767,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 15,
+    "correct_token_dla": -0.0021714495960623026,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 16,
+    "correct_token_dla": 0.023431949317455292,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 17,
+    "correct_token_dla": 0.0035698842257261276,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 18,
+    "correct_token_dla": 0.00927123986184597,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 19,
+    "correct_token_dla": 0.007673053536564112,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 20,
+    "correct_token_dla": 0.07327564805746078,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 21,
+    "correct_token_dla": 0.13213638961315155,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 22,
+    "correct_token_dla": -0.016075678169727325,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 23,
+    "correct_token_dla": -0.025816407054662704,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 24,
+    "correct_token_dla": 0.06518851965665817,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 25,
+    "correct_token_dla": -0.015155182220041752,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 26,
+    "correct_token_dla": 0.03665431961417198,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 27,
+    "correct_token_dla": -0.008091154508292675,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 28,
+    "correct_token_dla": 0.03401336818933487,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 29,
+    "correct_token_dla": 0.015125293284654617,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 30,
+    "correct_token_dla": 0.07919620722532272,
+    "predicted_wrong_token_dla": NaN
+  },
+  {
+    "layer": 31,
+    "head_idx": 31,
+    "correct_token_dla": 0.0006751155597157776,
+    "predicted_wrong_token_dla": NaN
+  }
+]
