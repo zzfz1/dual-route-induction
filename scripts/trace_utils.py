@@ -29,8 +29,10 @@ configure_utf8_stdio()
 def is_remote_transport_error(exc):
     text_markers = (
         "Server disconnected without sending a response",
+        "Error submitting request to model deployment",
         "RemoteProtocolError",
         "Bad Gateway",
+        "Service Unavailable",
         "WriteTimeout",
         "ReadTimeout",
         "ConnectTimeout",

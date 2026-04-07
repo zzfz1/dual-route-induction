@@ -39,6 +39,7 @@ from datasets import load_dataset
 import utils
 from ndif import load_remote_model
 from seed_utils import set_random_seed
+from trace_utils import RemoteExecutionContext
 from utils import (
     pile_chunk,
     get_l2_attn_weights,
@@ -149,12 +150,19 @@ def build_work_items(sorted_entities, pile, tok, args):
 def main(args):
     set_random_seed(args.seed)
 
+    remote_ctx = None
     if args.remote:
         if args.ckpt is not None:
             raise ValueError(
                 "NDIF remote execution does not support --ckpt in this script."
             )
         model = load_remote_model(args.model, utils)
+        remote_ctx = RemoteExecutionContext(
+            args.model,
+            max_retries=args.remote_max_retries,
+            backoff_base=args.remote_backoff_base,
+            backoff_max=args.remote_backoff_max,
+        )
     elif args.ckpt is not None:
         assert args.model in ["allenai/OLMo-2-1124-7B", "EleutherAI/pythia-6.9b"]
         model = LanguageModel(
@@ -273,12 +281,14 @@ def main(args):
                 last_l = item["l"]
 
             if args.remote:
-                next_sums, end_sums = collect_attention_sums(
-                    model,
-                    batch_seqs,
-                    start_idxs + pad_offsets,
-                    end_idxs + pad_offsets,
-                    remote=True,
+                _seqs = batch_seqs
+                _src = start_idxs + pad_offsets
+                _tgt = end_idxs + pad_offsets
+                next_sums, end_sums = remote_ctx.request(
+                    f"attn_batch{batch_idx}",
+                    lambda m, seqs=_seqs, src=_src, tgt=_tgt: collect_attention_sums(
+                        m, seqs, src, tgt, remote=True
+                    ),
                 )
                 for layer in range(model.config.num_hidden_layers):
                     for head in range(model.config.num_attention_heads):
@@ -338,6 +348,9 @@ if __name__ == "__main__":
     parser.add_argument("--remote", action="store_true")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--random_tok_entities", action="store_true")
+    parser.add_argument("--remote-max-retries", default=4, type=int)
+    parser.add_argument("--remote-backoff-base", default=2.0, type=float)
+    parser.add_argument("--remote-backoff-max", default=30.0, type=float)
     parser.add_argument("--seed", default=8, type=int)
     parser.set_defaults(random_tok_entities=False, remote=False, resume=False)
     args = parser.parse_args()
