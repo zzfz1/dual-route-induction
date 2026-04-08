@@ -195,14 +195,21 @@ def main(args):
     token_heads   = load_head_rankings(model_name, "token",   args.topk)
     concept_heads = load_head_rankings(model_name, "concept", args.topk)
 
+    # Exclude heads already in token_heads to avoid showing same head in both rows
+    token_heads_set = set(token_heads)
+    concept_heads_unique = [h for h in concept_heads if h not in token_heads_set]
+    n_overlap = len(concept_heads) - len(concept_heads_unique)
+    if n_overlap:
+        print(f"Note: {n_overlap} head(s) in both token and concept top-{args.topk}; excluded from concept panels.")
+
     print(f"Loading condition data for {model_name}...")
     scores_list, dla_list, labels, colors = get_condition_scores(model_name, improbable_dir)
 
     out_dir = CACHE_ROOT / "figures" / model_name
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    make_plot3(model_name, token_heads, concept_heads, scores_list, labels, colors, args.topk, out_dir)
-    make_plot4(model_name, token_heads, concept_heads, dla_list,    labels, colors, args.topk, out_dir)
+    make_plot3(model_name, token_heads, concept_heads_unique, scores_list, labels, colors, args.topk, out_dir)
+    make_plot4(model_name, token_heads, concept_heads_unique, dla_list,    labels, colors, args.topk, out_dir)
 
 
 if __name__ == "__main__":

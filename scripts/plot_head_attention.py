@@ -79,7 +79,8 @@ def plot_heads(ax, heads, next_tok, end_tok, title, annotation_head=None, annota
 def main(args):
     model_name = args.model.split("/")[-1]
     token_heads   = load_head_rankings(model_name, "token",   args.topk)
-    concept_heads = load_head_rankings(model_name, "concept", args.topk)
+    concept_heads_all = load_head_rankings(model_name, "concept", args.topk)
+    concept_heads = [h for h in concept_heads_all if h not in set(token_heads)]
 
     next_tok, end_tok = load_attention_scores(model_name, n=args.n, seqlen=args.seqlen)
 

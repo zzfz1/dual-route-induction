@@ -1,0 +1,348 @@
+[
+  {
+    "label": "baseline",
+    "n_ablated": 0,
+    "heads": [],
+    "copy_success_rate": 0.65,
+    "hallucination_rate": 0.35,
+    "n_examples": 100
+  },
+  {
+    "label": "top1_concept",
+    "n_ablated": 1,
+    "heads": [
+      [
+        15,
+        1
+      ]
+    ],
+    "copy_success_rate": 0.69,
+    "hallucination_rate": 0.31,
+    "n_examples": 100
+  },
+  {
+    "label": "top2_concept",
+    "n_ablated": 2,
+    "heads": [
+      [
+        15,
+        1
+      ],
+      [
+        21,
+        1
+      ]
+    ],
+    "copy_success_rate": 0.67,
+    "hallucination_rate": 0.33,
+    "n_examples": 100
+  },
+  {
+    "label": "top4_concept",
+    "n_ablated": 4,
+    "heads": [
+      [
+        15,
+        1
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        27,
+        20
+      ]
+    ],
+    "copy_success_rate": 0.67,
+    "hallucination_rate": 0.32,
+    "n_examples": 100
+  },
+  {
+    "label": "top8_concept",
+    "n_ablated": 8,
+    "heads": [
+      [
+        15,
+        1
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        27,
+        20
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        9,
+        27
+      ],
+      [
+        19,
+        0
+      ],
+      [
+        15,
+        16
+      ]
+    ],
+    "copy_success_rate": 0.67,
+    "hallucination_rate": 0.32,
+    "n_examples": 100
+  },
+  {
+    "label": "top16_concept",
+    "n_ablated": 16,
+    "heads": [
+      [
+        15,
+        1
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        27,
+        20
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        9,
+        27
+      ],
+      [
+        19,
+        0
+      ],
+      [
+        15,
+        16
+      ],
+      [
+        19,
+        1
+      ],
+      [
+        15,
+        17
+      ],
+      [
+        23,
+        29
+      ],
+      [
+        21,
+        26
+      ],
+      [
+        24,
+        3
+      ],
+      [
+        14,
+        20
+      ],
+      [
+        15,
+        5
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "copy_success_rate": 0.67,
+    "hallucination_rate": 0.3,
+    "n_examples": 100
+  },
+  {
+    "label": "top1_token",
+    "n_ablated": 1,
+    "heads": [
+      [
+        15,
+        30
+      ]
+    ],
+    "copy_success_rate": 0.36,
+    "hallucination_rate": 0.64,
+    "n_examples": 100
+  },
+  {
+    "label": "top2_token",
+    "n_ablated": 2,
+    "heads": [
+      [
+        15,
+        30
+      ],
+      [
+        16,
+        23
+      ]
+    ],
+    "copy_success_rate": 0.41,
+    "hallucination_rate": 0.59,
+    "n_examples": 100
+  },
+  {
+    "label": "top4_token",
+    "n_ablated": 4,
+    "heads": [
+      [
+        15,
+        30
+      ],
+      [
+        16,
+        23
+      ],
+      [
+        31,
+        24
+      ],
+      [
+        20,
+        23
+      ]
+    ],
+    "copy_success_rate": 0.4,
+    "hallucination_rate": 0.6,
+    "n_examples": 100
+  },
+  {
+    "label": "top8_token",
+    "n_ablated": 8,
+    "heads": [
+      [
+        15,
+        30
+      ],
+      [
+        16,
+        23
+      ],
+      [
+        31,
+        24
+      ],
+      [
+        20,
+        23
+      ],
+      [
+        15,
+        28
+      ],
+      [
+        31,
+        14
+      ],
+      [
+        29,
+        21
+      ],
+      [
+        31,
+        26
+      ]
+    ],
+    "copy_success_rate": 0.06,
+    "hallucination_rate": 0.94,
+    "n_examples": 100
+  },
+  {
+    "label": "top16_token",
+    "n_ablated": 16,
+    "heads": [
+      [
+        15,
+        30
+      ],
+      [
+        16,
+        23
+      ],
+      [
+        31,
+        24
+      ],
+      [
+        20,
+        23
+      ],
+      [
+        15,
+        28
+      ],
+      [
+        31,
+        14
+      ],
+      [
+        29,
+        21
+      ],
+      [
+        31,
+        26
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ],
+      [
+        16,
+        20
+      ],
+      [
+        29,
+        20
+      ],
+      [
+        30,
+        24
+      ],
+      [
+        27,
+        7
+      ],
+      [
+        27,
+        28
+      ],
+      [
+        19,
+        12
+      ]
+    ],
+    "copy_success_rate": 0.0,
+    "hallucination_rate": 0.47,
+    "n_examples": 100
+  }
+]

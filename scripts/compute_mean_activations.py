@@ -46,9 +46,10 @@ def compute_batch_mean(model, token_ids: list[list[int]]) -> torch.Tensor:
                 bsz = o_proj_inp.shape[0]
                 seq_len = o_proj_inp.shape[1]
                 reshaped = o_proj_inp.view(bsz, seq_len, n_heads, head_dim)
-                layer_means.append(reshaped.mean(dim=(0, 1)))  # [n_heads, head_dim]
+                layer_means.append(reshaped.mean(dim=(0, 1)).to("cuda:0"))  # [n_heads, head_dim]
 
             # Stack and save server-side — one tensor transfer instead of n_layers
+            # All layer means are moved to cuda:0 first (70B is sharded across multiple GPUs)
             result = torch.stack(layer_means).save()  # [n_layers, n_heads, head_dim]
 
     return result.detach().cpu().float()
@@ -133,7 +134,7 @@ if __name__ == "__main__":
     parser.add_argument("--model", default="meta-llama/Llama-3.1-8B",
                         choices=["meta-llama/Llama-3.1-8B", "meta-llama/Llama-3.1-70B"])
     parser.add_argument("--n-docs", default=1024, type=int, help="Number of pile docs to average over")
-    parser.add_argument("--bsz", default=8, type=int)
+    parser.add_argument("--bsz", default=32, type=int)
     parser.add_argument("--seq-len", default=128, type=int, help="Max tokens per document")
     parser.add_argument("--remote", action="store_true")
     parser.add_argument("--overwrite", action="store_true")
