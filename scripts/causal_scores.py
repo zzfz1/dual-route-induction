@@ -247,6 +247,8 @@ def merge_result_sets(result_sets):
 def patch_head_m2(model, clean_seq, corr_seq, entities):
     heads_per_layer = model.config.num_attention_heads
     head_dim = model.config.hidden_size // heads_per_layer
+    num_layers = model.config.num_hidden_layers
+    remote = is_remote_model(model)
 
     # will be 1024-dimensional lists
     correct = []
@@ -254,29 +256,57 @@ def patch_head_m2(model, clean_seq, corr_seq, entities):
     m2_probs = []
     m1_logits = []
     m2_logits = []
-    for layer in range(model.config.num_hidden_layers):
-        # (bsz, seq_len, n_heads, head_dim)
-        clean_heads = get_head_activations(model, clean_seq, layer)
 
-        for head_idx in range(heads_per_layer):
-            remote = is_remote_model(model)
-            with torch.no_grad():
-                with model.trace(corr_seq, remote=remote):
-                    tup = get_o_proj_inputs(model, layer)
+    # use Session to run the entire experiment as one request
+    with model.session(remote=remote):
+        # 1. collect the clean activations to patch
+        clean_o_proj_inputs = list()
+        with model.trace(clean_seq):
+            for l_idx in range(num_layers):
+                o_proj_inp = get_o_proj_input_tensor(model, l_idx)
+                clean_heads = o_proj_inp.view(*o_proj_inp.shape[:-1], heads_per_layer, head_dim)
+                clean_o_proj_inputs.append(clean_heads)
+
+        # 2. collect layer outputs to save computation in the patched runs
+        corr_layers_outputs = list()
+        with model.trace(corr_seq):
+            # NOTE: assumes Llama-like architecture at the moment
+            for l_idx in range(num_layers):
+                layer_output = model.model.layers[l_idx].output
+                corr_layers_outputs.append(layer_output)
+
+        # 3. complete forward runs, each time patching a single attention head
+        results = list().save()
+        for l_idx in range(num_layers):
+            results.append(list())
+
+            for h_idx in range(heads_per_layer):
+                with model.trace(corr_seq):
+                    # 3. (a) skip all layer outputs before the patching location
+                    for layer_to_skip in range(l_idx):
+                        # NOTE: assumes Llama-like architecture at the moment
+                        model.model.layers[layer_to_skip].skip(corr_layers_outputs[layer_to_skip])
+
+                    # 3. (b) patch
+                    tup = get_o_proj_inputs(model, l_idx)
                     original_shape = tup[0][0].shape  # [bsz, seq_len, model_dim]
                     sub = tup[0][0].view(
                         original_shape[0], original_shape[1], heads_per_layer, head_dim
                     )
 
-                    sub[:, -2, head_idx, :] = clean_heads[:, -2, head_idx, :]
+                    sub[:, -2, h_idx, :] = clean_o_proj_inputs[l_idx][:, -2, h_idx, :]
                     sub = sub.view(original_shape)
                     new_tup = ((sub,), tup[1])
-                    set_o_proj_inputs(model, layer, new_tup)
+                    set_o_proj_inputs(model, l_idx, new_tup)
 
-                    logits = model.output.logits.save()
+                    # 3. (c) collect only necessary results
+                    logits = model.output.logits
+                    results[l_idx].append(stats_from_logits(logits, entities))
 
+    for layer_results in results:
+        for head_results in layer_results:
             # [bsz] bits that we want to collect
-            c, m1, m2, m1l, m2l = stats_from_logits(logits.detach().cpu(), entities)
+            c, m1, m2, m1l, m2l = head_results
             correct.append(c)
             m1_probs.append(m1)
             m2_probs.append(m2)
