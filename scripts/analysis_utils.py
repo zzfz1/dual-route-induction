@@ -8,17 +8,20 @@ import numpy as np
 import pandas as pd
 import torch
 from matplotlib.colors import TwoSlopeNorm
+from matplotlib.lines import Line2D
 
 
 CONDITION_ORDER = [
     "Hallucinated improbable",
     "Copied improbable",
+    "2-token concepts",
     "Random phrases",
 ]
 
 CONDITION_COLORS = {
     "Hallucinated improbable": "#c0392b",
     "Copied improbable": "#2e86de",
+    "2-token concepts": "#8e44ad",
     "Random phrases": "#27ae60",
 }
 
@@ -26,6 +29,43 @@ WRONG_DLA_COLORS = {
     "Token wrong-token DLA": "#e67e22",
     "Concept wrong-token DLA": "#16a085",
 }
+
+
+def _condition_legend_handles() -> list[Line2D]:
+    return [
+        Line2D(
+            [0],
+            [0],
+            color=CONDITION_COLORS[condition],
+            marker="o",
+            linewidth=2,
+            markersize=6,
+            label=condition,
+        )
+        for condition in CONDITION_ORDER
+    ]
+
+
+def _add_condition_legend(axis):
+    axis.legend(
+        handles=_condition_legend_handles(),
+        title="Setups",
+        frameon=False,
+        loc="upper right",
+        fontsize=9,
+        title_fontsize=9,
+    )
+
+
+def _add_top_figure_condition_legend(fig):
+    fig.legend(
+        handles=_condition_legend_handles(),
+        title="Setups",
+        frameon=False,
+        loc="upper center",
+        bbox_to_anchor=(0.5, 0.99),
+        ncol=4,
+    )
 
 
 def configure_matplotlib():
@@ -75,17 +115,20 @@ def load_cache(
     root: Path | str,
     model_name: str = "Llama-3.1-8B",
     improbable_run: str = "updated_table1_literal",
+    concept_run: str = "selected_two_token_concepts",
     random_run: str = "random_tokens",
 ):
     root = Path(root).resolve()
     head_dir = root / "cache" / "head_orderings" / model_name
     improbable_dir = root / "cache" / "improbable_bigrams" / model_name / improbable_run
+    concept_dir = root / "cache" / "improbable_bigrams" / model_name / concept_run
     random_dir = root / "cache" / "improbable_bigrams" / model_name / random_run
 
     cache = {
         "root": root,
         "model_name": model_name,
         "improbable_run": improbable_run,
+        "concept_run": concept_run,
         "random_run": random_run,
         "token_ranking": [tuple(head) for head in load_json(head_dir / "token_copying.json")],
         "concept_ranking": [tuple(head) for head in load_json(head_dir / "concept_copying.json")],
@@ -104,10 +147,16 @@ def load_cache(
             / "table1_literal_random_tokens_current_prompt_summary.json"
         ),
         "improbable_manifest": load_json(improbable_dir / "manifest.json"),
+        "concept_manifest": load_json(concept_dir / "manifest.json"),
         "random_manifest": load_json(random_dir / "manifest.json"),
         "improbable_index": [
             json.loads(line)
             for line in (improbable_dir / "index.jsonl").read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ],
+        "concept_index": [
+            json.loads(line)
+            for line in (concept_dir / "index.jsonl").read_text(encoding="utf-8").splitlines()
             if line.strip()
         ],
         "random_index": [
@@ -128,6 +177,12 @@ def load_cache(
         "improbable_dla_hall": torch.load(
             improbable_dir / "dla" / "per_example_hallucinated_second_token_p1.pt",
             map_location="cpu",
+        ),
+        "concept_scores_all": torch.load(
+            concept_dir / "scores" / "per_example_all.pt", map_location="cpu"
+        ),
+        "concept_dla_all": torch.load(
+            concept_dir / "dla" / "per_example_all_p1.pt", map_location="cpu"
         ),
         "random_scores_all": torch.load(
             random_dir / "scores" / "per_example_all.pt", map_location="cpu"
@@ -153,6 +208,15 @@ def load_cache(
         [bool(entry["copy_success"]) for entry in score_examples],
         dtype=torch.bool,
     )
+    concept_score_examples = cache["concept_scores_all"]["examples"]
+    concept_dla_examples = cache["concept_dla_all"]["examples"]
+    concept_score_task_ids = [entry["task_idx"] for entry in concept_score_examples]
+    concept_dla_task_ids = [entry["task_idx"] for entry in concept_dla_examples]
+    if concept_score_task_ids != concept_dla_task_ids:
+        raise ValueError("Per-example concept score and DLA payloads are not aligned by task_idx.")
+
+    cache["concept_task_ids"] = concept_score_task_ids
+    cache["concept_count"] = len(cache["concept_scores_all"]["examples"])
     cache["random_count"] = len(cache["random_scores_all"]["examples"])
     return cache
 
@@ -162,8 +226,13 @@ def dataset_overview(cache) -> pd.DataFrame:
     random_summary = cache["random_summary"]
     traced_hall = int(cache["hallucinated_mask"].sum().item())
     traced_copy = int(cache["copied_mask"].sum().item())
+    concept_hall = sum(
+        1 for entry in cache["concept_index"] if entry["second_token_hallucination"]
+    )
+    concept_copy = sum(1 for entry in cache["concept_index"] if entry["copy_success"])
 
     improbable_examples = len(cache["improbable_task_ids"])
+    concept_examples = cache["concept_count"]
     random_examples = cache["random_count"]
     if summary is not None:
         improbable_examples = summary["n_tasks"]
@@ -195,6 +264,12 @@ def dataset_overview(cache) -> pd.DataFrame:
                 "examples": len(cache["improbable_task_ids"]),
                 "hallucinated_second_token": traced_hall,
                 "copied": traced_copy,
+            },
+            {
+                "dataset": "2-token concept cache",
+                "examples": concept_examples,
+                "hallucinated_second_token": concept_hall,
+                "copied": concept_copy,
             },
             {
                 "dataset": "Random phrase cache",
@@ -288,6 +363,7 @@ def _concept_mask(cache, k: int) -> torch.Tensor:
 
 def _condition_series(
     improbable_tensor: torch.Tensor,
+    concept_tensor: torch.Tensor,
     random_tensor: torch.Tensor,
     mask: torch.Tensor,
     cache,
@@ -299,6 +375,7 @@ def _condition_series(
         "Copied improbable": aggregate_metric(
             improbable_tensor[cache["copied_mask"]], mask
         ),
+        "2-token concepts": aggregate_metric(concept_tensor, mask),
         "Random phrases": aggregate_metric(random_tensor, mask),
     }
 
@@ -307,30 +384,34 @@ def token_ntm_series(cache, k: int, weighted: bool = False) -> dict[str, np.ndar
     token_heads = _token_mask(cache, k)
     field = "ntm_value_weighted" if weighted else "ntm_raw"
     improbable = cache["improbable_scores_all"][field]
+    concepts = cache["concept_scores_all"][field]
     random_scores = cache["random_scores_all"][field]
-    return _condition_series(improbable, random_scores, token_heads, cache)
+    return _condition_series(improbable, concepts, random_scores, token_heads, cache)
 
 
 def concept_ltm_series(cache, k: int, weighted: bool = False) -> dict[str, np.ndarray]:
     concept_heads = _concept_mask(cache, k)
     field = "ltm_value_weighted" if weighted else "ltm_raw"
     improbable = cache["improbable_scores_all"][field]
+    concepts = cache["concept_scores_all"][field]
     random_scores = cache["random_scores_all"][field]
-    return _condition_series(improbable, random_scores, concept_heads, cache)
+    return _condition_series(improbable, concepts, random_scores, concept_heads, cache)
 
 
 def token_correct_dla_series(cache, k: int) -> dict[str, np.ndarray]:
     token_heads = _token_mask(cache, k)
     improbable = cache["improbable_dla_all"]["correct_token_dla"]
+    concepts = cache["concept_dla_all"]["correct_token_dla"]
     random_scores = cache["random_dla_all"]["correct_token_dla"]
-    return _condition_series(improbable, random_scores, token_heads, cache)
+    return _condition_series(improbable, concepts, random_scores, token_heads, cache)
 
 
 def concept_correct_dla_series(cache, k: int) -> dict[str, np.ndarray]:
     concept_heads = _concept_mask(cache, k)
     improbable = cache["improbable_dla_all"]["correct_token_dla"]
+    concepts = cache["concept_dla_all"]["correct_token_dla"]
     random_scores = cache["random_dla_all"]["correct_token_dla"]
-    return _condition_series(improbable, random_scores, concept_heads, cache)
+    return _condition_series(improbable, concepts, random_scores, concept_heads, cache)
 
 
 def token_wrong_dla_hall_series(cache, k: int) -> np.ndarray:
@@ -356,9 +437,11 @@ def build_pairwise_summary(cache, k: int) -> pd.DataFrame:
     for metric, series in metric_getters:
         hall = series["Hallucinated improbable"]
         copied = series["Copied improbable"]
+        concepts = series["2-token concepts"]
         random_phrases = series["Random phrases"]
         for comparison, right in (
             ("Hallucinated - Copied", copied),
+            ("Hallucinated - 2-token concepts", concepts),
             ("Hallucinated - Random", random_phrases),
         ):
             ci_low, ci_high = bootstrap_diff_ci(hall, right)
@@ -402,9 +485,11 @@ def build_concept_pairwise_summary(cache, k: int) -> pd.DataFrame:
     for metric, series in metric_getters:
         hall = series["Hallucinated improbable"]
         copied = series["Copied improbable"]
+        concepts = series["2-token concepts"]
         random_phrases = series["Random phrases"]
         for comparison, right in (
             ("Hallucinated - Copied", copied),
+            ("Hallucinated - 2-token concepts", concepts),
             ("Hallucinated - Random", random_phrases),
         ):
             ci_low, ci_high = bootstrap_diff_ci(hall, right)
@@ -447,31 +532,34 @@ def interpretation_markdown(cache, k: int = 32) -> str:
         return match.iloc[0]
 
     ntm_hc = row("Token NTM (raw)", "Hallucinated - Copied")
+    ntm_h2c = row("Token NTM (raw)", "Hallucinated - 2-token concepts")
     ntm_hr = row("Token NTM (raw)", "Hallucinated - Random")
     dla_hc = row("Token correct-token DLA", "Hallucinated - Copied")
+    dla_h2c = row("Token correct-token DLA", "Hallucinated - 2-token concepts")
     dla_hr = row("Token correct-token DLA", "Hallucinated - Random")
     wrong_vs_correct = row("Hallucinated token DLA", "Wrong-token - Correct-token")
 
-    if ntm_hc["ci_high"] < 0:
+    if ntm_hc["ci_high"] < 0 and ntm_h2c["ci_high"] < 0:
         verdict = (
-            "The top token-copying heads show lower NTM on hallucinated prompts than on copied "
-            "improbable prompts. That is direct evidence for a hallucination-specific token-head "
-            "attention failure, which matches Possibility 1-1."
+            "The top token-copying heads show lower NTM on hallucinated prompts than on both "
+            "copied improbable prompts and coherent 2-token concepts. That is direct evidence "
+            "for a hallucination-specific token-head attention failure, which matches "
+            "Possibility 1-1."
         )
-    elif ntm_hc["ci_low"] <= 0 <= ntm_hc["ci_high"] and (
-        dla_hc["ci_high"] < 0 or wrong_vs_correct["ci_low"] > 0
+    elif ntm_hc["ci_low"] <= 0 <= ntm_hc["ci_high"] and ntm_h2c["ci_low"] <= 0 <= ntm_h2c["ci_high"] and (
+        dla_hc["ci_high"] < 0 or dla_h2c["ci_high"] < 0 or wrong_vs_correct["ci_low"] > 0
     ):
         verdict = (
-            "The token heads attend similarly on hallucinated and copied improbable prompts, but "
-            "their DLA looks worse on hallucinated cases. That pattern is more consistent with "
-            "Possibility 1-2 than with Possibility 1-1."
+            "The token heads attend similarly on hallucinated prompts, copied improbable prompts, "
+            "and 2-token concepts, but their DLA looks worse on hallucinated cases. That pattern "
+            "is more consistent with Possibility 1-2 than with Possibility 1-1."
         )
     else:
         verdict = (
             "Within the improbable-bigram set, the traced cache does not show a clear hallucination-"
             "specific token-head breakdown. The stronger claim that token-head behavior is similar "
-            "across all conditions is harder to defend, because the random-phrase control is much "
-            "stronger on both NTM and correct-token DLA."
+            "across all conditions is harder to defend, because the 2-token concept and random-"
+            "phrase controls are both stronger on the token-head metrics."
         )
 
     return "\n".join(
@@ -484,6 +572,14 @@ def interpretation_markdown(cache, k: int = 32) -> str:
             (
                 f"- Hallucinated vs copied correct-token DLA: `{dla_hc['diff']:.4f}` "
                 f"(95% CI `{dla_hc['ci_low']:.4f}` to `{dla_hc['ci_high']:.4f}`)"
+            ),
+            (
+                f"- Hallucinated vs 2-token concepts NTM: `{ntm_h2c['diff']:.4f}` "
+                f"(95% CI `{ntm_h2c['ci_low']:.4f}` to `{ntm_h2c['ci_high']:.4f}`)"
+            ),
+            (
+                f"- Hallucinated vs 2-token concepts correct-token DLA: `{dla_h2c['diff']:.4f}` "
+                f"(95% CI `{dla_h2c['ci_low']:.4f}` to `{dla_h2c['ci_high']:.4f}`)"
             ),
             (
                 f"- Hallucinated vs random NTM: `{ntm_hr['diff']:.4f}` "
@@ -513,37 +609,39 @@ def concept_interpretation_markdown(cache, k: int = 32) -> str:
         return match.iloc[0]
 
     ltm_hc = row("Concept LTM (raw)", "Hallucinated - Copied")
+    ltm_h2c = row("Concept LTM (raw)", "Hallucinated - 2-token concepts")
     ltm_hr = row("Concept LTM (raw)", "Hallucinated - Random")
     dla_hc = row("Concept correct-token DLA", "Hallucinated - Copied")
+    dla_h2c = row("Concept correct-token DLA", "Hallucinated - 2-token concepts")
     dla_hr = row("Concept correct-token DLA", "Hallucinated - Random")
     wrong_vs_correct = row("Hallucinated concept DLA", "Wrong-token - Correct-token")
 
     verdict = (
-        "The current cache only includes conditions (1) hallucinated improbable bigrams and "
-        "(2) random two-token phrases, plus copied improbable prompts as an internal control. "
-        "Because the true two-token concept condition is missing, this notebook cannot fully "
-        "resolve the proposal's three-way Hypothesis 2 scenarios."
+        "The current cache includes hallucinated improbable bigrams, copied improbable prompts, "
+        "coherent 2-token concepts, and random two-token phrases. That allows a direct check of "
+        "whether concept-head behavior on hallucinated prompts looks more like the coherent concept "
+        "condition or like the random-token control."
     )
 
-    if ltm_hc["ci_high"] < 0:
+    if ltm_hc["ci_high"] < 0 and ltm_h2c["ci_high"] < 0:
         verdict += (
-            " Within the improbable-bigram set, hallucinated prompts show lower concept-head LTM "
-            "than copied prompts. That would support a hallucination-specific concept-head "
+            " Hallucinated prompts show lower concept-head LTM than both copied improbable prompts "
+            "and coherent 2-token concepts. That supports a hallucination-specific concept-head "
             "attention failure."
         )
-    elif ltm_hc["ci_low"] <= 0 <= ltm_hc["ci_high"] and (
-        dla_hc["ci_high"] < 0 or wrong_vs_correct["ci_low"] > 0
+    elif ltm_hc["ci_low"] <= 0 <= ltm_hc["ci_high"] and ltm_h2c["ci_low"] <= 0 <= ltm_h2c["ci_high"] and (
+        dla_hc["ci_high"] < 0 or dla_h2c["ci_high"] < 0 or wrong_vs_correct["ci_low"] > 0
     ):
         verdict += (
-            " Hallucinated and copied improbable prompts have similar concept-head LTM, but the "
-            "DLA looks worse on hallucinated cases. That is more compatible with output-signaling "
-            "differences than with attention failures."
+            " Hallucinated prompts, copied improbable prompts, and 2-token concepts have similar "
+            "concept-head LTM, but the DLA looks worse on hallucinated cases. That is more "
+            "compatible with output-signaling differences than with attention failures."
         )
     else:
         verdict += (
-            " In the current traced cache, concept heads look broadly similar on hallucinated and "
-            "copied improbable prompts, and they do not strongly favor the wrong token over the "
-            "correct token in hallucinated cases."
+            " In the current traced cache, concept heads do not cleanly separate hallucinated "
+            "prompts from both copied improbable prompts and coherent 2-token concepts, and they "
+            "do not strongly favor the wrong token over the correct token in hallucinated cases."
         )
 
     return "\n".join(
@@ -556,6 +654,14 @@ def concept_interpretation_markdown(cache, k: int = 32) -> str:
             (
                 f"- Hallucinated vs copied correct-token DLA: `{dla_hc['diff']:.4f}` "
                 f"(95% CI `{dla_hc['ci_low']:.4f}` to `{dla_hc['ci_high']:.4f}`)"
+            ),
+            (
+                f"- Hallucinated vs 2-token concepts LTM: `{ltm_h2c['diff']:.4f}` "
+                f"(95% CI `{ltm_h2c['ci_low']:.4f}` to `{ltm_h2c['ci_high']:.4f}`)"
+            ),
+            (
+                f"- Hallucinated vs 2-token concepts correct-token DLA: `{dla_h2c['diff']:.4f}` "
+                f"(95% CI `{dla_h2c['ci_low']:.4f}` to `{dla_h2c['ci_high']:.4f}`)"
             ),
             (
                 f"- Hallucinated vs random LTM: `{ltm_hr['diff']:.4f}` "
@@ -685,6 +791,8 @@ def plot_k_sweep(cache, ks=(8, 16, 32, 64, 128), save_path: Path | None = None):
         if metric == "Token correct-token DLA":
             axis.axhline(0.0, color="black", linewidth=1, alpha=0.5)
 
+    _add_condition_legend(axes[0])
+    _add_condition_legend(axes[1])
     _plot_wrong_dla_comparison(axes[2], summary, ks)
     if save_path is not None:
         save_path.parent.mkdir(parents=True, exist_ok=True)
@@ -739,6 +847,8 @@ def plot_concept_k_sweep(cache, ks=(8, 16, 32, 64, 128), save_path: Path | None 
         if metric == "Concept correct-token DLA":
             axis.axhline(0.0, color="black", linewidth=1, alpha=0.5)
 
+    _add_condition_legend(axes[0])
+    _add_condition_legend(axes[1])
     _plot_wrong_dla_comparison(axes[2], summary, ks)
     if save_path is not None:
         save_path.parent.mkdir(parents=True, exist_ok=True)
@@ -780,10 +890,12 @@ def _box_and_strip(axis, values_by_condition, ylabel: str, title: str):
 def plot_distribution_panels(cache, k: int = 32, save_path: Path | None = None):
     ntm = token_ntm_series(cache, k, weighted=False)
     dla = token_correct_dla_series(cache, k)
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4.8), constrained_layout=True)
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5.6), constrained_layout=False)
     _box_and_strip(axes[0], ntm, "Per-example mean", f"Top-{k} token-head NTM")
     _box_and_strip(axes[1], dla, "Per-example mean", f"Top-{k} token-head correct-token DLA")
     axes[1].axhline(0.0, color="black", linewidth=1, alpha=0.5)
+    _add_top_figure_condition_legend(fig)
+    fig.subplots_adjust(top=0.80, wspace=0.26)
     if save_path is not None:
         save_path.parent.mkdir(parents=True, exist_ok=True)
         fig.savefig(save_path, bbox_inches="tight")
@@ -793,12 +905,14 @@ def plot_distribution_panels(cache, k: int = 32, save_path: Path | None = None):
 def plot_concept_distribution_panels(cache, k: int = 32, save_path: Path | None = None):
     ltm = concept_ltm_series(cache, k, weighted=False)
     dla = concept_correct_dla_series(cache, k)
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4.8), constrained_layout=True)
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5.6), constrained_layout=False)
     _box_and_strip(axes[0], ltm, "Per-example mean", f"Top-{k} concept-head LTM")
     _box_and_strip(
         axes[1], dla, "Per-example mean", f"Top-{k} concept-head correct-token DLA"
     )
     axes[1].axhline(0.0, color="black", linewidth=1, alpha=0.5)
+    _add_top_figure_condition_legend(fig)
+    fig.subplots_adjust(top=0.80, wspace=0.26)
     if save_path is not None:
         save_path.parent.mkdir(parents=True, exist_ok=True)
         fig.savefig(save_path, bbox_inches="tight")
@@ -875,9 +989,11 @@ def plot_concept_hallucinated_dla_pair(cache, k: int = 32, save_path: Path | Non
 def plot_top_head_heatmap(cache, top_k: int = 16, save_path: Path | None = None):
     heads = cache["token_ranking"][:top_k]
     ntm_tensor = cache["improbable_scores_all"]["ntm_raw"]
+    concept_ntm = cache["concept_scores_all"]["ntm_raw"]
     random_ntm = cache["random_scores_all"]["ntm_raw"]
     correct_dla = cache["improbable_dla_all"]["correct_token_dla"]
     wrong_dla = cache["improbable_dla_all"]["predicted_token_dla"]
+    concept_correct_dla = cache["concept_dla_all"]["correct_token_dla"]
     random_correct_dla = cache["random_dla_all"]["correct_token_dla"]
 
     ntm_matrix = []
@@ -890,6 +1006,7 @@ def plot_top_head_heatmap(cache, top_k: int = 16, save_path: Path | None = None)
             [
                 float(ntm_tensor[cache["hallucinated_mask"], layer, head_idx].mean().item()),
                 float(ntm_tensor[cache["copied_mask"], layer, head_idx].mean().item()),
+                float(concept_ntm[:, layer, head_idx].mean().item()),
                 float(random_ntm[:, layer, head_idx].mean().item()),
             ]
         )
@@ -898,6 +1015,7 @@ def plot_top_head_heatmap(cache, top_k: int = 16, save_path: Path | None = None)
                 float(correct_dla[cache["hallucinated_mask"], layer, head_idx].mean().item()),
                 float(wrong_dla[cache["hallucinated_mask"], layer, head_idx].mean().item()),
                 float(correct_dla[cache["copied_mask"], layer, head_idx].mean().item()),
+                float(concept_correct_dla[:, layer, head_idx].mean().item()),
                 float(random_correct_dla[:, layer, head_idx].mean().item()),
             ]
         )
@@ -905,11 +1023,11 @@ def plot_top_head_heatmap(cache, top_k: int = 16, save_path: Path | None = None)
     ntm_matrix = np.asarray(ntm_matrix, dtype=float)
     dla_matrix = np.asarray(dla_matrix, dtype=float)
 
-    fig, axes = plt.subplots(1, 2, figsize=(12, max(5, 0.35 * top_k)), constrained_layout=True)
+    fig, axes = plt.subplots(1, 2, figsize=(13.5, max(5, 0.35 * top_k)), constrained_layout=True)
     ntm_image = axes[0].imshow(ntm_matrix, aspect="auto", cmap="viridis")
     axes[0].set_title(f"Top-{top_k} token heads: NTM")
-    axes[0].set_xticks(range(3))
-    axes[0].set_xticklabels(["Hall", "Copied", "Random"])
+    axes[0].set_xticks(range(4))
+    axes[0].set_xticklabels(["Hall", "Copied", "Concepts", "Random"])
     axes[0].set_yticks(range(top_k))
     axes[0].set_yticklabels(labels)
     fig.colorbar(ntm_image, ax=axes[0], shrink=0.9)
@@ -918,8 +1036,11 @@ def plot_top_head_heatmap(cache, top_k: int = 16, save_path: Path | None = None)
     norm = TwoSlopeNorm(vmin=-abs_max, vcenter=0.0, vmax=abs_max)
     dla_image = axes[1].imshow(dla_matrix, aspect="auto", cmap="coolwarm", norm=norm)
     axes[1].set_title(f"Top-{top_k} token heads: DLA")
-    axes[1].set_xticks(range(4))
-    axes[1].set_xticklabels(["Hall correct", "Hall wrong", "Copied correct", "Random correct"])
+    axes[1].set_xticks(range(5))
+    axes[1].set_xticklabels(
+        ["Hall correct", "Hall wrong", "Copied correct", "Concepts correct", "Random correct"]
+    )
+    plt.setp(axes[1].get_xticklabels(), rotation=18, ha="right")
     axes[1].set_yticks(range(top_k))
     axes[1].set_yticklabels(labels)
     fig.colorbar(dla_image, ax=axes[1], shrink=0.9)
@@ -933,9 +1054,11 @@ def plot_top_head_heatmap(cache, top_k: int = 16, save_path: Path | None = None)
 def plot_concept_head_heatmap(cache, top_k: int = 16, save_path: Path | None = None):
     heads = cache["concept_ranking"][:top_k]
     ltm_tensor = cache["improbable_scores_all"]["ltm_raw"]
+    concept_ltm = cache["concept_scores_all"]["ltm_raw"]
     random_ltm = cache["random_scores_all"]["ltm_raw"]
     correct_dla = cache["improbable_dla_all"]["correct_token_dla"]
     wrong_dla = cache["improbable_dla_all"]["predicted_token_dla"]
+    concept_correct_dla = cache["concept_dla_all"]["correct_token_dla"]
     random_correct_dla = cache["random_dla_all"]["correct_token_dla"]
 
     ltm_matrix = []
@@ -948,6 +1071,7 @@ def plot_concept_head_heatmap(cache, top_k: int = 16, save_path: Path | None = N
             [
                 float(ltm_tensor[cache["hallucinated_mask"], layer, head_idx].mean().item()),
                 float(ltm_tensor[cache["copied_mask"], layer, head_idx].mean().item()),
+                float(concept_ltm[:, layer, head_idx].mean().item()),
                 float(random_ltm[:, layer, head_idx].mean().item()),
             ]
         )
@@ -956,6 +1080,7 @@ def plot_concept_head_heatmap(cache, top_k: int = 16, save_path: Path | None = N
                 float(correct_dla[cache["hallucinated_mask"], layer, head_idx].mean().item()),
                 float(wrong_dla[cache["hallucinated_mask"], layer, head_idx].mean().item()),
                 float(correct_dla[cache["copied_mask"], layer, head_idx].mean().item()),
+                float(concept_correct_dla[:, layer, head_idx].mean().item()),
                 float(random_correct_dla[:, layer, head_idx].mean().item()),
             ]
         )
@@ -963,11 +1088,11 @@ def plot_concept_head_heatmap(cache, top_k: int = 16, save_path: Path | None = N
     ltm_matrix = np.asarray(ltm_matrix, dtype=float)
     dla_matrix = np.asarray(dla_matrix, dtype=float)
 
-    fig, axes = plt.subplots(1, 2, figsize=(12, max(5, 0.35 * top_k)), constrained_layout=True)
+    fig, axes = plt.subplots(1, 2, figsize=(13.5, max(5, 0.35 * top_k)), constrained_layout=True)
     ltm_image = axes[0].imshow(ltm_matrix, aspect="auto", cmap="viridis")
     axes[0].set_title(f"Top-{top_k} concept heads: LTM")
-    axes[0].set_xticks(range(3))
-    axes[0].set_xticklabels(["Hall", "Copied", "Random"])
+    axes[0].set_xticks(range(4))
+    axes[0].set_xticklabels(["Hall", "Copied", "Concepts", "Random"])
     axes[0].set_yticks(range(top_k))
     axes[0].set_yticklabels(labels)
     fig.colorbar(ltm_image, ax=axes[0], shrink=0.9)
@@ -976,8 +1101,11 @@ def plot_concept_head_heatmap(cache, top_k: int = 16, save_path: Path | None = N
     norm = TwoSlopeNorm(vmin=-abs_max, vcenter=0.0, vmax=abs_max)
     dla_image = axes[1].imshow(dla_matrix, aspect="auto", cmap="coolwarm", norm=norm)
     axes[1].set_title(f"Top-{top_k} concept heads: DLA")
-    axes[1].set_xticks(range(4))
-    axes[1].set_xticklabels(["Hall correct", "Hall wrong", "Copied correct", "Random correct"])
+    axes[1].set_xticks(range(5))
+    axes[1].set_xticklabels(
+        ["Hall correct", "Hall wrong", "Copied correct", "Concepts correct", "Random correct"]
+    )
+    plt.setp(axes[1].get_xticklabels(), rotation=18, ha="right")
     axes[1].set_yticks(range(top_k))
     axes[1].set_yticklabels(labels)
     fig.colorbar(dla_image, ax=axes[1], shrink=0.9)
@@ -998,6 +1126,9 @@ def _dla_source_tensor(cache, source: str) -> tuple[torch.Tensor, str]:
     if source == "copied_correct":
         tensor = cache["improbable_dla_all"]["correct_token_dla"][cache["copied_mask"]]
         return tensor, "Copied-improbable correct-token DLA"
+    if source == "concepts_correct":
+        tensor = cache["concept_dla_all"]["correct_token_dla"]
+        return tensor, "2-token-concept correct-token DLA"
     if source == "random_correct":
         tensor = cache["random_dla_all"]["correct_token_dla"]
         return tensor, "Random-phrase correct-token DLA"
@@ -1064,7 +1195,13 @@ def top_dla_membership_table(
 
 def summarize_top_dla_membership(
     cache,
-    sources=("hallucinated_correct", "hallucinated_wrong", "copied_correct", "random_correct"),
+    sources=(
+        "hallucinated_correct",
+        "hallucinated_wrong",
+        "copied_correct",
+        "concepts_correct",
+        "random_correct",
+    ),
     top_n: int = 20,
     compare_k: int = 32,
 ) -> pd.DataFrame:
