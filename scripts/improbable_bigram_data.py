@@ -6,14 +6,14 @@ from pathlib import Path
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_TASKS_PATH = PROJECT_ROOT / "data" / "llama3.1_tasks.json"
-DEFAULT_GENERATIONS_PATH = PROJECT_ROOT / "data" / "llama3.1_70b_base_generations.csv"
+DEFAULT_TASKS_PATH = PROJECT_ROOT / "data" / "llama3.1_concepts.json"
+DEFAULT_GENERATIONS_PATH = PROJECT_ROOT / "data" / "llama3.1_8b_concept_generations.csv"
 DEFAULT_TRACE_ROOT = (
     PROJECT_ROOT
     / "dual-route-induction"
     / "cache"
-    / "improbable_bigrams"
-    / "Llama-3.1-70B"
+    / "concept_bigrams"
+    / "Llama-3.1-8b"
     / "table1_literal"
 )
 DEFAULT_RANDOM_TASKS_PATH = (

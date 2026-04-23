@@ -125,8 +125,8 @@ def make_plot3(model_name, token_heads, concept_heads, scores_list, labels, colo
     plot_ltm_ntm(axes[1, 1], concept_heads, scores_list, labels, colors,
                  "ltm_value_weighted", f"Concept Heads — LTM (Last-Token Matching)", ylabel=False)
 
-    out_path = out_dir / f"plot3_ltm_ntm_three_conditions_top{topk}.pdf"
-    fig.savefig(out_path, bbox_inches="tight", dpi=150)
+    out_path = out_dir / f"plot3_ltm_ntm_three_conditions_top{topk}.png"
+    fig.savefig(out_path, dpi=150)
     print(f"Saved Plot 3 → {out_path}")
     plt.close(fig)
 
@@ -173,8 +173,8 @@ def make_plot4(model_name, token_heads, concept_heads, dla_list, labels, colors,
     plot_dla(axes[1, 1], concept_heads, dla_list, labels, colors,
              "predicted_wrong_token_dla","Concept Heads — Wrong Token DLA", ylabel=False)
 
-    out_path = out_dir / f"plot4_dla_three_conditions_top{topk}.pdf"
-    fig.savefig(out_path, bbox_inches="tight", dpi=150)
+    out_path = out_dir / f"plot4_dla_three_conditions_top{topk}.png"
+    fig.savefig(out_path, dpi=150)
     print(f"Saved Plot 4 → {out_path}")
     plt.close(fig)
 

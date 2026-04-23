@@ -1,0 +1,1002 @@
+[
+  {
+    "task_idx": 0,
+    "bigram": " Lyon",
+    "prefix_token_id": 43,
+    "suffix_token_id": 26039,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [43, 26039], got [56301]",
+      "Final repeated occurrence mismatch: expected [43, 26039], got [56301]"
+    ]
+  },
+  {
+    "task_idx": 1,
+    "bigram": " Wellington",
+    "prefix_token_id": 11649,
+    "suffix_token_id": 4910,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [11649, 4910], got [57104]",
+      "Final repeated occurrence mismatch: expected [11649, 4910], got [57104]"
+    ]
+  },
+  {
+    "task_idx": 2,
+    "bigram": " BBC One",
+    "prefix_token_id": 67855,
+    "suffix_token_id": 3861,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [67855, 3861], got [18588, 3861]",
+      "Final repeated occurrence mismatch: expected [67855, 3861], got [18588, 3861]"
+    ]
+  },
+  {
+    "task_idx": 3,
+    "bigram": " Saint Petersburg",
+    "prefix_token_id": 57475,
+    "suffix_token_id": 55048,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [57475, 55048], got [14539, 55048]",
+      "Final repeated occurrence mismatch: expected [57475, 55048], got [14539, 55048]"
+    ]
+  },
+  {
+    "task_idx": 4,
+    "bigram": " controller.controller",
+    "prefix_token_id": 7299,
+    "suffix_token_id": 14854,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [7299, 14854], got [6597, 14854]",
+      "Final repeated occurrence mismatch: expected [7299, 14854], got [6597, 14854]"
+    ]
+  },
+  {
+    "task_idx": 5,
+    "bigram": " Howard Glacier",
+    "prefix_token_id": 76768,
+    "suffix_token_id": 96486,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [76768, 96486], got [20462, 96486]",
+      "Final repeated occurrence mismatch: expected [76768, 96486], got [20462, 96486]"
+    ]
+  },
+  {
+    "task_idx": 6,
+    "bigram": " IBM Connections",
+    "prefix_token_id": 68838,
+    "suffix_token_id": 67052,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [68838, 67052], got [29022, 67052]",
+      "Final repeated occurrence mismatch: expected [68838, 67052], got [29022, 67052]"
+    ]
+  },
+  {
+    "task_idx": 7,
+    "bigram": " Carol Zhao",
+    "prefix_token_id": 94372,
+    "suffix_token_id": 70381,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [94372, 70381], got [10463, 70381]",
+      "Final repeated occurrence mismatch: expected [94372, 70381], got [10463, 70381]"
+    ]
+  },
+  {
+    "task_idx": 8,
+    "bigram": " Beirut",
+    "prefix_token_id": 3513,
+    "suffix_token_id": 87405,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [3513, 87405], got [95411]",
+      "Final repeated occurrence mismatch: expected [3513, 87405], got [95411]"
+    ]
+  },
+  {
+    "task_idx": 9,
+    "bigram": " Zampa",
+    "prefix_token_id": 57,
+    "suffix_token_id": 23465,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [57, 23465], got [1901, 23465]",
+      "Final repeated occurrence mismatch: expected [57, 23465], got [1901, 23465]"
+    ]
+  },
+  {
+    "task_idx": 10,
+    "bigram": " Galata",
+    "prefix_token_id": 53619,
+    "suffix_token_id": 460,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [53619, 460], got [10845, 460]",
+      "Final repeated occurrence mismatch: expected [53619, 460], got [10845, 460]"
+    ]
+  },
+  {
+    "task_idx": 11,
+    "bigram": " Redigo",
+    "prefix_token_id": 6161,
+    "suffix_token_id": 7992,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [6161, 7992], got [3816, 7992]",
+      "Final repeated occurrence mismatch: expected [6161, 7992], got [3816, 7992]"
+    ]
+  },
+  {
+    "task_idx": 12,
+    "bigram": " Tom Fletcher",
+    "prefix_token_id": 25763,
+    "suffix_token_id": 69168,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [25763, 69168], got [8529, 69168]",
+      "Final repeated occurrence mismatch: expected [25763, 69168], got [8529, 69168]"
+    ]
+  },
+  {
+    "task_idx": 13,
+    "bigram": " Pat Crowley",
+    "prefix_token_id": 28205,
+    "suffix_token_id": 83108,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [28205, 83108], got [7281, 83108]",
+      "Final repeated occurrence mismatch: expected [28205, 83108], got [7281, 83108]"
+    ]
+  },
+  {
+    "task_idx": 14,
+    "bigram": " Honda Insight",
+    "prefix_token_id": 98362,
+    "suffix_token_id": 72071,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [98362, 72071], got [29987, 72071]",
+      "Final repeated occurrence mismatch: expected [98362, 72071], got [29987, 72071]"
+    ]
+  },
+  {
+    "task_idx": 15,
+    "bigram": " Gibraltar",
+    "prefix_token_id": 38,
+    "suffix_token_id": 85896,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [38, 85896], got [99903]",
+      "Final repeated occurrence mismatch: expected [38, 85896], got [99903]"
+    ]
+  },
+  {
+    "task_idx": 16,
+    "bigram": " MSN Music",
+    "prefix_token_id": 80460,
+    "suffix_token_id": 10948,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [80460, 10948], got [10504, 45, 10948]",
+      "Final repeated occurrence mismatch: expected [80460, 10948], got [10504, 45, 10948]"
+    ]
+  },
+  {
+    "task_idx": 17,
+    "bigram": " Patrick Manson",
+    "prefix_token_id": 66320,
+    "suffix_token_id": 99233,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [66320, 99233], got [20199, 99233]",
+      "Final repeated occurrence mismatch: expected [66320, 99233], got [20199, 99233]"
+    ]
+  },
+  {
+    "task_idx": 18,
+    "bigram": " John Queen",
+    "prefix_token_id": 13379,
+    "suffix_token_id": 16657,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [13379, 16657], got [3842, 16657]",
+      "Final repeated occurrence mismatch: expected [13379, 16657], got [3842, 16657]"
+    ]
+  },
+  {
+    "task_idx": 19,
+    "bigram": " Sam Cooke",
+    "prefix_token_id": 24903,
+    "suffix_token_id": 99839,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [24903, 99839], got [8388, 99839]",
+      "Final repeated occurrence mismatch: expected [24903, 99839], got [8388, 99839]"
+    ]
+  },
+  {
+    "task_idx": 20,
+    "bigram": " Bahia",
+    "prefix_token_id": 100022,
+    "suffix_token_id": 689,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [100022, 689], got [32429, 689]",
+      "Final repeated occurrence mismatch: expected [100022, 689], got [32429, 689]"
+    ]
+  },
+  {
+    "task_idx": 21,
+    "bigram": " Oslo",
+    "prefix_token_id": 29967,
+    "suffix_token_id": 385,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [29967, 385], got [58958]",
+      "Final repeated occurrence mismatch: expected [29967, 385], got [58958]"
+    ]
+  },
+  {
+    "task_idx": 22,
+    "bigram": " Silverchair",
+    "prefix_token_id": 53443,
+    "suffix_token_id": 35296,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [53443, 35296], got [15347, 35296]",
+      "Final repeated occurrence mismatch: expected [53443, 35296], got [15347, 35296]"
+    ]
+  },
+  {
+    "task_idx": 23,
+    "bigram": " Tizen",
+    "prefix_token_id": 51,
+    "suffix_token_id": 24604,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [51, 24604], got [350, 24604]",
+      "Final repeated occurrence mismatch: expected [51, 24604], got [350, 24604]"
+    ]
+  },
+  {
+    "task_idx": 24,
+    "bigram": " Daily Planet",
+    "prefix_token_id": 44653,
+    "suffix_token_id": 29935,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [44653, 29935], got [13690, 29935]",
+      "Final repeated occurrence mismatch: expected [44653, 29935], got [13690, 29935]"
+    ]
+  },
+  {
+    "task_idx": 25,
+    "bigram": " VP9",
+    "prefix_token_id": 13683,
+    "suffix_token_id": 24,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [13683, 24], got [37110, 24]",
+      "Final repeated occurrence mismatch: expected [13683, 24], got [37110, 24]"
+    ]
+  },
+  {
+    "task_idx": 26,
+    "bigram": " BBC Knowledge",
+    "prefix_token_id": 67855,
+    "suffix_token_id": 33025,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [67855, 33025], got [18588, 33025]",
+      "Final repeated occurrence mismatch: expected [67855, 33025], got [18588, 33025]"
+    ]
+  },
+  {
+    "task_idx": 27,
+    "bigram": " PAX",
+    "prefix_token_id": 47,
+    "suffix_token_id": 3027,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [47, 3027], got [393, 3027]",
+      "Final repeated occurrence mismatch: expected [47, 3027], got [393, 3027]"
+    ]
+  },
+  {
+    "task_idx": 28,
+    "bigram": " Moscow",
+    "prefix_token_id": 77406,
+    "suffix_token_id": 19457,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [77406, 19457], got [23223]",
+      "Final repeated occurrence mismatch: expected [77406, 19457], got [23223]"
+    ]
+  },
+  {
+    "task_idx": 29,
+    "bigram": " Xerox",
+    "prefix_token_id": 55,
+    "suffix_token_id": 99258,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [55, 99258], got [1630, 99258]",
+      "Final repeated occurrence mismatch: expected [55, 99258], got [1630, 99258]"
+    ]
+  },
+  {
+    "task_idx": 30,
+    "bigram": " Paul Chambers",
+    "prefix_token_id": 26368,
+    "suffix_token_id": 65276,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [26368, 65276], got [7043, 65276]",
+      "Final repeated occurrence mismatch: expected [26368, 65276], got [7043, 65276]"
+    ]
+  },
+  {
+    "task_idx": 31,
+    "bigram": " Ankara",
+    "prefix_token_id": 2127,
+    "suffix_token_id": 107486,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [2127, 107486], got [71344]",
+      "Final repeated occurrence mismatch: expected [2127, 107486], got [71344]"
+    ]
+  },
+  {
+    "task_idx": 32,
+    "bigram": " The Experiment",
+    "prefix_token_id": 791,
+    "suffix_token_id": 47893,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [791, 47893], got [578, 47893]",
+      "Final repeated occurrence mismatch: expected [791, 47893], got [578, 47893]"
+    ]
+  },
+  {
+    "task_idx": 33,
+    "bigram": " Google Drive",
+    "prefix_token_id": 14783,
+    "suffix_token_id": 16542,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [14783, 16542], got [5195, 16542]",
+      "Final repeated occurrence mismatch: expected [14783, 16542], got [5195, 16542]"
+    ]
+  },
+  {
+    "task_idx": 34,
+    "bigram": " An Angle",
+    "prefix_token_id": 2127,
+    "suffix_token_id": 37337,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [2127, 37337], got [1556, 37337]",
+      "Final repeated occurrence mismatch: expected [2127, 37337], got [1556, 37337]"
+    ]
+  },
+  {
+    "task_idx": 35,
+    "bigram": " Olot",
+    "prefix_token_id": 46,
+    "suffix_token_id": 9363,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [46, 9363], got [507, 9363]",
+      "Final repeated occurrence mismatch: expected [46, 9363], got [507, 9363]"
+    ]
+  },
+  {
+    "task_idx": 36,
+    "bigram": " Andorra",
+    "prefix_token_id": 3112,
+    "suffix_token_id": 84138,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [3112, 84138], got [1628, 84138]",
+      "Final repeated occurrence mismatch: expected [3112, 84138], got [1628, 84138]"
+    ]
+  },
+  {
+    "task_idx": 37,
+    "bigram": " Florence",
+    "prefix_token_id": 93387,
+    "suffix_token_id": 16271,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [93387, 16271], got [48606]",
+      "Final repeated occurrence mismatch: expected [93387, 16271], got [48606]"
+    ]
+  },
+  {
+    "task_idx": 38,
+    "bigram": " Apple III",
+    "prefix_token_id": 27665,
+    "suffix_token_id": 14767,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [27665, 14767], got [8325, 14767]",
+      "Final repeated occurrence mismatch: expected [27665, 14767], got [8325, 14767]"
+    ]
+  },
+  {
+    "task_idx": 39,
+    "bigram": " Guam",
+    "prefix_token_id": 17198,
+    "suffix_token_id": 309,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [17198, 309], got [92788]",
+      "Final repeated occurrence mismatch: expected [17198, 309], got [92788]"
+    ]
+  },
+  {
+    "task_idx": 40,
+    "bigram": " Alpha Island",
+    "prefix_token_id": 19947,
+    "suffix_token_id": 10951,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [19947, 10951], got [25737, 10951]",
+      "Final repeated occurrence mismatch: expected [19947, 10951], got [25737, 10951]"
+    ]
+  },
+  {
+    "task_idx": 41,
+    "bigram": " Marcus Harvey",
+    "prefix_token_id": 83634,
+    "suffix_token_id": 34422,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [83634, 34422], got [36783, 34422]",
+      "Final repeated occurrence mismatch: expected [83634, 34422], got [36783, 34422]"
+    ]
+  },
+  {
+    "task_idx": 42,
+    "bigram": " The Register",
+    "prefix_token_id": 791,
+    "suffix_token_id": 8618,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [791, 8618], got [578, 8618]",
+      "Final repeated occurrence mismatch: expected [791, 8618], got [578, 8618]"
+    ]
+  },
+  {
+    "task_idx": 43,
+    "bigram": " Keith Emerson",
+    "prefix_token_id": 91428,
+    "suffix_token_id": 80554,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [91428, 80554], got [32602, 80554]",
+      "Final repeated occurrence mismatch: expected [91428, 80554], got [32602, 80554]"
+    ]
+  },
+  {
+    "task_idx": 44,
+    "bigram": " Skag",
+    "prefix_token_id": 19847,
+    "suffix_token_id": 351,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [19847, 351], got [4923, 351]",
+      "Final repeated occurrence mismatch: expected [19847, 351], got [4923, 351]"
+    ]
+  },
+  {
+    "task_idx": 45,
+    "bigram": " Trinidad",
+    "prefix_token_id": 1305,
+    "suffix_token_id": 69255,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [1305, 69255], got [86230]",
+      "Final repeated occurrence mismatch: expected [1305, 69255], got [86230]"
+    ]
+  },
+  {
+    "task_idx": 46,
+    "bigram": " Bahamas",
+    "prefix_token_id": 100022,
+    "suffix_token_id": 29189,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [100022, 29189], got [84229]",
+      "Final repeated occurrence mismatch: expected [100022, 29189], got [84229]"
+    ]
+  },
+  {
+    "task_idx": 47,
+    "bigram": " Jesus Christ",
+    "prefix_token_id": 55065,
+    "suffix_token_id": 3771,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [55065, 3771], got [10811, 3771]",
+      "Final repeated occurrence mismatch: expected [55065, 3771], got [10811, 3771]"
+    ]
+  },
+  {
+    "task_idx": 48,
+    "bigram": " Final Fantasy",
+    "prefix_token_id": 19918,
+    "suffix_token_id": 27582,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [19918, 27582], got [13321, 27582]",
+      "Final repeated occurrence mismatch: expected [19918, 27582], got [13321, 27582]"
+    ]
+  },
+  {
+    "task_idx": 49,
+    "bigram": " Elsevier",
+    "prefix_token_id": 23829,
+    "suffix_token_id": 47816,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [23829, 47816], got [19334, 47816]",
+      "Final repeated occurrence mismatch: expected [23829, 47816], got [19334, 47816]"
+    ]
+  },
+  {
+    "task_idx": 50,
+    "bigram": " Porto",
+    "prefix_token_id": 7229,
+    "suffix_token_id": 78,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [7229, 78], got [70798]",
+      "Final repeated occurrence mismatch: expected [7229, 78], got [70798]"
+    ]
+  },
+  {
+    "task_idx": 51,
+    "bigram": " Nick Raphael",
+    "prefix_token_id": 31456,
+    "suffix_token_id": 90986,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [31456, 90986], got [15341, 90986]",
+      "Final repeated occurrence mismatch: expected [31456, 90986], got [15341, 90986]"
+    ]
+  },
+  {
+    "task_idx": 52,
+    "bigram": " Mumbai",
+    "prefix_token_id": 44,
+    "suffix_token_id": 30955,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [44, 30955], got [35812]",
+      "Final repeated occurrence mismatch: expected [44, 30955], got [35812]"
+    ]
+  },
+  {
+    "task_idx": 53,
+    "bigram": " Clark Durant",
+    "prefix_token_id": 85917,
+    "suffix_token_id": 67440,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [85917, 67440], got [22010, 67440]",
+      "Final repeated occurrence mismatch: expected [85917, 67440], got [22010, 67440]"
+    ]
+  },
+  {
+    "task_idx": 54,
+    "bigram": " American Dreams",
+    "prefix_token_id": 29518,
+    "suffix_token_id": 53718,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [29518, 53718], got [3778, 53718]",
+      "Final repeated occurrence mismatch: expected [29518, 53718], got [3778, 53718]"
+    ]
+  },
+  {
+    "task_idx": 55,
+    "bigram": " Comhar",
+    "prefix_token_id": 1110,
+    "suffix_token_id": 13279,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [1110, 13279], got [1219, 13279]",
+      "Final repeated occurrence mismatch: expected [1110, 13279], got [1219, 13279]"
+    ]
+  },
+  {
+    "task_idx": 56,
+    "bigram": " Saladin",
+    "prefix_token_id": 17691,
+    "suffix_token_id": 32084,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [17691, 32084], got [8375, 32084]",
+      "Final repeated occurrence mismatch: expected [17691, 32084], got [8375, 32084]"
+    ]
+  },
+  {
+    "task_idx": 57,
+    "bigram": " Crossfire",
+    "prefix_token_id": 29601,
+    "suffix_token_id": 11029,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [29601, 11029], got [11511, 11029]",
+      "Final repeated occurrence mismatch: expected [29601, 11029], got [11511, 11029]"
+    ]
+  },
+  {
+    "task_idx": 58,
+    "bigram": " Vevo",
+    "prefix_token_id": 43712,
+    "suffix_token_id": 3415,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [43712, 3415], got [23404, 3415]",
+      "Final repeated occurrence mismatch: expected [43712, 3415], got [23404, 3415]"
+    ]
+  },
+  {
+    "task_idx": 59,
+    "bigram": " This Providence",
+    "prefix_token_id": 2028,
+    "suffix_token_id": 58941,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [2028, 58941], got [1115, 58941]",
+      "Final repeated occurrence mismatch: expected [2028, 58941], got [1115, 58941]"
+    ]
+  },
+  {
+    "task_idx": 60,
+    "bigram": " Jennifer Hudson",
+    "prefix_token_id": 72526,
+    "suffix_token_id": 39253,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [72526, 39253], got [30750, 39253]",
+      "Final repeated occurrence mismatch: expected [72526, 39253], got [30750, 39253]"
+    ]
+  },
+  {
+    "task_idx": 61,
+    "bigram": " BRIC",
+    "prefix_token_id": 13396,
+    "suffix_token_id": 1341,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [13396, 1341], got [19333, 1341]",
+      "Final repeated occurrence mismatch: expected [13396, 1341], got [19333, 1341]"
+    ]
+  },
+  {
+    "task_idx": 62,
+    "bigram": " Yoro",
+    "prefix_token_id": 56,
+    "suffix_token_id": 18812,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [56, 18812], got [816, 18812]",
+      "Final repeated occurrence mismatch: expected [56, 18812], got [816, 18812]"
+    ]
+  },
+  {
+    "task_idx": 63,
+    "bigram": " Hallaca",
+    "prefix_token_id": 72945,
+    "suffix_token_id": 17544,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [72945, 17544], got [11166, 17544]",
+      "Final repeated occurrence mismatch: expected [72945, 17544], got [11166, 17544]"
+    ]
+  },
+  {
+    "task_idx": 64,
+    "bigram": " Sarah Waters",
+    "prefix_token_id": 54183,
+    "suffix_token_id": 47978,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [54183, 47978], got [21077, 47978]",
+      "Final repeated occurrence mismatch: expected [54183, 47978], got [21077, 47978]"
+    ]
+  },
+  {
+    "task_idx": 65,
+    "bigram": " Max Neal",
+    "prefix_token_id": 6102,
+    "suffix_token_id": 66549,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [6102, 66549], got [7639, 66549]",
+      "Final repeated occurrence mismatch: expected [6102, 66549], got [7639, 66549]"
+    ]
+  },
+  {
+    "task_idx": 66,
+    "bigram": " Edward Yang",
+    "prefix_token_id": 85601,
+    "suffix_token_id": 25482,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [85601, 25482], got [22653, 25482]",
+      "Final repeated occurrence mismatch: expected [85601, 25482], got [22653, 25482]"
+    ]
+  },
+  {
+    "task_idx": 67,
+    "bigram": " LG Chem",
+    "prefix_token_id": 48230,
+    "suffix_token_id": 19531,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [48230, 19531], got [24294, 19531]",
+      "Final repeated occurrence mismatch: expected [48230, 19531], got [24294, 19531]"
+    ]
+  },
+  {
+    "task_idx": 68,
+    "bigram": " True Detective",
+    "prefix_token_id": 2575,
+    "suffix_token_id": 56379,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [2575, 56379], got [3082, 56379]",
+      "Final repeated occurrence mismatch: expected [2575, 56379], got [3082, 56379]"
+    ]
+  },
+  {
+    "task_idx": 69,
+    "bigram": " Union Films",
+    "prefix_token_id": 33758,
+    "suffix_token_id": 46564,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [33758, 46564], got [9323, 46564]",
+      "Final repeated occurrence mismatch: expected [33758, 46564], got [9323, 46564]"
+    ]
+  },
+  {
+    "task_idx": 70,
+    "bigram": " Posio",
+    "prefix_token_id": 4964,
+    "suffix_token_id": 822,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [4964, 822], got [19408, 822]",
+      "Final repeated occurrence mismatch: expected [4964, 822], got [19408, 822]"
+    ]
+  },
+  {
+    "task_idx": 71,
+    "bigram": " Oulu",
+    "prefix_token_id": 46,
+    "suffix_token_id": 25415,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [46, 25415], got [507, 25415]",
+      "Final repeated occurrence mismatch: expected [46, 25415], got [507, 25415]"
+    ]
+  },
+  {
+    "task_idx": 72,
+    "bigram": " Rotterdam",
+    "prefix_token_id": 38036,
+    "suffix_token_id": 51229,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [38036, 51229], got [98877]",
+      "Final repeated occurrence mismatch: expected [38036, 51229], got [98877]"
+    ]
+  },
+  {
+    "task_idx": 73,
+    "bigram": " Alestorm",
+    "prefix_token_id": 84583,
+    "suffix_token_id": 27511,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [84583, 27511], got [19623, 27511]",
+      "Final repeated occurrence mismatch: expected [84583, 27511], got [19623, 27511]"
+    ]
+  },
+  {
+    "task_idx": 74,
+    "bigram": " Jessica Jones",
+    "prefix_token_id": 80090,
+    "suffix_token_id": 12201,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [80090, 12201], got [33467, 12201]",
+      "Final repeated occurrence mismatch: expected [80090, 12201], got [33467, 12201]"
+    ]
+  },
+  {
+    "task_idx": 75,
+    "bigram": " Underdog",
+    "prefix_token_id": 16648,
+    "suffix_token_id": 18964,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [16648, 18964], got [9636, 18964]",
+      "Final repeated occurrence mismatch: expected [16648, 18964], got [9636, 18964]"
+    ]
+  },
+  {
+    "task_idx": 76,
+    "bigram": " Shanghai",
+    "prefix_token_id": 2059,
+    "suffix_token_id": 31170,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [2059, 31170], got [38147]",
+      "Final repeated occurrence mismatch: expected [2059, 31170], got [38147]"
+    ]
+  },
+  {
+    "task_idx": 77,
+    "bigram": " Material World",
+    "prefix_token_id": 13721,
+    "suffix_token_id": 4435,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [13721, 4435], got [10441, 4435]",
+      "Final repeated occurrence mismatch: expected [13721, 4435], got [10441, 4435]"
+    ]
+  },
+  {
+    "task_idx": 78,
+    "bigram": " Stockholm",
+    "prefix_token_id": 19931,
+    "suffix_token_id": 34605,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [19931, 34605], got [53182]",
+      "Final repeated occurrence mismatch: expected [19931, 34605], got [53182]"
+    ]
+  },
+  {
+    "task_idx": 79,
+    "bigram": " Canada Live",
+    "prefix_token_id": 37031,
+    "suffix_token_id": 11406,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [37031, 11406], got [7008, 11406]",
+      "Final repeated occurrence mismatch: expected [37031, 11406], got [7008, 11406]"
+    ]
+  },
+  {
+    "task_idx": 80,
+    "bigram": " INXS",
+    "prefix_token_id": 691,
+    "suffix_token_id": 50598,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [691, 50598], got [2006, 50598]",
+      "Final repeated occurrence mismatch: expected [691, 50598], got [2006, 50598]"
+    ]
+  },
+  {
+    "task_idx": 81,
+    "bigram": " Calw",
+    "prefix_token_id": 9027,
+    "suffix_token_id": 86,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [9027, 86], got [3400, 86]",
+      "Final repeated occurrence mismatch: expected [9027, 86], got [3400, 86]"
+    ]
+  },
+  {
+    "task_idx": 82,
+    "bigram": " Enchin",
+    "prefix_token_id": 1737,
+    "suffix_token_id": 60171,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [1737, 60171], got [2998, 60171]",
+      "Final repeated occurrence mismatch: expected [1737, 60171], got [2998, 60171]"
+    ]
+  },
+  {
+    "task_idx": 83,
+    "bigram": " European Union",
+    "prefix_token_id": 64469,
+    "suffix_token_id": 9323,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [64469, 9323], got [7665, 9323]",
+      "Final repeated occurrence mismatch: expected [64469, 9323], got [7665, 9323]"
+    ]
+  },
+  {
+    "task_idx": 84,
+    "bigram": " Concrete Sox",
+    "prefix_token_id": 84694,
+    "suffix_token_id": 39645,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [84694, 39645], got [37632, 39645]",
+      "Final repeated occurrence mismatch: expected [84694, 39645], got [37632, 39645]"
+    ]
+  },
+  {
+    "task_idx": 85,
+    "bigram": " Istanbul",
+    "prefix_token_id": 40,
+    "suffix_token_id": 46216,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [40, 46216], got [54468]",
+      "Final repeated occurrence mismatch: expected [40, 46216], got [54468]"
+    ]
+  },
+  {
+    "task_idx": 86,
+    "bigram": " Kiev",
+    "prefix_token_id": 42,
+    "suffix_token_id": 44191,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [42, 44191], got [62725]",
+      "Final repeated occurrence mismatch: expected [42, 44191], got [62725]"
+    ]
+  },
+  {
+    "task_idx": 87,
+    "bigram": " Hot Chip",
+    "prefix_token_id": 20780,
+    "suffix_token_id": 32013,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [20780, 32013], got [8166, 32013]",
+      "Final repeated occurrence mismatch: expected [20780, 32013], got [8166, 32013]"
+    ]
+  },
+  {
+    "task_idx": 88,
+    "bigram": " Robert Raymond",
+    "prefix_token_id": 35632,
+    "suffix_token_id": 43670,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [35632, 43670], got [8563, 43670]",
+      "Final repeated occurrence mismatch: expected [35632, 43670], got [8563, 43670]"
+    ]
+  },
+  {
+    "task_idx": 89,
+    "bigram": " Tom Harmon",
+    "prefix_token_id": 25763,
+    "suffix_token_id": 40759,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [25763, 40759], got [8529, 40759]",
+      "Final repeated occurrence mismatch: expected [25763, 40759], got [8529, 40759]"
+    ]
+  },
+  {
+    "task_idx": 90,
+    "bigram": " Peab",
+    "prefix_token_id": 10407,
+    "suffix_token_id": 370,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [10407, 370], got [5250, 370]",
+      "Final repeated occurrence mismatch: expected [10407, 370], got [5250, 370]"
+    ]
+  },
+  {
+    "task_idx": 91,
+    "bigram": " Stacked",
+    "prefix_token_id": 4434,
+    "suffix_token_id": 291,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [4434, 291], got [800, 11440]",
+      "Final repeated occurrence mismatch: expected [4434, 291], got [800, 11440]"
+    ]
+  },
+  {
+    "task_idx": 92,
+    "bigram": " Andrew Carnegie",
+    "prefix_token_id": 41598,
+    "suffix_token_id": 64373,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [41598, 64373], got [13929, 64373]",
+      "Final repeated occurrence mismatch: expected [41598, 64373], got [13929, 64373]"
+    ]
+  },
+  {
+    "task_idx": 93,
+    "bigram": " Niger",
+    "prefix_token_id": 45,
+    "suffix_token_id": 7420,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [45, 7420], got [20992]",
+      "Final repeated occurrence mismatch: expected [45, 7420], got [20992]"
+    ]
+  },
+  {
+    "task_idx": 94,
+    "bigram": " Le Bureau",
+    "prefix_token_id": 2356,
+    "suffix_token_id": 22555,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [2356, 22555], got [2009, 22555]",
+      "Final repeated occurrence mismatch: expected [2356, 22555], got [2009, 22555]"
+    ]
+  },
+  {
+    "task_idx": 95,
+    "bigram": " Saint David",
+    "prefix_token_id": 57475,
+    "suffix_token_id": 6941,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [57475, 6941], got [14539, 6941]",
+      "Final repeated occurrence mismatch: expected [57475, 6941], got [14539, 6941]"
+    ]
+  },
+  {
+    "task_idx": 96,
+    "bigram": " Wildscreen",
+    "prefix_token_id": 41703,
+    "suffix_token_id": 8337,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [41703, 8337], got [13944, 8337]",
+      "Final repeated occurrence mismatch: expected [41703, 8337], got [13944, 8337]"
+    ]
+  },
+  {
+    "task_idx": 97,
+    "bigram": " Gary Carter",
+    "prefix_token_id": 74067,
+    "suffix_token_id": 25581,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [74067, 25581], got [24765, 25581]",
+      "Final repeated occurrence mismatch: expected [74067, 25581], got [24765, 25581]"
+    ]
+  },
+  {
+    "task_idx": 98,
+    "bigram": " David Tree",
+    "prefix_token_id": 23083,
+    "suffix_token_id": 9119,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [23083, 9119], got [6941, 9119]",
+      "Final repeated occurrence mismatch: expected [23083, 9119], got [6941, 9119]"
+    ]
+  },
+  {
+    "task_idx": 99,
+    "bigram": " Miller Range",
+    "prefix_token_id": 89437,
+    "suffix_token_id": 16842,
+    "errors": [
+      "Standalone bigram tokenization mismatch: expected [89437, 16842], got [17472, 16842]",
+      "Final repeated occurrence mismatch: expected [89437, 16842], got [17472, 16842]"
+    ]
+  }
+]
