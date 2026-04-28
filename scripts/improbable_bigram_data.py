@@ -62,6 +62,7 @@ class PromptLayout:
     input_ids_xn: list[int]
     input_ids_p1: list[int]
     p2_prev_idx: int
+    p2_context_indices: list[int]
     x_n_idx: int
     p1_idx: int
     final_prev_span_start: int
@@ -153,8 +154,14 @@ def build_prompt_layout(task: BigramTask, tok) -> tuple[PromptLayout | None, lis
             f"expected prefix/suffix counts to both be {EXPECTED_BIGRAM_OCCURRENCES}, "
             f"got prefix_count={prefix_count}, suffix_count={suffix_count}"
         )
-    # Check the final occurrence of the bigram in the prompt
-    # Which should be immediately before x_n and thus p2's previous token (p2_prev).
+    p2_context_indices = [
+        idx
+        for idx, token_id in enumerate(input_ids_xn)
+        if token_id == task.suffix_token_id
+    ]
+
+    # Check the final occurrence of the bigram in the prompt,
+    # which should be immediately before x_n.
     final_prev_start_char = sum(len(line) for line in lines[:-1])
     final_prev_end_char = final_prev_start_char + len(task.decoded)
     span_start, span_end = _prefix_token_span(
@@ -172,6 +179,11 @@ def build_prompt_layout(task: BigramTask, tok) -> tuple[PromptLayout | None, lis
         errors.append(
             f"Expected final repeated occurrence to end immediately before x_n; "
             f"got span_end={span_end}, x_n_idx={x_n_idx}"
+        )
+    if not p2_context_indices or p2_context_indices[-1] != span_end - 1:
+        errors.append(
+            "Expected the final previous-context p2 token to be the suffix token "
+            f"at index {span_end - 1}; got p2_context_indices={p2_context_indices}"
         )
 
     if input_ids_p1[-1] != task.prefix_token_id:
@@ -194,6 +206,7 @@ def build_prompt_layout(task: BigramTask, tok) -> tuple[PromptLayout | None, lis
             input_ids_xn=input_ids_xn,
             input_ids_p1=input_ids_p1,
             p2_prev_idx=span_end - 1,
+            p2_context_indices=p2_context_indices,
             x_n_idx=x_n_idx,
             p1_idx=len(input_ids_p1) - 1,
             final_prev_span_start=span_start,

@@ -52,6 +52,34 @@ def value_weight_row(attn_row: torch.Tensor, value_norms: torch.Tensor):
     return weighted / denom
 
 
+def get_p2_context_indices(meta: dict) -> list[int]:
+    positions = meta.get("positions", {})
+    if "p2_context" in positions:
+        return [int(idx) for idx in positions["p2_context"]]
+
+    suffix_token_id = int(meta["suffix_token_id"])
+    p1_idx = int(positions.get("p1", len(meta.get("input_ids_p1", [])) - 1))
+    input_ids_p1 = meta.get("input_ids_p1")
+    if input_ids_p1:
+        previous_context = input_ids_p1[:p1_idx]
+    else:
+        previous_context = meta["input_ids_xn"]
+
+    indices = [
+        idx
+        for idx, token_id in enumerate(previous_context)
+        if int(token_id) == suffix_token_id
+    ]
+    if indices:
+        return indices
+
+    if "p2_prev" in positions:
+        return [int(positions["p2_prev"])]
+    raise ValueError(
+        f"Could not identify previous-context p2 positions for task {meta.get('task_idx')}."
+    )
+
+
 def flatten_head_scores(score_tensor: torch.Tensor, metric_name: str):
     n_layers, n_heads = score_tensor.shape
     rows = []
@@ -106,6 +134,7 @@ def main(args):
         xn_state = torch.load(example_dir / "xn_state.pt", map_location="cpu")
         p1_state = torch.load(example_dir / "p1_state.pt", map_location="cpu")
         p2_prev_idx = int(meta["positions"]["p2_prev"])
+        p2_context_indices = torch.tensor(get_p2_context_indices(meta), dtype=torch.long)
 
         xn_row_raw = xn_state["attn_row_raw"]
         p1_row_raw = p1_state["attn_row_raw"]
@@ -113,9 +142,9 @@ def main(args):
         p1_row_weighted = value_weight_row(p1_row_raw, p1_state["value_norms"])
 
         ltm_raw.append(xn_row_raw[:, :, p2_prev_idx])
-        ntm_raw.append(p1_row_raw[:, :, p2_prev_idx])
+        ntm_raw.append(p1_row_raw[:, :, p2_context_indices].sum(dim=-1))
         ltm_weighted.append(xn_row_weighted[:, :, p2_prev_idx])
-        ntm_weighted.append(p1_row_weighted[:, :, p2_prev_idx])
+        ntm_weighted.append(p1_row_weighted[:, :, p2_context_indices].sum(dim=-1))
         per_example_meta.append(
             {
                 "task_idx": meta["task_idx"],
@@ -124,6 +153,7 @@ def main(args):
                 "second_token_hallucination": meta["flags"][
                     "second_token_hallucination"
                 ],
+                "p2_context_indices": [int(idx) for idx in p2_context_indices.tolist()],
             }
         )
 
@@ -159,6 +189,7 @@ def main(args):
     summary = {
         "subset": args.subset,
         "n_examples": len(entries),
+        "ntm_definition": "sum of attention to all previous-context p2 positions",
         "per_example_path": str((out_dir / f"per_example_{args.subset}.pt").resolve()),
         "per_head_path": str((out_dir / f"per_head_{args.subset}.json").resolve()),
     }

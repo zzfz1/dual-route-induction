@@ -296,6 +296,7 @@ def main(args):
             "input_ids_p1": layout.input_ids_p1,
             "positions": {
                 "p2_prev": layout.p2_prev_idx,
+                "p2_context": layout.p2_context_indices,
                 "x_n": layout.x_n_idx,
                 "p1": layout.p1_idx,
             },
