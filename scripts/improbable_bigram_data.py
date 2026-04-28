@@ -5,31 +5,40 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_TASKS_PATH = (
-    PROJECT_ROOT / "improbable-bigram-causality" / "data" / "llama3.1_tasks.json"
+DUAL_ROUTE_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = DUAL_ROUTE_ROOT.parent
+
+
+def _first_existing_path(*paths: Path) -> Path:
+    for path in paths:
+        if path.exists():
+            return path
+    return paths[0]
+
+
+DEFAULT_TASKS_PATH = _first_existing_path(
+    PROJECT_ROOT / "data" / "llama3.1_tasks.json",
+    PROJECT_ROOT / "improbable-bigram-causality" / "data" / "llama3.1_tasks.json",
 )
-DEFAULT_GENERATIONS_PATH = (
+DEFAULT_GENERATIONS_PATH = _first_existing_path(
+    PROJECT_ROOT / "data" / "llama3.1_base_generations.csv",
     PROJECT_ROOT
     / "improbable-bigram-causality"
     / "data"
-    / "llama3.1_base_generations.csv"
+    / "llama3.1_base_generations.csv",
 )
 DEFAULT_TRACE_ROOT = (
-    PROJECT_ROOT
-    / "dual-route-induction"
+    DUAL_ROUTE_ROOT
     / "cache"
     / "improbable_bigrams"
     / "Llama-3.1-8B"
     / "table1_literal"
 )
 DEFAULT_RANDOM_TASKS_PATH = (
-    PROJECT_ROOT
-    / "dual-route-induction"
-    / "data"
-    / "llama3.1_random_two_token_tasks.json"
+    DUAL_ROUTE_ROOT / "data" / "llama3.1_random_two_token_tasks.json"
 )
 PROMPT_STYLE = "table1_literal"
+EXPECTED_BIGRAM_OCCURRENCES = 9
 
 
 @dataclass(frozen=True)
@@ -38,6 +47,7 @@ class BigramTask:
     decoded: str
     prefix_token_id: int
     suffix_token_id: int
+    quote_string: str
 
 
 @dataclass(frozen=True)
@@ -46,6 +56,7 @@ class PromptLayout:
     bigram: str
     prefix_token_id: int
     suffix_token_id: int
+    quote_string: str
     prompt_style: str
     prompt_text: str
     input_ids_xn: list[int]
@@ -60,13 +71,14 @@ class PromptLayout:
         return asdict(self)
 
 
-def build_table1_prompt_lines(bigram: str) -> list[str]:
+def build_table1_prompt_lines(bigram: str, quote_string: str = "") -> list[str]:
+    quoted_bigram = f"{quote_string}{bigram}{quote_string}"
     return [
-        f"I will repeat the phrase {bigram} three times\n",
+        f"I will repeat the phrase {quoted_bigram} three times\n",
         f"{bigram}\n",
         f"{bigram}\n",
         f"{bigram}\n",
-        f"I will repeat the phrase {bigram} five times\n",
+        f"I will repeat the phrase {quoted_bigram} five times\n",
         f"{bigram}\n",
         f"{bigram}\n",
         f"{bigram}\n",
@@ -74,8 +86,8 @@ def build_table1_prompt_lines(bigram: str) -> list[str]:
     ]
 
 
-def build_table1_prompt(bigram: str) -> str:
-    return "".join(build_table1_prompt_lines(bigram))
+def build_table1_prompt(bigram: str, quote_string: str = "") -> str:
+    return "".join(build_table1_prompt_lines(bigram, quote_string))
 
 
 def load_bigram_tasks(tasks_path: Path | str = DEFAULT_TASKS_PATH) -> list[BigramTask]:
@@ -85,12 +97,20 @@ def load_bigram_tasks(tasks_path: Path | str = DEFAULT_TASKS_PATH) -> list[Bigra
 
     tasks = []
     for idx, raw in enumerate(raw_tasks):
+        quote_string = raw.get("quote_string", "")
+        if quote_string is False:
+            continue
+        if not isinstance(quote_string, str):
+            raise ValueError(
+                f"Task {idx} has unsupported quote_string={quote_string!r}."
+            )
         tasks.append(
             BigramTask(
                 task_idx=idx,
                 decoded=raw["decoded"],
                 prefix_token_id=int(raw["prefix_i"]),
                 suffix_token_id=int(raw["suffix_i"]),
+                quote_string=quote_string,
             )
         )
     return tasks
@@ -109,7 +129,7 @@ def build_prompt_layout(task: BigramTask, tok) -> tuple[PromptLayout | None, lis
     Build a prompt layout for a given bigram task.
     This includes constructing the prompt text, tokenizing it, and verifying that the bigram tokens appear in the expected locations.
     """
-    lines = build_table1_prompt_lines(task.decoded)
+    lines = build_table1_prompt_lines(task.decoded, task.quote_string)
     prompt_text = "".join(lines)
     input_ids_xn = tok(prompt_text, bos=True)
     input_ids_p1 = input_ids_xn + [task.prefix_token_id]
@@ -120,6 +140,18 @@ def build_prompt_layout(task: BigramTask, tok) -> tuple[PromptLayout | None, lis
     if bigram_tokens != expected:
         errors.append(
             f"Standalone bigram tokenization mismatch: expected {expected}, got {bigram_tokens}"
+        )
+
+    prefix_count = input_ids_xn.count(task.prefix_token_id)
+    suffix_count = input_ids_xn.count(task.suffix_token_id)
+    if (
+        prefix_count != EXPECTED_BIGRAM_OCCURRENCES
+        or suffix_count != EXPECTED_BIGRAM_OCCURRENCES
+    ):
+        errors.append(
+            "Prompt token count mismatch: "
+            f"expected prefix/suffix counts to both be {EXPECTED_BIGRAM_OCCURRENCES}, "
+            f"got prefix_count={prefix_count}, suffix_count={suffix_count}"
         )
     # Check the final occurrence of the bigram in the prompt
     # Which should be immediately before x_n and thus p2's previous token (p2_prev).
@@ -156,6 +188,7 @@ def build_prompt_layout(task: BigramTask, tok) -> tuple[PromptLayout | None, lis
             bigram=task.decoded,
             prefix_token_id=task.prefix_token_id,
             suffix_token_id=task.suffix_token_id,
+            quote_string=task.quote_string,
             prompt_style=PROMPT_STYLE,
             prompt_text=prompt_text,
             input_ids_xn=input_ids_xn,
@@ -182,6 +215,7 @@ def validate_prompt_layouts(tasks, tok):
                     "bigram": task.decoded,
                     "prefix_token_id": task.prefix_token_id,
                     "suffix_token_id": task.suffix_token_id,
+                    "quote_string": task.quote_string,
                     "errors": errors,
                 }
             )

@@ -287,6 +287,7 @@ def main(args):
         meta = {
             "task_idx": layout.task_idx,
             "bigram": layout.bigram,
+            "quote_string": layout.quote_string,
             "prompt_style": layout.prompt_style,
             "prompt_text": layout.prompt_text,
             "prefix_token_id": layout.prefix_token_id,
