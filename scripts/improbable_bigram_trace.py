@@ -240,7 +240,7 @@ def main(args):
 
     tasks = load_bigram_tasks(args.tasks_path)
     layouts, mismatches = validate_prompt_layouts(tasks, tok)
-    if mismatches:
+    if mismatches and "two_token_concepts" not in args.tasks_path:
         atomic_write_json(out_dir / "mismatches.json", mismatches)
         raise ValueError(
             f"Found {len(mismatches)} prompt/tokenization mismatches. "

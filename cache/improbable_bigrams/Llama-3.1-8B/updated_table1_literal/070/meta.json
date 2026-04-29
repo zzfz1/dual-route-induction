@@ -1,8 +1,9 @@
 {
   "task_idx": 70,
   "bigram": " 能",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  能 three times\n 能\n 能\n 能\nI will repeat the phrase  能 five times\n 能\n 能\n 能\n 能\n",
+  "prompt_text": "I will repeat the phrase \" 能\" three times\n 能\n 能\n 能\nI will repeat the phrase \" 能\" five times\n 能\n 能\n 能\n 能\n",
   "prefix_token_id": 53233,
   "suffix_token_id": 97908,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     53233,
     97908,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     53233,
     97908,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     53233,
     97908,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     53233,
     97908,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     53233
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 53233,
-    "target_logit": 18.0,
-    "target_prob": 0.9022656083106995,
+    "target_logit": 18.25,
+    "target_prob": 0.9089069962501526,
     "predicted_token_id": 53233,
-    "predicted_logit": 18.0,
-    "predicted_prob": 0.9022656083106995
+    "predicted_logit": 18.25,
+    "predicted_prob": 0.9089069962501526
   },
   "p2": {
     "target_token_id": 97908,
-    "target_logit": 19.375,
-    "target_prob": 0.02586602047085762,
+    "target_logit": 20.375,
+    "target_prob": 0.07515201717615128,
     "predicted_token_id": 95,
     "predicted_logit": 20.875,
-    "predicted_prob": 0.1159234568476677
+    "predicted_prob": 0.12390472739934921
   },
   "flags": {
     "p1_correct": true,

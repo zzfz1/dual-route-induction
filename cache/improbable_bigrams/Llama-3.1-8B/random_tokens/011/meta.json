@@ -1,8 +1,9 @@
 {
   "task_idx": 11,
   "bigram": "self rode",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase self rode three times\nself rode\nself rode\nself rode\nI will repeat the phrase self rode five times\nself rode\nself rode\nself rode\nself rode\n",
+  "prompt_text": "I will repeat the phrase \"self rode\" three times\nself rode\nself rode\nself rode\nI will repeat the phrase \"self rode\" five times\nself rode\nself rode\nself rode\nself rode\n",
   "prefix_token_id": 726,
   "suffix_token_id": 41761,
   "input_ids_xn": [
@@ -12,8 +13,10 @@
     13454,
     279,
     17571,
-    659,
+    330,
+    726,
     41761,
+    1,
     2380,
     3115,
     198,
@@ -31,8 +34,10 @@
     13454,
     279,
     17571,
-    659,
+    330,
+    726,
     41761,
+    1,
     4330,
     3115,
     198,
@@ -56,8 +61,10 @@
     13454,
     279,
     17571,
-    659,
+    330,
+    726,
     41761,
+    1,
     2380,
     3115,
     198,
@@ -75,8 +82,10 @@
     13454,
     279,
     17571,
-    659,
+    330,
+    726,
     41761,
+    1,
     4330,
     3115,
     198,
@@ -95,25 +104,36 @@
     726
   ],
   "positions": {
-    "p2_prev": 40,
-    "x_n": 41,
-    "p1": 42
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 726,
-    "target_logit": 18.625,
-    "target_prob": 0.8685213923454285,
+    "target_logit": 18.25,
+    "target_prob": 0.8591413497924805,
     "predicted_token_id": 726,
-    "predicted_logit": 18.625,
-    "predicted_prob": 0.8685213923454285
+    "predicted_logit": 18.25,
+    "predicted_prob": 0.8591413497924805
   },
   "p2": {
     "target_token_id": 41761,
-    "target_logit": 23.875,
-    "target_prob": 0.9982203841209412,
+    "target_logit": 24.5,
+    "target_prob": 0.9986186027526855,
     "predicted_token_id": 41761,
-    "predicted_logit": 23.875,
-    "predicted_prob": 0.9982203841209412
+    "predicted_logit": 24.5,
+    "predicted_prob": 0.9986186027526855
   },
   "flags": {
     "p1_correct": true,

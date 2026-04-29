@@ -1,8 +1,9 @@
 {
   "task_idx": 89,
   "bigram": " 菫자",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  菫자 three times\n 菫자\n 菫자\n 菫자\nI will repeat the phrase  菫자 five times\n 菫자\n 菫자\n 菫자\n 菫자\n",
+  "prompt_text": "I will repeat the phrase \" 菫자\" three times\n 菫자\n 菫자\n 菫자\nI will repeat the phrase \" 菫자\" five times\n 菫자\n 菫자\n 菫자\n 菫자\n",
   "prefix_token_id": 107893,
   "suffix_token_id": 93287,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     107893,
     93287,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     107893,
     93287,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     107893,
     93287,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     107893,
     93287,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     107893
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 107893,
     "target_logit": 16.875,
-    "target_prob": 0.7025442123413086,
+    "target_prob": 0.7107649445533752,
     "predicted_token_id": 107893,
     "predicted_logit": 16.875,
-    "predicted_prob": 0.7025442123413086
+    "predicted_prob": 0.7107649445533752
   },
   "p2": {
     "target_token_id": 93287,
-    "target_logit": 24.25,
-    "target_prob": 0.9513452053070068,
+    "target_logit": 24.5,
+    "target_prob": 0.9615064263343811,
     "predicted_token_id": 93287,
-    "predicted_logit": 24.25,
-    "predicted_prob": 0.9513452053070068
+    "predicted_logit": 24.5,
+    "predicted_prob": 0.9615064263343811
   },
   "flags": {
     "p1_correct": true,

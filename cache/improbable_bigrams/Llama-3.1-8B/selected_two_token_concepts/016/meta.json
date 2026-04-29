@@ -1,8 +1,9 @@
 {
   "task_idx": 16,
   "bigram": " charles",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  charles three times\n charles\n charles\n charles\nI will repeat the phrase  charles five times\n charles\n charles\n charles\n charles\n",
+  "prompt_text": "I will repeat the phrase \" charles\" three times\n charles\n charles\n charles\nI will repeat the phrase \" charles\" five times\n charles\n charles\n charles\n charles\n",
   "prefix_token_id": 1181,
   "suffix_token_id": 645,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     1181,
     645,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     1181,
     645,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     1181,
     645,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     1181,
     645,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     1181
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 1181,
     "target_logit": 19.875,
-    "target_prob": 0.9427713751792908,
+    "target_prob": 0.9281327128410339,
     "predicted_token_id": 1181,
     "predicted_logit": 19.875,
-    "predicted_prob": 0.9427713751792908
+    "predicted_prob": 0.9281327128410339
   },
   "p2": {
     "target_token_id": 645,
-    "target_logit": 26.375,
-    "target_prob": 0.999419093132019,
+    "target_logit": 28.5,
+    "target_prob": 0.9994681477546692,
     "predicted_token_id": 645,
-    "predicted_logit": 26.375,
-    "predicted_prob": 0.999419093132019
+    "predicted_logit": 28.5,
+    "predicted_prob": 0.9994681477546692
   },
   "flags": {
     "p1_correct": true,

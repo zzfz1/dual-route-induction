@@ -1,8 +1,9 @@
 {
   "task_idx": 9,
   "bigram": " mrs",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  mrs three times\n mrs\n mrs\n mrs\nI will repeat the phrase  mrs five times\n mrs\n mrs\n mrs\n mrs\n",
+  "prompt_text": "I will repeat the phrase \" mrs\" three times\n mrs\n mrs\n mrs\nI will repeat the phrase \" mrs\" five times\n mrs\n mrs\n mrs\n mrs\n",
   "prefix_token_id": 296,
   "suffix_token_id": 5544,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     296,
     5544,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     296,
     5544,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     296,
     5544,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     296,
     5544,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     296
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 296,
-    "target_logit": 20.625,
-    "target_prob": 0.9602506160736084,
+    "target_logit": 21.0,
+    "target_prob": 0.96440589427948,
     "predicted_token_id": 296,
-    "predicted_logit": 20.625,
-    "predicted_prob": 0.9602506160736084
+    "predicted_logit": 21.0,
+    "predicted_prob": 0.96440589427948
   },
   "p2": {
     "target_token_id": 5544,
-    "target_logit": 28.125,
-    "target_prob": 0.999957799911499,
+    "target_logit": 27.5,
+    "target_prob": 0.9999294281005859,
     "predicted_token_id": 5544,
-    "predicted_logit": 28.125,
-    "predicted_prob": 0.999957799911499
+    "predicted_logit": 27.5,
+    "predicted_prob": 0.9999294281005859
   },
   "flags": {
     "p1_correct": true,

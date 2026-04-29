@@ -1,8 +1,9 @@
 {
   "task_idx": 87,
   "bigram": "餱от",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase 餱от three times\n餱от\n餱от\n餱от\nI will repeat the phrase 餱от five times\n餱от\n餱от\n餱от\n餱от\n",
+  "prompt_text": "I will repeat the phrase \"餱от\" three times\n餱от\n餱от\n餱от\nI will repeat the phrase \"餱от\" five times\n餱от\n餱от\n餱от\n餱от\n",
   "prefix_token_id": 101960,
   "suffix_token_id": 36820,
   "input_ids_xn": [
@@ -12,8 +13,10 @@
     13454,
     279,
     17571,
-    127451,
+    330,
+    101960,
     36820,
+    1,
     2380,
     3115,
     198,
@@ -31,8 +34,10 @@
     13454,
     279,
     17571,
-    127451,
+    330,
+    101960,
     36820,
+    1,
     4330,
     3115,
     198,
@@ -56,8 +61,10 @@
     13454,
     279,
     17571,
-    127451,
+    330,
+    101960,
     36820,
+    1,
     2380,
     3115,
     198,
@@ -75,8 +82,10 @@
     13454,
     279,
     17571,
-    127451,
+    330,
+    101960,
     36820,
+    1,
     4330,
     3115,
     198,
@@ -95,25 +104,36 @@
     101960
   ],
   "positions": {
-    "p2_prev": 40,
-    "x_n": 41,
-    "p1": 42
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 101960,
-    "target_logit": 17.75,
-    "target_prob": 0.785706102848053,
+    "target_logit": 17.875,
+    "target_prob": 0.7479546070098877,
     "predicted_token_id": 101960,
-    "predicted_logit": 17.75,
-    "predicted_prob": 0.785706102848053
+    "predicted_logit": 17.875,
+    "predicted_prob": 0.7479546070098877
   },
   "p2": {
     "target_token_id": 36820,
-    "target_logit": 22.375,
-    "target_prob": 0.8007920384407043,
+    "target_logit": 22.25,
+    "target_prob": 0.8256264328956604,
     "predicted_token_id": 36820,
-    "predicted_logit": 22.375,
-    "predicted_prob": 0.8007920384407043
+    "predicted_logit": 22.25,
+    "predicted_prob": 0.8256264328956604
   },
   "flags": {
     "p1_correct": true,

@@ -1,8 +1,9 @@
 {
   "task_idx": 39,
   "bigram": " 묟能",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  묟能 three times\n 묟能\n 묟能\n 묟能\nI will repeat the phrase  묟能 five times\n 묟能\n 묟能\n 묟能\n 묟能\n",
+  "prompt_text": "I will repeat the phrase \" 묟能\" three times\n 묟能\n 묟能\n 묟能\nI will repeat the phrase \" 묟能\" five times\n 묟能\n 묟能\n 묟能\n 묟能\n",
   "prefix_token_id": 100570,
   "suffix_token_id": 97908,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     100570,
     97908,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     100570,
     97908,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     100570,
     97908,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     100570,
     97908,
+    1,
     4330,
     3115,
     198,
@@ -99,30 +104,41 @@
     100570
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 100570,
     "target_logit": 17.0,
-    "target_prob": 0.8763656616210938,
+    "target_prob": 0.8687819242477417,
     "predicted_token_id": 100570,
     "predicted_logit": 17.0,
-    "predicted_prob": 0.8763656616210938
+    "predicted_prob": 0.8687819242477417
   },
   "p2": {
     "target_token_id": 97908,
-    "target_logit": 18.625,
-    "target_prob": 0.1284489929676056,
-    "predicted_token_id": 67119,
-    "predicted_logit": 20.0,
-    "predicted_prob": 0.5080256462097168
+    "target_logit": 20.875,
+    "target_prob": 0.42412251234054565,
+    "predicted_token_id": 97908,
+    "predicted_logit": 20.875,
+    "predicted_prob": 0.42412251234054565
   },
   "flags": {
     "p1_correct": true,
-    "p2_correct": false,
-    "copy_success": false,
-    "second_token_hallucination": true
+    "p2_correct": true,
+    "copy_success": true,
+    "second_token_hallucination": false
   }
 }

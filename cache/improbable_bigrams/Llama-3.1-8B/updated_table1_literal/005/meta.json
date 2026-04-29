@@ -1,8 +1,9 @@
 {
   "task_idx": 5,
   "bigram": "椱от",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase 椱от three times\n椱от\n椱от\n椱от\nI will repeat the phrase 椱от five times\n椱от\n椱от\n椱от\n椱от\n",
+  "prompt_text": "I will repeat the phrase \"椱от\" three times\n椱от\n椱от\n椱от\nI will repeat the phrase \"椱от\" five times\n椱от\n椱от\n椱от\n椱от\n",
   "prefix_token_id": 103433,
   "suffix_token_id": 36820,
   "input_ids_xn": [
@@ -12,8 +13,10 @@
     13454,
     279,
     17571,
-    124928,
+    330,
+    103433,
     36820,
+    1,
     2380,
     3115,
     198,
@@ -31,8 +34,10 @@
     13454,
     279,
     17571,
-    124928,
+    330,
+    103433,
     36820,
+    1,
     4330,
     3115,
     198,
@@ -56,8 +61,10 @@
     13454,
     279,
     17571,
-    124928,
+    330,
+    103433,
     36820,
+    1,
     2380,
     3115,
     198,
@@ -75,8 +82,10 @@
     13454,
     279,
     17571,
-    124928,
+    330,
+    103433,
     36820,
+    1,
     4330,
     3115,
     198,
@@ -95,25 +104,36 @@
     103433
   ],
   "positions": {
-    "p2_prev": 40,
-    "x_n": 41,
-    "p1": 42
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 103433,
     "target_logit": 18.375,
-    "target_prob": 0.8394747972488403,
+    "target_prob": 0.8405117988586426,
     "predicted_token_id": 103433,
     "predicted_logit": 18.375,
-    "predicted_prob": 0.8394747972488403
+    "predicted_prob": 0.8405117988586426
   },
   "p2": {
     "target_token_id": 36820,
-    "target_logit": 22.0,
-    "target_prob": 0.865507185459137,
+    "target_logit": 21.5,
+    "target_prob": 0.8592258095741272,
     "predicted_token_id": 36820,
-    "predicted_logit": 22.0,
-    "predicted_prob": 0.865507185459137
+    "predicted_logit": 21.5,
+    "predicted_prob": 0.8592258095741272
   },
   "flags": {
     "p1_correct": true,

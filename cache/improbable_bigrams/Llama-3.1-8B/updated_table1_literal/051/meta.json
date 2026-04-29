@@ -1,8 +1,9 @@
 {
   "task_idx": 51,
   "bigram": "ミ能",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase ミ能 three times\nミ能\nミ能\nミ能\nI will repeat the phrase ミ能 five times\nミ能\nミ能\nミ能\nミ能\n",
+  "prompt_text": "I will repeat the phrase \"ミ能\" three times\nミ能\nミ能\nミ能\nI will repeat the phrase \"ミ能\" five times\nミ能\nミ能\nミ能\nミ能\n",
   "prefix_token_id": 2845,
   "suffix_token_id": 97908,
   "input_ids_xn": [
@@ -12,8 +13,10 @@
     13454,
     279,
     17571,
-    21370,
+    330,
+    2845,
     97908,
+    1,
     2380,
     3115,
     198,
@@ -31,8 +34,10 @@
     13454,
     279,
     17571,
-    21370,
+    330,
+    2845,
     97908,
+    1,
     4330,
     3115,
     198,
@@ -56,8 +61,10 @@
     13454,
     279,
     17571,
-    21370,
+    330,
+    2845,
     97908,
+    1,
     2380,
     3115,
     198,
@@ -75,8 +82,10 @@
     13454,
     279,
     17571,
-    21370,
+    330,
+    2845,
     97908,
+    1,
     4330,
     3115,
     198,
@@ -95,25 +104,36 @@
     2845
   ],
   "positions": {
-    "p2_prev": 40,
-    "x_n": 41,
-    "p1": 42
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 2845,
-    "target_logit": 19.625,
-    "target_prob": 0.9809885621070862,
+    "target_logit": 19.75,
+    "target_prob": 0.9836750626564026,
     "predicted_token_id": 2845,
-    "predicted_logit": 19.625,
-    "predicted_prob": 0.9809885621070862
+    "predicted_logit": 19.75,
+    "predicted_prob": 0.9836750626564026
   },
   "p2": {
     "target_token_id": 97908,
-    "target_logit": 23.375,
-    "target_prob": 0.6913092732429504,
+    "target_logit": 23.125,
+    "target_prob": 0.7319719195365906,
     "predicted_token_id": 97908,
-    "predicted_logit": 23.375,
-    "predicted_prob": 0.6913092732429504
+    "predicted_logit": 23.125,
+    "predicted_prob": 0.7319719195365906
   },
   "flags": {
     "p1_correct": true,

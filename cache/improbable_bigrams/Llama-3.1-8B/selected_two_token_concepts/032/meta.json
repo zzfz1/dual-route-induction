@@ -1,8 +1,9 @@
 {
   "task_idx": 32,
   "bigram": " taylor",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  taylor three times\n taylor\n taylor\n taylor\nI will repeat the phrase  taylor five times\n taylor\n taylor\n taylor\n taylor\n",
+  "prompt_text": "I will repeat the phrase \" taylor\" three times\n taylor\n taylor\n taylor\nI will repeat the phrase \" taylor\" five times\n taylor\n taylor\n taylor\n taylor\n",
   "prefix_token_id": 259,
   "suffix_token_id": 14350,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     259,
     14350,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     259,
     14350,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     259,
     14350,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     259,
     14350,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     259
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 259,
-    "target_logit": 20.875,
-    "target_prob": 0.9633631706237793,
+    "target_logit": 21.0,
+    "target_prob": 0.9473150968551636,
     "predicted_token_id": 259,
-    "predicted_logit": 20.875,
-    "predicted_prob": 0.9633631706237793
+    "predicted_logit": 21.0,
+    "predicted_prob": 0.9473150968551636
   },
   "p2": {
     "target_token_id": 14350,
-    "target_logit": 27.5,
-    "target_prob": 0.9999748468399048,
+    "target_logit": 26.875,
+    "target_prob": 0.9999581575393677,
     "predicted_token_id": 14350,
-    "predicted_logit": 27.5,
-    "predicted_prob": 0.9999748468399048
+    "predicted_logit": 26.875,
+    "predicted_prob": 0.9999581575393677
   },
   "flags": {
     "p1_correct": true,

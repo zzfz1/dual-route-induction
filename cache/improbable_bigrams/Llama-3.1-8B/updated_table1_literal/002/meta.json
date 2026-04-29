@@ -1,8 +1,9 @@
 {
   "task_idx": 2,
   "bigram": "겟能",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase 겟能 three times\n겟能\n겟能\n겟能\nI will repeat the phrase 겟能 five times\n겟能\n겟能\n겟能\n겟能\n",
+  "prompt_text": "I will repeat the phrase \"겟能\" three times\n겟能\n겟能\n겟能\nI will repeat the phrase \"겟能\" five times\n겟能\n겟能\n겟能\n겟能\n",
   "prefix_token_id": 28740,
   "suffix_token_id": 97908,
   "input_ids_xn": [
@@ -12,8 +13,10 @@
     13454,
     279,
     17571,
-    24839,
+    330,
+    28740,
     97908,
+    1,
     2380,
     3115,
     198,
@@ -31,8 +34,10 @@
     13454,
     279,
     17571,
-    24839,
+    330,
+    28740,
     97908,
+    1,
     4330,
     3115,
     198,
@@ -56,8 +61,10 @@
     13454,
     279,
     17571,
-    24839,
+    330,
+    28740,
     97908,
+    1,
     2380,
     3115,
     198,
@@ -75,8 +82,10 @@
     13454,
     279,
     17571,
-    24839,
+    330,
+    28740,
     97908,
+    1,
     4330,
     3115,
     198,
@@ -95,25 +104,36 @@
     28740
   ],
   "positions": {
-    "p2_prev": 40,
-    "x_n": 41,
-    "p1": 42
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 28740,
-    "target_logit": 17.5,
-    "target_prob": 0.8019766807556152,
+    "target_logit": 16.875,
+    "target_prob": 0.7180402874946594,
     "predicted_token_id": 28740,
-    "predicted_logit": 17.5,
-    "predicted_prob": 0.8019766807556152
+    "predicted_logit": 16.875,
+    "predicted_prob": 0.7180402874946594
   },
   "p2": {
     "target_token_id": 97908,
-    "target_logit": 20.125,
-    "target_prob": 0.05703788995742798,
+    "target_logit": 20.625,
+    "target_prob": 0.15890850126743317,
     "predicted_token_id": 58233,
-    "predicted_logit": 21.625,
-    "predicted_prob": 0.2556260824203491
+    "predicted_logit": 20.875,
+    "predicted_prob": 0.20404255390167236
   },
   "flags": {
     "p1_correct": true,

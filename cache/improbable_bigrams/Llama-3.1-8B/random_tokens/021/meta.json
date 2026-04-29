@@ -1,8 +1,9 @@
 {
   "task_idx": 21,
   "bigram": "strand resolve",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase strand resolve three times\nstrand resolve\nstrand resolve\nstrand resolve\nI will repeat the phrase strand resolve five times\nstrand resolve\nstrand resolve\nstrand resolve\nstrand resolve\n",
+  "prompt_text": "I will repeat the phrase \"strand resolve\" three times\nstrand resolve\nstrand resolve\nstrand resolve\nI will repeat the phrase \"strand resolve\" five times\nstrand resolve\nstrand resolve\nstrand resolve\nstrand resolve\n",
   "prefix_token_id": 86981,
   "suffix_token_id": 9006,
   "input_ids_xn": [
@@ -12,8 +13,10 @@
     13454,
     279,
     17571,
-    42589,
+    330,
+    86981,
     9006,
+    1,
     2380,
     3115,
     198,
@@ -31,8 +34,10 @@
     13454,
     279,
     17571,
-    42589,
+    330,
+    86981,
     9006,
+    1,
     4330,
     3115,
     198,
@@ -56,8 +61,10 @@
     13454,
     279,
     17571,
-    42589,
+    330,
+    86981,
     9006,
+    1,
     2380,
     3115,
     198,
@@ -75,8 +82,10 @@
     13454,
     279,
     17571,
-    42589,
+    330,
+    86981,
     9006,
+    1,
     4330,
     3115,
     198,
@@ -95,25 +104,36 @@
     86981
   ],
   "positions": {
-    "p2_prev": 40,
-    "x_n": 41,
-    "p1": 42
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 86981,
-    "target_logit": 18.875,
-    "target_prob": 0.8092975616455078,
+    "target_logit": 19.875,
+    "target_prob": 0.9261983633041382,
     "predicted_token_id": 86981,
-    "predicted_logit": 18.875,
-    "predicted_prob": 0.8092975616455078
+    "predicted_logit": 19.875,
+    "predicted_prob": 0.9261983633041382
   },
   "p2": {
     "target_token_id": 9006,
-    "target_logit": 23.75,
-    "target_prob": 0.997785210609436,
+    "target_logit": 25.0,
+    "target_prob": 0.999210000038147,
     "predicted_token_id": 9006,
-    "predicted_logit": 23.75,
-    "predicted_prob": 0.997785210609436
+    "predicted_logit": 25.0,
+    "predicted_prob": 0.999210000038147
   },
   "flags": {
     "p1_correct": true,

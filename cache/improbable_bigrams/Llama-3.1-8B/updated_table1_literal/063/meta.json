@@ -1,8 +1,9 @@
 {
   "task_idx": 63,
   "bigram": "洱от",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase 洱от three times\n洱от\n洱от\n洱от\nI will repeat the phrase 洱от five times\n洱от\n洱от\n洱от\n洱от\n",
+  "prompt_text": "I will repeat the phrase \"洱от\" three times\n洱от\n洱от\n洱от\nI will repeat the phrase \"洱от\" five times\n洱от\n洱от\n洱от\n洱от\n",
   "prefix_token_id": 44647,
   "suffix_token_id": 36820,
   "input_ids_xn": [
@@ -12,8 +13,10 @@
     13454,
     279,
     17571,
-    107934,
+    330,
+    44647,
     36820,
+    1,
     2380,
     3115,
     198,
@@ -31,8 +34,10 @@
     13454,
     279,
     17571,
-    107934,
+    330,
+    44647,
     36820,
+    1,
     4330,
     3115,
     198,
@@ -56,8 +61,10 @@
     13454,
     279,
     17571,
-    107934,
+    330,
+    44647,
     36820,
+    1,
     2380,
     3115,
     198,
@@ -75,8 +82,10 @@
     13454,
     279,
     17571,
-    107934,
+    330,
+    44647,
     36820,
+    1,
     4330,
     3115,
     198,
@@ -95,25 +104,36 @@
     44647
   ],
   "positions": {
-    "p2_prev": 40,
-    "x_n": 41,
-    "p1": 42
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 44647,
     "target_logit": 19.0,
-    "target_prob": 0.9288883805274963,
+    "target_prob": 0.9173911213874817,
     "predicted_token_id": 44647,
     "predicted_logit": 19.0,
-    "predicted_prob": 0.9288883805274963
+    "predicted_prob": 0.9173911213874817
   },
   "p2": {
     "target_token_id": 36820,
-    "target_logit": 18.0,
-    "target_prob": 0.16687195003032684,
+    "target_logit": 16.625,
+    "target_prob": 0.07692788541316986,
     "predicted_token_id": 36820,
-    "predicted_logit": 18.0,
-    "predicted_prob": 0.16687195003032684
+    "predicted_logit": 16.625,
+    "predicted_prob": 0.07692788541316986
   },
   "flags": {
     "p1_correct": true,

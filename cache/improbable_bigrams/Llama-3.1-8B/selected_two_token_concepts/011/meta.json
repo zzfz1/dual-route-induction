@@ -1,8 +1,9 @@
 {
   "task_idx": 11,
   "bigram": " saturday",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  saturday three times\n saturday\n saturday\n saturday\nI will repeat the phrase  saturday five times\n saturday\n saturday\n saturday\n saturday\n",
+  "prompt_text": "I will repeat the phrase \" saturday\" three times\n saturday\n saturday\n saturday\nI will repeat the phrase \" saturday\" five times\n saturday\n saturday\n saturday\n saturday\n",
   "prefix_token_id": 274,
   "suffix_token_id": 7115,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     274,
     7115,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     274,
     7115,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     274,
     7115,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     274,
     7115,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     274
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 274,
-    "target_logit": 21.625,
-    "target_prob": 0.978373110294342,
+    "target_logit": 22.125,
+    "target_prob": 0.9734312295913696,
     "predicted_token_id": 274,
-    "predicted_logit": 21.625,
-    "predicted_prob": 0.978373110294342
+    "predicted_logit": 22.125,
+    "predicted_prob": 0.9734312295913696
   },
   "p2": {
     "target_token_id": 7115,
-    "target_logit": 28.5,
-    "target_prob": 0.9999707937240601,
+    "target_logit": 27.625,
+    "target_prob": 0.9999197721481323,
     "predicted_token_id": 7115,
-    "predicted_logit": 28.5,
-    "predicted_prob": 0.9999707937240601
+    "predicted_logit": 27.625,
+    "predicted_prob": 0.9999197721481323
   },
   "flags": {
     "p1_correct": true,

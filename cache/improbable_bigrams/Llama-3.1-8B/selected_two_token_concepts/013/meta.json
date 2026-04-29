@@ -1,8 +1,9 @@
 {
   "task_idx": 13,
   "bigram": " thomas",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  thomas three times\n thomas\n thomas\n thomas\nI will repeat the phrase  thomas five times\n thomas\n thomas\n thomas\n thomas\n",
+  "prompt_text": "I will repeat the phrase \" thomas\" three times\n thomas\n thomas\n thomas\nI will repeat the phrase \" thomas\" five times\n thomas\n thomas\n thomas\n thomas\n",
   "prefix_token_id": 270,
   "suffix_token_id": 23063,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     270,
     23063,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     270,
     23063,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     270,
     23063,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     270,
     23063,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     270
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 270,
-    "target_logit": 20.625,
-    "target_prob": 0.9473223686218262,
+    "target_logit": 20.875,
+    "target_prob": 0.9614821672439575,
     "predicted_token_id": 270,
-    "predicted_logit": 20.625,
-    "predicted_prob": 0.9473223686218262
+    "predicted_logit": 20.875,
+    "predicted_prob": 0.9614821672439575
   },
   "p2": {
     "target_token_id": 23063,
-    "target_logit": 26.875,
-    "target_prob": 0.9993042945861816,
+    "target_logit": 30.125,
+    "target_prob": 0.9997233748435974,
     "predicted_token_id": 23063,
-    "predicted_logit": 26.875,
-    "predicted_prob": 0.9993042945861816
+    "predicted_logit": 30.125,
+    "predicted_prob": 0.9997233748435974
   },
   "flags": {
     "p1_correct": true,

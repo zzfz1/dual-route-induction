@@ -1,8 +1,9 @@
 {
   "task_idx": 93,
   "bigram": " 箫자",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  箫자 three times\n 箫자\n 箫자\n 箫자\nI will repeat the phrase  箫자 five times\n 箫자\n 箫자\n 箫자\n 箫자\n",
+  "prompt_text": "I will repeat the phrase \" 箫자\" three times\n 箫자\n 箫자\n 箫자\nI will repeat the phrase \" 箫자\" five times\n 箫자\n 箫자\n 箫자\n 箫자\n",
   "prefix_token_id": 108166,
   "suffix_token_id": 93287,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     108166,
     93287,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     108166,
     93287,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     108166,
     93287,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     108166,
     93287,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     108166
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 108166,
-    "target_logit": 18.125,
-    "target_prob": 0.9368154406547546,
+    "target_logit": 17.625,
+    "target_prob": 0.8926547765731812,
     "predicted_token_id": 108166,
-    "predicted_logit": 18.125,
-    "predicted_prob": 0.9368154406547546
+    "predicted_logit": 17.625,
+    "predicted_prob": 0.8926547765731812
   },
   "p2": {
     "target_token_id": 93287,
-    "target_logit": 18.0,
-    "target_prob": 0.7941605448722839,
+    "target_logit": 16.875,
+    "target_prob": 0.6319078803062439,
     "predicted_token_id": 93287,
-    "predicted_logit": 18.0,
-    "predicted_prob": 0.7941605448722839
+    "predicted_logit": 16.875,
+    "predicted_prob": 0.6319078803062439
   },
   "flags": {
     "p1_correct": true,

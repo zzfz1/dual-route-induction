@@ -1,8 +1,9 @@
 {
   "task_idx": 3,
   "bigram": "last savings",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase last savings three times\nlast savings\nlast savings\nlast savings\nI will repeat the phrase last savings five times\nlast savings\nlast savings\nlast savings\nlast savings\n",
+  "prompt_text": "I will repeat the phrase \"last savings\" three times\nlast savings\nlast savings\nlast savings\nI will repeat the phrase \"last savings\" five times\nlast savings\nlast savings\nlast savings\nlast savings\n",
   "prefix_token_id": 4354,
   "suffix_token_id": 19523,
   "input_ids_xn": [
@@ -12,8 +13,10 @@
     13454,
     279,
     17571,
-    1566,
+    330,
+    4354,
     19523,
+    1,
     2380,
     3115,
     198,
@@ -31,8 +34,10 @@
     13454,
     279,
     17571,
-    1566,
+    330,
+    4354,
     19523,
+    1,
     4330,
     3115,
     198,
@@ -56,8 +61,10 @@
     13454,
     279,
     17571,
-    1566,
+    330,
+    4354,
     19523,
+    1,
     2380,
     3115,
     198,
@@ -75,8 +82,10 @@
     13454,
     279,
     17571,
-    1566,
+    330,
+    4354,
     19523,
+    1,
     4330,
     3115,
     198,
@@ -95,25 +104,36 @@
     4354
   ],
   "positions": {
-    "p2_prev": 40,
-    "x_n": 41,
-    "p1": 42
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 4354,
-    "target_logit": 15.75,
-    "target_prob": 0.650329053401947,
+    "target_logit": 17.875,
+    "target_prob": 0.8794511556625366,
     "predicted_token_id": 4354,
-    "predicted_logit": 15.75,
-    "predicted_prob": 0.650329053401947
+    "predicted_logit": 17.875,
+    "predicted_prob": 0.8794511556625366
   },
   "p2": {
     "target_token_id": 19523,
-    "target_logit": 21.375,
-    "target_prob": 0.9917962551116943,
+    "target_logit": 23.625,
+    "target_prob": 0.9982863068580627,
     "predicted_token_id": 19523,
-    "predicted_logit": 21.375,
-    "predicted_prob": 0.9917962551116943
+    "predicted_logit": 23.625,
+    "predicted_prob": 0.9982863068580627
   },
   "flags": {
     "p1_correct": true,

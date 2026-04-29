@@ -5,14 +5,14 @@
 {"task_idx": 4, "bigram": " ਟ能", "relative_dir": "004", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 5, "bigram": "椱от", "relative_dir": "005", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 6, "bigram": " 굱от", "relative_dir": "006", "copy_success": true, "second_token_hallucination": false}
-{"task_idx": 7, "bigram": " 굟能", "relative_dir": "007", "copy_success": false, "second_token_hallucination": true}
+{"task_idx": 7, "bigram": " 굟能", "relative_dir": "007", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 8, "bigram": "譱от", "relative_dir": "008", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 9, "bigram": "褱от", "relative_dir": "009", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 10, "bigram": " 裱от", "relative_dir": "010", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 11, "bigram": " 흱от", "relative_dir": "011", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 12, "bigram": "頱от", "relative_dir": "012", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 13, "bigram": " 흟能", "relative_dir": "013", "copy_success": true, "second_token_hallucination": false}
-{"task_idx": 14, "bigram": "ケот", "relative_dir": "014", "copy_success": true, "second_token_hallucination": false}
+{"task_idx": 14, "bigram": "ケот", "relative_dir": "014", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 15, "bigram": " 앱от", "relative_dir": "015", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 16, "bigram": " 菱от", "relative_dir": "016", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 17, "bigram": "ンヱот", "relative_dir": "017", "copy_success": true, "second_token_hallucination": false}
@@ -21,7 +21,7 @@
 {"task_idx": 20, "bigram": "ンミ能", "relative_dir": "020", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 21, "bigram": " 벱от", "relative_dir": "021", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 22, "bigram": " 搱от", "relative_dir": "022", "copy_success": false, "second_token_hallucination": true}
-{"task_idx": 23, "bigram": " 箱от", "relative_dir": "023", "copy_success": true, "second_token_hallucination": false}
+{"task_idx": 23, "bigram": " 箱от", "relative_dir": "023", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 24, "bigram": " 벟能", "relative_dir": "024", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 25, "bigram": " 諱от", "relative_dir": "025", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 26, "bigram": " 笱от", "relative_dir": "026", "copy_success": true, "second_token_hallucination": false}
@@ -37,10 +37,10 @@
 {"task_idx": 36, "bigram": " 갱от", "relative_dir": "036", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 37, "bigram": "ựот", "relative_dir": "037", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 38, "bigram": " 霱от", "relative_dir": "038", "copy_success": true, "second_token_hallucination": false}
-{"task_idx": 39, "bigram": " 묟能", "relative_dir": "039", "copy_success": false, "second_token_hallucination": true}
+{"task_idx": 39, "bigram": " 묟能", "relative_dir": "039", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 40, "bigram": " 갟能", "relative_dir": "040", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 41, "bigram": "鎱от", "relative_dir": "041", "copy_success": true, "second_token_hallucination": false}
-{"task_idx": 42, "bigram": "ఱот", "relative_dir": "042", "copy_success": true, "second_token_hallucination": false}
+{"task_idx": 42, "bigram": "ఱот", "relative_dir": "042", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 43, "bigram": "ట能", "relative_dir": "043", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 44, "bigram": "괱от", "relative_dir": "044", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 45, "bigram": "ჱот", "relative_dir": "045", "copy_success": true, "second_token_hallucination": false}
@@ -76,7 +76,7 @@
 {"task_idx": 75, "bigram": "镫자", "relative_dir": "075", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 76, "bigram": "黫자", "relative_dir": "076", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 77, "bigram": "椫자", "relative_dir": "077", "copy_success": true, "second_token_hallucination": false}
-{"task_idx": 78, "bigram": " 傱от", "relative_dir": "078", "copy_success": false, "second_token_hallucination": true}
+{"task_idx": 78, "bigram": " 傱от", "relative_dir": "078", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 79, "bigram": "跱от", "relative_dir": "079", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 80, "bigram": " 稱от", "relative_dir": "080", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 81, "bigram": " раП能", "relative_dir": "081", "copy_success": true, "second_token_hallucination": false}
@@ -86,7 +86,7 @@
 {"task_idx": 85, "bigram": "頫자", "relative_dir": "085", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 86, "bigram": "澱от", "relative_dir": "086", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 87, "bigram": "餱от", "relative_dir": "087", "copy_success": true, "second_token_hallucination": false}
-{"task_idx": 88, "bigram": " 桱от", "relative_dir": "088", "copy_success": false, "second_token_hallucination": true}
+{"task_idx": 88, "bigram": " 桱от", "relative_dir": "088", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 89, "bigram": " 菫자", "relative_dir": "089", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 90, "bigram": "榱от", "relative_dir": "090", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 91, "bigram": " 覱от", "relative_dir": "091", "copy_success": false, "second_token_hallucination": true}

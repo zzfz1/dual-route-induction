@@ -1,8 +1,9 @@
 {
   "task_idx": 1,
   "bigram": " july",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  july three times\n july\n july\n july\nI will repeat the phrase  july five times\n july\n july\n july\n july\n",
+  "prompt_text": "I will repeat the phrase \" july\" three times\n july\n july\n july\nI will repeat the phrase \" july\" five times\n july\n july\n july\n july\n",
   "prefix_token_id": 503,
   "suffix_token_id": 3988,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     503,
     3988,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     503,
     3988,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     503,
     3988,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     503,
     3988,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     503
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 503,
-    "target_logit": 21.5,
-    "target_prob": 0.9833963513374329,
+    "target_logit": 21.625,
+    "target_prob": 0.9798908233642578,
     "predicted_token_id": 503,
-    "predicted_logit": 21.5,
-    "predicted_prob": 0.9833963513374329
+    "predicted_logit": 21.625,
+    "predicted_prob": 0.9798908233642578
   },
   "p2": {
     "target_token_id": 3988,
-    "target_logit": 29.875,
-    "target_prob": 0.999993085861206,
+    "target_logit": 28.125,
+    "target_prob": 0.9999650716781616,
     "predicted_token_id": 3988,
-    "predicted_logit": 29.875,
-    "predicted_prob": 0.999993085861206
+    "predicted_logit": 28.125,
+    "predicted_prob": 0.9999650716781616
   },
   "flags": {
     "p1_correct": true,

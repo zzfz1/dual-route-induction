@@ -1,8 +1,9 @@
 {
   "task_idx": 56,
   "bigram": " ㄟ能",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  ㄟ能 three times\n ㄟ能\n ㄟ能\n ㄟ能\nI will repeat the phrase  ㄟ能 five times\n ㄟ能\n ㄟ能\n ㄟ能\n ㄟ能\n",
+  "prompt_text": "I will repeat the phrase \" ㄟ能\" three times\n ㄟ能\n ㄟ能\n ㄟ能\nI will repeat the phrase \" ㄟ能\" five times\n ㄟ能\n ㄟ能\n ㄟ能\n ㄟ能\n",
   "prefix_token_id": 112399,
   "suffix_token_id": 97908,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     112399,
     97908,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     112399,
     97908,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     112399,
     97908,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     112399,
     97908,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     112399
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 112399,
-    "target_logit": 16.625,
-    "target_prob": 0.8627873659133911,
+    "target_logit": 17.375,
+    "target_prob": 0.9279958009719849,
     "predicted_token_id": 112399,
-    "predicted_logit": 16.625,
-    "predicted_prob": 0.8627873659133911
+    "predicted_logit": 17.375,
+    "predicted_prob": 0.9279958009719849
   },
   "p2": {
     "target_token_id": 97908,
-    "target_logit": 21.75,
-    "target_prob": 0.11965585500001907,
+    "target_logit": 21.25,
+    "target_prob": 0.10294044762849808,
     "predicted_token_id": 100,
-    "predicted_logit": 22.25,
-    "predicted_prob": 0.197279155254364
+    "predicted_logit": 21.75,
+    "predicted_prob": 0.1697200983762741
   },
   "flags": {
     "p1_correct": true,

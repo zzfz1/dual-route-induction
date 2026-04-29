@@ -1,8 +1,9 @@
 {
   "task_idx": 23,
   "bigram": "edited grows",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase edited grows three times\nedited grows\nedited grows\nedited grows\nI will repeat the phrase edited grows five times\nedited grows\nedited grows\nedited grows\nedited grows\n",
+  "prompt_text": "I will repeat the phrase \"edited grows\" three times\nedited grows\nedited grows\nedited grows\nI will repeat the phrase \"edited grows\" five times\nedited grows\nedited grows\nedited grows\nedited grows\n",
   "prefix_token_id": 62503,
   "suffix_token_id": 28815,
   "input_ids_xn": [
@@ -12,8 +13,10 @@
     13454,
     279,
     17571,
-    19685,
+    330,
+    62503,
     28815,
+    1,
     2380,
     3115,
     198,
@@ -31,8 +34,10 @@
     13454,
     279,
     17571,
-    19685,
+    330,
+    62503,
     28815,
+    1,
     4330,
     3115,
     198,
@@ -56,8 +61,10 @@
     13454,
     279,
     17571,
-    19685,
+    330,
+    62503,
     28815,
+    1,
     2380,
     3115,
     198,
@@ -75,8 +82,10 @@
     13454,
     279,
     17571,
-    19685,
+    330,
+    62503,
     28815,
+    1,
     4330,
     3115,
     198,
@@ -95,25 +104,36 @@
     62503
   ],
   "positions": {
-    "p2_prev": 40,
-    "x_n": 41,
-    "p1": 42
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 62503,
-    "target_logit": 19.5,
-    "target_prob": 0.8152004480361938,
+    "target_logit": 20.0,
+    "target_prob": 0.9155858755111694,
     "predicted_token_id": 62503,
-    "predicted_logit": 19.5,
-    "predicted_prob": 0.8152004480361938
+    "predicted_logit": 20.0,
+    "predicted_prob": 0.9155858755111694
   },
   "p2": {
     "target_token_id": 28815,
-    "target_logit": 22.875,
-    "target_prob": 0.9968822002410889,
+    "target_logit": 24.0,
+    "target_prob": 0.9984650611877441,
     "predicted_token_id": 28815,
-    "predicted_logit": 22.875,
-    "predicted_prob": 0.9968822002410889
+    "predicted_logit": 24.0,
+    "predicted_prob": 0.9984650611877441
   },
   "flags": {
     "p1_correct": true,

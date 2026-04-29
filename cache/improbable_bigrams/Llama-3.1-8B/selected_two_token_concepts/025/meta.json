@@ -1,8 +1,9 @@
 {
   "task_idx": 25,
   "bigram": " steve",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  steve three times\n steve\n steve\n steve\nI will repeat the phrase  steve five times\n steve\n steve\n steve\n steve\n",
+  "prompt_text": "I will repeat the phrase \" steve\" three times\n steve\n steve\n steve\nI will repeat the phrase \" steve\" five times\n steve\n steve\n steve\n steve\n",
   "prefix_token_id": 4179,
   "suffix_token_id": 588,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     4179,
     588,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     4179,
     588,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     4179,
     588,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     4179,
     588,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     4179
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 4179,
-    "target_logit": 20.625,
-    "target_prob": 0.973764955997467,
+    "target_logit": 20.5,
+    "target_prob": 0.947975218296051,
     "predicted_token_id": 4179,
-    "predicted_logit": 20.625,
-    "predicted_prob": 0.973764955997467
+    "predicted_logit": 20.5,
+    "predicted_prob": 0.947975218296051
   },
   "p2": {
     "target_token_id": 588,
-    "target_logit": 27.625,
-    "target_prob": 0.9997419714927673,
+    "target_logit": 26.75,
+    "target_prob": 0.9995630383491516,
     "predicted_token_id": 588,
-    "predicted_logit": 27.625,
-    "predicted_prob": 0.9997419714927673
+    "predicted_logit": 26.75,
+    "predicted_prob": 0.9995630383491516
   },
   "flags": {
     "p1_correct": true,

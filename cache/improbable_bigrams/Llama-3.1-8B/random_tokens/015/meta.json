@@ -1,8 +1,9 @@
 {
   "task_idx": 15,
   "bigram": "lang fear",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase lang fear three times\nlang fear\nlang fear\nlang fear\nI will repeat the phrase lang fear five times\nlang fear\nlang fear\nlang fear\nlang fear\n",
+  "prompt_text": "I will repeat the phrase \"lang fear\" three times\nlang fear\nlang fear\nlang fear\nI will repeat the phrase \"lang fear\" five times\nlang fear\nlang fear\nlang fear\nlang fear\n",
   "prefix_token_id": 5317,
   "suffix_token_id": 8850,
   "input_ids_xn": [
@@ -12,8 +13,10 @@
     13454,
     279,
     17571,
-    8859,
+    330,
+    5317,
     8850,
+    1,
     2380,
     3115,
     198,
@@ -31,8 +34,10 @@
     13454,
     279,
     17571,
-    8859,
+    330,
+    5317,
     8850,
+    1,
     4330,
     3115,
     198,
@@ -56,8 +61,10 @@
     13454,
     279,
     17571,
-    8859,
+    330,
+    5317,
     8850,
+    1,
     2380,
     3115,
     198,
@@ -75,8 +82,10 @@
     13454,
     279,
     17571,
-    8859,
+    330,
+    5317,
     8850,
+    1,
     4330,
     3115,
     198,
@@ -95,25 +104,36 @@
     5317
   ],
   "positions": {
-    "p2_prev": 40,
-    "x_n": 41,
-    "p1": 42
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 5317,
-    "target_logit": 17.625,
-    "target_prob": 0.8163304328918457,
+    "target_logit": 19.375,
+    "target_prob": 0.9297101497650146,
     "predicted_token_id": 5317,
-    "predicted_logit": 17.625,
-    "predicted_prob": 0.8163304328918457
+    "predicted_logit": 19.375,
+    "predicted_prob": 0.9297101497650146
   },
   "p2": {
     "target_token_id": 8850,
-    "target_logit": 22.875,
-    "target_prob": 0.9979535341262817,
+    "target_logit": 24.375,
+    "target_prob": 0.999078631401062,
     "predicted_token_id": 8850,
-    "predicted_logit": 22.875,
-    "predicted_prob": 0.9979535341262817
+    "predicted_logit": 24.375,
+    "predicted_prob": 0.999078631401062
   },
   "flags": {
     "p1_correct": true,

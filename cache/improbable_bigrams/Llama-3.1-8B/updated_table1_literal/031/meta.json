@@ -1,8 +1,9 @@
 {
   "task_idx": 31,
   "bigram": "萱от",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase 萱от three times\n萱от\n萱от\n萱от\nI will repeat the phrase 萱от five times\n萱от\n萱от\n萱от\n萱от\n",
+  "prompt_text": "I will repeat the phrase \"萱от\" three times\n萱от\n萱от\n萱от\nI will repeat the phrase \"萱от\" five times\n萱от\n萱от\n萱от\n萱от\n",
   "prefix_token_id": 81180,
   "suffix_token_id": 36820,
   "input_ids_xn": [
@@ -12,8 +13,10 @@
     13454,
     279,
     17571,
-    110523,
+    330,
+    81180,
     36820,
+    1,
     2380,
     3115,
     198,
@@ -31,8 +34,10 @@
     13454,
     279,
     17571,
-    110523,
+    330,
+    81180,
     36820,
+    1,
     4330,
     3115,
     198,
@@ -56,8 +61,10 @@
     13454,
     279,
     17571,
-    110523,
+    330,
+    81180,
     36820,
+    1,
     2380,
     3115,
     198,
@@ -75,8 +82,10 @@
     13454,
     279,
     17571,
-    110523,
+    330,
+    81180,
     36820,
+    1,
     4330,
     3115,
     198,
@@ -95,25 +104,36 @@
     81180
   ],
   "positions": {
-    "p2_prev": 40,
-    "x_n": 41,
-    "p1": 42
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 81180,
-    "target_logit": 19.875,
-    "target_prob": 0.9423101544380188,
+    "target_logit": 19.125,
+    "target_prob": 0.9067937135696411,
     "predicted_token_id": 81180,
-    "predicted_logit": 19.875,
-    "predicted_prob": 0.9423101544380188
+    "predicted_logit": 19.125,
+    "predicted_prob": 0.9067937135696411
   },
   "p2": {
     "target_token_id": 36820,
     "target_logit": 20.875,
-    "target_prob": 0.7672601342201233,
+    "target_prob": 0.8291198015213013,
     "predicted_token_id": 36820,
     "predicted_logit": 20.875,
-    "predicted_prob": 0.7672601342201233
+    "predicted_prob": 0.8291198015213013
   },
   "flags": {
     "p1_correct": true,

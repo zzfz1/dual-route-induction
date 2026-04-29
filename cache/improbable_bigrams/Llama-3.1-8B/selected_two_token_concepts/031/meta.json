@@ -1,8 +1,9 @@
 {
   "task_idx": 31,
   "bigram": " korea",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  korea three times\n korea\n korea\n korea\nI will repeat the phrase  korea five times\n korea\n korea\n korea\n korea\n",
+  "prompt_text": "I will repeat the phrase \" korea\" three times\n korea\n korea\n korea\nI will repeat the phrase \" korea\" five times\n korea\n korea\n korea\n korea\n",
   "prefix_token_id": 597,
   "suffix_token_id": 61148,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     597,
     61148,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     597,
     61148,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     597,
     61148,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     597,
     61148,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     597
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 597,
-    "target_logit": 21.25,
-    "target_prob": 0.9763404726982117,
+    "target_logit": 22.0,
+    "target_prob": 0.9864482283592224,
     "predicted_token_id": 597,
-    "predicted_logit": 21.25,
-    "predicted_prob": 0.9763404726982117
+    "predicted_logit": 22.0,
+    "predicted_prob": 0.9864482283592224
   },
   "p2": {
     "target_token_id": 61148,
-    "target_logit": 29.625,
-    "target_prob": 0.9996603727340698,
+    "target_logit": 28.375,
+    "target_prob": 0.9996412992477417,
     "predicted_token_id": 61148,
-    "predicted_logit": 29.625,
-    "predicted_prob": 0.9996603727340698
+    "predicted_logit": 28.375,
+    "predicted_prob": 0.9996412992477417
   },
   "flags": {
     "p1_correct": true,

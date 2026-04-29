@@ -1,8 +1,9 @@
 {
   "task_idx": 50,
   "bigram": "ჟ能",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase ჟ能 three times\nჟ能\nჟ能\nჟ能\nI will repeat the phrase ჟ能 five times\nჟ能\nჟ能\nჟ能\nჟ能\n",
+  "prompt_text": "I will repeat the phrase \"ჟ能\" three times\nჟ能\nჟ能\nჟ能\nI will repeat the phrase \"ჟ能\" five times\nჟ能\nჟ能\nჟ能\nჟ能\n",
   "prefix_token_id": 36393,
   "suffix_token_id": 97908,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     36393,
     97908,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     36393,
     97908,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     36393,
     97908,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     36393,
     97908,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     36393
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 36393,
-    "target_logit": 20.875,
-    "target_prob": 0.974764883518219,
+    "target_logit": 21.25,
+    "target_prob": 0.96104496717453,
     "predicted_token_id": 36393,
-    "predicted_logit": 20.875,
-    "predicted_prob": 0.974764883518219
+    "predicted_logit": 21.25,
+    "predicted_prob": 0.96104496717453
   },
   "p2": {
     "target_token_id": 97908,
-    "target_logit": 23.125,
-    "target_prob": 0.5476889610290527,
+    "target_logit": 23.0,
+    "target_prob": 0.5871456265449524,
     "predicted_token_id": 97908,
-    "predicted_logit": 23.125,
-    "predicted_prob": 0.5476889610290527
+    "predicted_logit": 23.0,
+    "predicted_prob": 0.5871456265449524
   },
   "flags": {
     "p1_correct": true,

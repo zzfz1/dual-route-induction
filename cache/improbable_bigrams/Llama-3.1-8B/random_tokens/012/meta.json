@@ -1,8 +1,9 @@
 {
   "task_idx": 12,
   "bigram": "shoot allocations",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase shoot allocations three times\nshoot allocations\nshoot allocations\nshoot allocations\nI will repeat the phrase shoot allocations five times\nshoot allocations\nshoot allocations\nshoot allocations\nshoot allocations\n",
+  "prompt_text": "I will repeat the phrase \"shoot allocations\" three times\nshoot allocations\nshoot allocations\nshoot allocations\nI will repeat the phrase \"shoot allocations\" five times\nshoot allocations\nshoot allocations\nshoot allocations\nshoot allocations\n",
   "prefix_token_id": 68392,
   "suffix_token_id": 70742,
   "input_ids_xn": [
@@ -12,8 +13,10 @@
     13454,
     279,
     17571,
-    6230,
+    330,
+    68392,
     70742,
+    1,
     2380,
     3115,
     198,
@@ -31,8 +34,10 @@
     13454,
     279,
     17571,
-    6230,
+    330,
+    68392,
     70742,
+    1,
     4330,
     3115,
     198,
@@ -56,8 +61,10 @@
     13454,
     279,
     17571,
-    6230,
+    330,
+    68392,
     70742,
+    1,
     2380,
     3115,
     198,
@@ -75,8 +82,10 @@
     13454,
     279,
     17571,
-    6230,
+    330,
+    68392,
     70742,
+    1,
     4330,
     3115,
     198,
@@ -95,25 +104,36 @@
     68392
   ],
   "positions": {
-    "p2_prev": 40,
-    "x_n": 41,
-    "p1": 42
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 68392,
-    "target_logit": 19.0,
-    "target_prob": 0.7853049039840698,
+    "target_logit": 18.875,
+    "target_prob": 0.8159177899360657,
     "predicted_token_id": 68392,
-    "predicted_logit": 19.0,
-    "predicted_prob": 0.7853049039840698
+    "predicted_logit": 18.875,
+    "predicted_prob": 0.8159177899360657
   },
   "p2": {
     "target_token_id": 70742,
-    "target_logit": 24.125,
-    "target_prob": 0.9987838864326477,
+    "target_logit": 24.875,
+    "target_prob": 0.9993765950202942,
     "predicted_token_id": 70742,
-    "predicted_logit": 24.125,
-    "predicted_prob": 0.9987838864326477
+    "predicted_logit": 24.875,
+    "predicted_prob": 0.9993765950202942
   },
   "flags": {
     "p1_correct": true,

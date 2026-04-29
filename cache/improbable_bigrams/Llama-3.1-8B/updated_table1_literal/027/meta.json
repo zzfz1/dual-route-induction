@@ -1,8 +1,9 @@
 {
   "task_idx": 27,
   "bigram": " 恱от",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  恱от three times\n 恱от\n 恱от\n 恱от\nI will repeat the phrase  恱от five times\n 恱от\n 恱от\n 恱от\n 恱от\n",
+  "prompt_text": "I will repeat the phrase \" 恱от\" three times\n 恱от\n 恱от\n 恱от\nI will repeat the phrase \" 恱от\" five times\n 恱от\n 恱от\n 恱от\n 恱от\n",
   "prefix_token_id": 114354,
   "suffix_token_id": 36820,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     114354,
     36820,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     114354,
     36820,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     114354,
     36820,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     114354,
     36820,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     114354
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 114354,
-    "target_logit": 20.125,
-    "target_prob": 0.9770803451538086,
+    "target_logit": 19.875,
+    "target_prob": 0.9756861329078674,
     "predicted_token_id": 114354,
-    "predicted_logit": 20.125,
-    "predicted_prob": 0.9770803451538086
+    "predicted_logit": 19.875,
+    "predicted_prob": 0.9756861329078674
   },
   "p2": {
     "target_token_id": 36820,
-    "target_logit": 17.75,
-    "target_prob": 0.21576255559921265,
+    "target_logit": 18.125,
+    "target_prob": 0.35084930062294006,
     "predicted_token_id": 36820,
-    "predicted_logit": 17.75,
-    "predicted_prob": 0.21576255559921265
+    "predicted_logit": 18.125,
+    "predicted_prob": 0.35084930062294006
   },
   "flags": {
     "p1_correct": true,

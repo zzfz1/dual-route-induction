@@ -1,8 +1,9 @@
 {
   "task_idx": 7,
   "bigram": " jesus",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase  jesus three times\n jesus\n jesus\n jesus\nI will repeat the phrase  jesus five times\n jesus\n jesus\n jesus\n jesus\n",
+  "prompt_text": "I will repeat the phrase \" jesus\" three times\n jesus\n jesus\n jesus\nI will repeat the phrase \" jesus\" five times\n jesus\n jesus\n jesus\n jesus\n",
   "prefix_token_id": 503,
   "suffix_token_id": 43493,
   "input_ids_xn": [
@@ -12,9 +13,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     503,
     43493,
+    1,
     2380,
     3115,
     198,
@@ -32,9 +34,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     503,
     43493,
+    1,
     4330,
     3115,
     198,
@@ -58,9 +61,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     503,
     43493,
+    1,
     2380,
     3115,
     198,
@@ -78,9 +82,10 @@
     13454,
     279,
     17571,
-    220,
+    330,
     503,
     43493,
+    1,
     4330,
     3115,
     198,
@@ -99,25 +104,36 @@
     503
   ],
   "positions": {
-    "p2_prev": 42,
-    "x_n": 43,
-    "p1": 44
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 503,
-    "target_logit": 20.25,
-    "target_prob": 0.9547616243362427,
+    "target_logit": 20.75,
+    "target_prob": 0.9667443633079529,
     "predicted_token_id": 503,
-    "predicted_logit": 20.25,
-    "predicted_prob": 0.9547616243362427
+    "predicted_logit": 20.75,
+    "predicted_prob": 0.9667443633079529
   },
   "p2": {
     "target_token_id": 43493,
     "target_logit": 25.875,
-    "target_prob": 0.9998559951782227,
+    "target_prob": 0.9998005032539368,
     "predicted_token_id": 43493,
     "predicted_logit": 25.875,
-    "predicted_prob": 0.9998559951782227
+    "predicted_prob": 0.9998005032539368
   },
   "flags": {
     "p1_correct": true,

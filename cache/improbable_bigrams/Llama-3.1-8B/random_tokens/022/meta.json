@@ -1,8 +1,9 @@
 {
   "task_idx": 22,
   "bigram": "publication average",
+  "quote_string": "\"",
   "prompt_style": "table1_literal",
-  "prompt_text": "I will repeat the phrase publication average three times\npublication average\npublication average\npublication average\nI will repeat the phrase publication average five times\npublication average\npublication average\npublication average\npublication average\n",
+  "prompt_text": "I will repeat the phrase \"publication average\" three times\npublication average\npublication average\npublication average\nI will repeat the phrase \"publication average\" five times\npublication average\npublication average\npublication average\npublication average\n",
   "prefix_token_id": 72260,
   "suffix_token_id": 5578,
   "input_ids_xn": [
@@ -12,8 +13,10 @@
     13454,
     279,
     17571,
-    17009,
+    330,
+    72260,
     5578,
+    1,
     2380,
     3115,
     198,
@@ -31,8 +34,10 @@
     13454,
     279,
     17571,
-    17009,
+    330,
+    72260,
     5578,
+    1,
     4330,
     3115,
     198,
@@ -56,8 +61,10 @@
     13454,
     279,
     17571,
-    17009,
+    330,
+    72260,
     5578,
+    1,
     2380,
     3115,
     198,
@@ -75,8 +82,10 @@
     13454,
     279,
     17571,
-    17009,
+    330,
+    72260,
     5578,
+    1,
     4330,
     3115,
     198,
@@ -95,25 +104,36 @@
     72260
   ],
   "positions": {
-    "p2_prev": 40,
-    "x_n": 41,
-    "p1": 42
+    "p2_prev": 44,
+    "p2_context": [
+      8,
+      14,
+      17,
+      20,
+      29,
+      35,
+      38,
+      41,
+      44
+    ],
+    "x_n": 45,
+    "p1": 46
   },
   "p1": {
     "target_token_id": 72260,
-    "target_logit": 17.5,
-    "target_prob": 0.6221616268157959,
+    "target_logit": 19.0,
+    "target_prob": 0.8680589199066162,
     "predicted_token_id": 72260,
-    "predicted_logit": 17.5,
-    "predicted_prob": 0.6221616268157959
+    "predicted_logit": 19.0,
+    "predicted_prob": 0.8680589199066162
   },
   "p2": {
     "target_token_id": 5578,
-    "target_logit": 22.625,
-    "target_prob": 0.9979578256607056,
+    "target_logit": 24.5,
+    "target_prob": 0.9994663596153259,
     "predicted_token_id": 5578,
-    "predicted_logit": 22.625,
-    "predicted_prob": 0.9979578256607056
+    "predicted_logit": 24.5,
+    "predicted_prob": 0.9994663596153259
   },
   "flags": {
     "p1_correct": true,
