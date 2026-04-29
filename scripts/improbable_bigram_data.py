@@ -146,12 +146,12 @@ def build_prompt_layout(task: BigramTask, tok) -> tuple[PromptLayout | None, lis
     prefix_count = input_ids_xn.count(task.prefix_token_id)
     suffix_count = input_ids_xn.count(task.suffix_token_id)
     if (
-        prefix_count != EXPECTED_BIGRAM_OCCURRENCES
-        or suffix_count != EXPECTED_BIGRAM_OCCURRENCES
+        prefix_count < EXPECTED_BIGRAM_OCCURRENCES
+        or suffix_count < EXPECTED_BIGRAM_OCCURRENCES
     ):
         errors.append(
             "Prompt token count mismatch: "
-            f"expected prefix/suffix counts to both be {EXPECTED_BIGRAM_OCCURRENCES}, "
+            f"expected prefix/suffix counts to both be at least {EXPECTED_BIGRAM_OCCURRENCES}, "
             f"got prefix_count={prefix_count}, suffix_count={suffix_count}"
         )
     p2_context_indices = [
