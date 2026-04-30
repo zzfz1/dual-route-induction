@@ -1,8 +1,8 @@
 {
   "subset": "hallucinated_second_token",
   "pass_name": "p1",
-  "n_examples": 40,
-  "n_hallucinated_examples": 40,
+  "n_examples": 29,
+  "n_hallucinated_examples": 29,
   "per_example_path": "/u/sahuja1/improbable-bigram-causality/dual-route-induction/cache/improbable_bigrams/Qwen3-8B/updated_table1_literal/dla/per_example_hallucinated_second_token_p1.pt",
   "per_head_path": "/u/sahuja1/improbable-bigram-causality/dual-route-induction/cache/improbable_bigrams/Qwen3-8B/updated_table1_literal/dla/per_head_hallucinated_second_token_p1.json"
 }
