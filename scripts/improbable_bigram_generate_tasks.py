@@ -10,7 +10,7 @@ from pathlib import Path
 
 from transformers import AutoTokenizer
 
-from improbable_bigram_data import DEFAULT_RANDOM_TASKS_PATH
+from improbable_bigram_data import DEFAULT_RANDOM_TASKS_PATH, random_tasks_path_for_model
 from seed_utils import set_random_seed
 
 try:
@@ -236,7 +236,11 @@ if __name__ == "__main__":
     )
     parser.add_argument("--model", default="meta-llama/Llama-3.1-8B")
     parser.add_argument("--n", type=int, default=100)
-    parser.add_argument("--out-path", default=str(DEFAULT_RANDOM_TASKS_PATH))
+    parser.add_argument("--out-path", default=None,
+                        help="Defaults to data/<model_slug>_random_two_token_tasks.json.")
     parser.add_argument("--max-attempts", type=int, default=None)
     parser.add_argument("--seed", type=int, default=8)
-    main(parser.parse_args())
+    args = parser.parse_args()
+    if args.out_path is None:
+        args.out_path = str(random_tasks_path_for_model(args.model))
+    main(args)

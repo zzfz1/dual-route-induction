@@ -218,6 +218,12 @@ def load_cache(
     cache["concept_task_ids"] = concept_score_task_ids
     cache["concept_count"] = len(cache["concept_scores_all"]["examples"])
     cache["random_count"] = len(cache["random_scores_all"]["examples"])
+
+    # Derive (n_layers, n_heads) from any score tensor so head_mask sizes itself
+    # to the actual model rather than the Llama-3.1-8B (32, 32) default.
+    score_shape = cache["improbable_scores_all"]["ltm_raw"].shape
+    cache["n_layers"] = int(score_shape[1])
+    cache["n_heads"] = int(score_shape[2])
     return cache
 
 
@@ -354,11 +360,19 @@ def bootstrap_diff_ci(
 
 
 def _token_mask(cache, k: int) -> torch.Tensor:
-    return head_mask(cache["token_ranking"][:k])
+    return head_mask(
+        cache["token_ranking"][:k],
+        n_layers=cache.get("n_layers", 32),
+        n_heads=cache.get("n_heads", 32),
+    )
 
 
 def _concept_mask(cache, k: int) -> torch.Tensor:
-    return head_mask(cache["concept_ranking"][:k])
+    return head_mask(
+        cache["concept_ranking"][:k],
+        n_layers=cache.get("n_layers", 32),
+        n_heads=cache.get("n_heads", 32),
+    )
 
 
 def _condition_series(

@@ -523,7 +523,6 @@ def merge_shard_outputs(args):
             args.model,
             device_map="auto",
             dispatch=(not args.remote),
-            cache_dir="/share/u/models",
         )
     model._ndif_remote = args.remote
     save_final_outputs(paths, model, clean_results, corrupt_results, patched_results)
@@ -563,7 +562,6 @@ def main(args):
             args.model,
             device_map="auto",
             dispatch=(not remote),
-            cache_dir="/share/u/models",
         )
     model._ndif_remote = remote
     tokenizer = model.tokenizer
@@ -585,11 +583,14 @@ def main(args):
         elif (
             "OLMo" in model.config._name_or_path
             or "pythia" in model.config._name_or_path
+            or "Qwen" in model.config._name_or_path
         ):
+            ids = model.tokenizer(s)["input_ids"]
             if not bos:
-                return model.tokenizer(s)["input_ids"]
-            else:
-                return [model.tokenizer.bos_token_id] + model.tokenizer(s)["input_ids"]
+                return ids
+            # Qwen3 base has bos_token_id is None — skip the prepend.
+            bos_id = model.tokenizer.bos_token_id
+            return [bos_id] + ids if bos_id is not None else ids
 
     # accumulators. patching experiments will log across each attention head
     n_heads = model.config.num_attention_heads * model.config.num_hidden_layers
@@ -708,6 +709,7 @@ if __name__ == "__main__":
             "meta-llama/Meta-Llama-3.1-70B",
             "meta-llama/Llama-3.2-3B",
             "allenai/OLMo-2-0425-1B",
+            "Qwen/Qwen3-8B",
         ],
     )
     parser.add_argument("--ckpt", default=None, type=str)

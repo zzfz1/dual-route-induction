@@ -9,7 +9,11 @@ import torch
 from transformers import AutoModelForCausalLM
 from transformers.utils import logging as hf_logging
 
-from improbable_bigram_data import DEFAULT_TRACE_ROOT, load_trace_index
+from improbable_bigram_data import (
+    DEFAULT_TRACE_ROOT,
+    load_trace_index,
+    trace_root_for_model,
+)
 from seed_utils import set_random_seed
 
 
@@ -265,7 +269,8 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--trace-dir", default=str(DEFAULT_TRACE_ROOT))
+    parser.add_argument("--trace-dir", default=None,
+                        help="Defaults to the trace root for the chosen --model.")
     parser.add_argument(
         "--subset",
         default="all",
@@ -275,7 +280,10 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model",
         default="meta-llama/Llama-3.1-8B",
-        choices=["meta-llama/Llama-3.1-8B"],
+        choices=[
+            "meta-llama/Llama-3.1-8B",
+            "Qwen/Qwen3-8B",
+        ],
     )
     parser.add_argument("--pass-name", default="p1", choices=["xn", "p1"])
     parser.add_argument("--dtype", default="float32", choices=["float32", "float16", "bfloat16"])
@@ -283,4 +291,7 @@ if __name__ == "__main__":
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--compute-device", default="cpu")
     parser.add_argument("--seed", default=8, type=int)
-    main(parser.parse_args())
+    args = parser.parse_args()
+    if args.trace_dir is None:
+        args.trace_dir = str(trace_root_for_model(args.model))
+    main(args)

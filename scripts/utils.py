@@ -172,6 +172,69 @@ def get_l3_attn_weights(model, tokenized, layer, value_weighting):
         return effective
 
 
+def get_qwen3_attn_weights(model, tokenized, layer, value_weighting):
+    """Port of get_l3_attn_weights for Qwen3. Differences vs Llama-3:
+    - Qwen3 may decouple head_dim from hidden_size // n_heads, so read it
+      from config when present.
+    - Qwen3 applies RMSNorm (q_norm / k_norm) to Q/K before rotary; Llama
+      does not.
+    """
+    n_heads = model.config.num_attention_heads
+    head_dim = getattr(
+        model.config, "head_dim", model.config.hidden_size // n_heads
+    )
+
+    with torch.no_grad():
+        with model.trace(tokenized):
+            attn = model.model.layers[layer].self_attn
+            n_kv_groups = attn.num_key_value_groups
+
+            position = attn.inputs[1]["position_embeddings"]
+            attention_mask = attn.inputs[1]["attention_mask"]
+
+            query_states = attn.q_proj.output
+            key_states = attn.k_proj.output
+            bsz = query_states.shape[0]
+            seq_len = query_states.shape[1]
+
+            if value_weighting:
+                value_states = attn.v_proj.output
+                value_states = value_states.view(
+                    bsz, seq_len, -1, head_dim
+                ).transpose(1, 2)
+                value_states = llama.repeat_kv(value_states, n_kv_groups).save()
+
+            query_states = query_states.view(bsz, seq_len, -1, head_dim).transpose(1, 2)
+            key_states = key_states.view(bsz, seq_len, -1, head_dim).transpose(1, 2)
+            # RMSNorm on Q/K before rotary — Qwen3 / OLMo2 specific. Norm is
+            # over the head_dim axis, which is the last dim post-transpose.
+            if hasattr(attn, "q_norm"):
+                query_states = attn.q_norm(query_states)
+            if hasattr(attn, "k_norm"):
+                key_states = attn.k_norm(key_states)
+            query_states, key_states = llama.apply_rotary_pos_emb(
+                query_states, key_states, position[0], position[1]
+            )
+
+            key_states = llama.repeat_kv(key_states, n_kv_groups)
+            attn_weights = torch.matmul(
+                query_states, key_states.transpose(2, 3)
+            ) / math.sqrt(head_dim)
+
+            causal_mask = attention_mask[:, :, :, : key_states.shape[-2]]
+            attn_weights = attn_weights + causal_mask
+            attn_weights = attn_weights.save()
+
+    if not value_weighting:
+        return attn_weights.softmax(dim=-1).detach().cpu()
+    else:
+        value_norms = torch.linalg.vector_norm(value_states, dim=-1).detach().cpu()
+        attn_weights = attn_weights.softmax(dim=-1).detach().cpu()
+        effective = attn_weights * value_norms.unsqueeze(2).expand(attn_weights.shape)
+        effective /= torch.sum(effective, dim=-1, keepdim=True)
+        return effective
+
+
 def get_olmo2_attn_weights(model, tokenized, layer, value_weighting):
     n_heads = model.config.num_attention_heads
     head_dim = model.config.hidden_size // n_heads

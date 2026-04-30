@@ -24,11 +24,13 @@ from datasets import load_dataset
 from utils import get_mean_head_values
 
 VALID_MODELS = [
-    'meta-llama/Llama-2-7b-hf', 
+    'meta-llama/Llama-2-7b-hf',
     'meta-llama/Meta-Llama-3-8B',
+    'meta-llama/Llama-3.1-8B',
     'EleutherAI/pythia-6.9b',
     'allenai/OLMo-2-1124-7B',
-    'allenai/OLMo-2-0425-1B'
+    'allenai/OLMo-2-0425-1B',
+    'Qwen/Qwen3-8B',
 ]
 TOPKS = [0, 1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 128, 256, 512, 1024] 
 
@@ -118,19 +120,27 @@ class VocabListDataset(Dataset):
         return len(self.word_pairs) 
 
     def ttok(self, s, space=False, bos=False):
-        # otherwise get actual tokens 
+        # otherwise get actual tokens
         pfix = ' ' if space else ''
-        s = pfix + s 
-        if 'llama' in self.tok.name_or_path:
-            if not bos: 
+        s = pfix + s
+        name = self.tok.name_or_path
+        if 'llama' in name.lower():
+            if not bos:
                 out = self.tok(s)['input_ids'][1:]
             else:
                 out = self.tok(s)['input_ids']
-        elif 'OLMo' in self.tok.name_or_path or 'pythia' in self.tok.name_or_path:
+        elif (
+            'OLMo' in name
+            or 'pythia' in name
+            or 'qwen' in name.lower()
+        ):
+            ids = self.tok(s)['input_ids']
             if not bos:
-                out = self.tok(s)['input_ids']
+                out = ids
             else:
-                out = [self.tok.bos_token_id] + self.tok(s)['input_ids']
+                # Qwen3 base has bos_token_id is None; skip the prepend.
+                bos_id = self.tok.bos_token_id
+                out = [bos_id] + ids if bos_id is not None else ids
         
         if self.tok.name_or_path == 'meta-llama/Llama-2-7b-hf' and space:
             return out[1:]

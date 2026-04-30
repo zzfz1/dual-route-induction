@@ -10,10 +10,10 @@ from nnsight import LanguageModel, save
 
 import utils
 from improbable_bigram_data import (
-    DEFAULT_TASKS_PATH,
-    DEFAULT_TRACE_ROOT,
     PROMPT_STYLE,
     load_bigram_tasks,
+    tasks_path_for_model,
+    trace_root_for_model,
     validate_prompt_layouts,
 )
 from ndif import load_remote_model
@@ -36,15 +36,19 @@ def atomic_torch_save(path: Path, payload):
 
 def build_tok(model):
     def tok(text, bos=False, model=model):
-        if "llama" in model.config._name_or_path.lower():
+        name = model.config._name_or_path.lower()
+        if "llama" in name:
+            # Llama tokenizer auto-prepends BOS; strip it when caller doesn't want one.
             ids = model.tokenizer(text)["input_ids"]
             return ids if bos else ids[1:]
-        if (
-            "olmo" in model.config._name_or_path.lower()
-            or "pythia" in model.config._name_or_path.lower()
-        ):
+        if "olmo" in name or "pythia" in name or "qwen" in name:
             ids = model.tokenizer(text)["input_ids"]
-            return [model.tokenizer.bos_token_id] + ids if bos else ids
+            if not bos:
+                return ids
+            # Qwen3 base does not define a BOS token (bos_token_id is None);
+            # treat that as "no BOS to prepend" rather than crashing.
+            bos_id = model.tokenizer.bos_token_id
+            return [bos_id] + ids if bos_id is not None else ids
         raise ValueError(f"Unsupported model family: {model.config._name_or_path}")
 
     return tok
@@ -58,21 +62,23 @@ def load_model(args):
             args.model,
             device_map="auto",
             dispatch=True,
-            cache_dir="/share/u/models",
         )
     model._ndif_remote = args.remote
     return model
 
 
 def _capture_pass_state(model, input_ids):
-    if model.config._name_or_path != "meta-llama/Llama-3.1-8B":
-        raise ValueError(
-            "improbable_bigram_trace.py currently only supports meta-llama/Llama-3.1-8B."
-        )
-
+    # Supports any HF model with the standard Llama-style attention layout
+    # (q_proj/k_proj/v_proj/o_proj on `self_attn`, position_embeddings exposed
+    # as cos/sin pair). Qwen3's optional q_norm/k_norm RMSNorm layers are
+    # applied conditionally.
     n_layers = model.config.num_hidden_layers
     n_heads = model.config.num_attention_heads
-    head_dim = model.config.hidden_size // n_heads
+    # Qwen3 (and others) decouple head_dim from hidden_size // n_heads. Prefer
+    # the explicit attribute when present.
+    head_dim = getattr(
+        model.config, "head_dim", model.config.hidden_size // n_heads
+    )
 
     with torch.no_grad():
         with model.trace(
@@ -113,6 +119,13 @@ def _capture_pass_state(model, input_ids):
                     1, 2
                 )
                 key_states = key_states.view(bsz, seq_len, -1, head_dim).transpose(1, 2)
+                # Qwen3 (and OLMo2) apply RMSNorm to Q/K before rotary; Llama
+                # has no such layer. RMSNorm operates on the last (head_dim)
+                # axis so the post-transpose shape is fine.
+                if hasattr(attn, "q_norm"):
+                    query_states = attn.q_norm(query_states)
+                if hasattr(attn, "k_norm"):
+                    key_states = attn.k_norm(key_states)
                 cos = position[0].unsqueeze(1)
                 sin = position[1].unsqueeze(1)
 
@@ -328,10 +341,15 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model",
         default="meta-llama/Llama-3.1-8B",
-        choices=["meta-llama/Llama-3.1-8B"],
+        choices=[
+            "meta-llama/Llama-3.1-8B",
+            "Qwen/Qwen3-8B",
+        ],
     )
-    parser.add_argument("--tasks-path", default=str(DEFAULT_TASKS_PATH))
-    parser.add_argument("--out-dir", default=str(DEFAULT_TRACE_ROOT))
+    parser.add_argument("--tasks-path", default=None,
+                        help="Defaults to the tasks JSON for the chosen --model.")
+    parser.add_argument("--out-dir", default=None,
+                        help="Defaults to cache/improbable_bigrams/<ModelShortName>/table1_literal.")
     parser.add_argument("--start", default=0, type=int)
     parser.add_argument("--stop", default=None, type=int)
     parser.add_argument("--remote", action="store_true")
@@ -341,4 +359,9 @@ if __name__ == "__main__":
     parser.add_argument("--remote-backoff-max", default=30.0, type=float)
     parser.add_argument("--seed", default=8, type=int)
     parser.set_defaults(remote=False, overwrite=False)
-    main(parser.parse_args())
+    args = parser.parse_args()
+    if args.tasks_path is None:
+        args.tasks_path = str(tasks_path_for_model(args.model))
+    if args.out_dir is None:
+        args.out_dir = str(trace_root_for_model(args.model))
+    main(args)

@@ -32,13 +32,69 @@ DEFAULT_TRACE_ROOT = (
     / "cache"
     / "improbable_bigrams"
     / "Llama-3.1-8B"
-    / "table1_literal"
+    / "updated_table1_literal"
 )
 DEFAULT_RANDOM_TASKS_PATH = (
     DUAL_ROUTE_ROOT / "data" / "llama3.1_random_two_token_tasks.json"
 )
 PROMPT_STYLE = "table1_literal"
 EXPECTED_BIGRAM_OCCURRENCES = 9
+
+
+def _model_short_name(model: str) -> str:
+    return model.split("/")[-1]
+
+
+def _model_slug(model: str) -> str:
+    # filesystem-friendly slug for filenames (lowercase, replace separators)
+    return _model_short_name(model).lower().replace(".", "_").replace("-", "_")
+
+
+def tasks_path_for_model(model: str) -> Path:
+    """Resolve the tasks JSON for a given model. Falls back to the legacy
+    Llama-3.1 default when the model-specific file does not exist yet."""
+    slug = _model_slug(model)
+    candidates = [
+        PROJECT_ROOT / "data" / f"{slug}_tasks.json",
+        PROJECT_ROOT / "improbable-bigram-causality" / "data" / f"{slug}_tasks.json",
+    ]
+    for c in candidates:
+        if c.exists():
+            return c
+    return DEFAULT_TASKS_PATH
+
+
+def generations_path_for_model(model: str) -> Path:
+    slug = _model_slug(model)
+    candidates = [
+        PROJECT_ROOT / "data" / f"{slug}_base_generations.csv",
+        PROJECT_ROOT
+        / "improbable-bigram-causality"
+        / "data"
+        / f"{slug}_base_generations.csv",
+    ]
+    for c in candidates:
+        if c.exists():
+            return c
+    return DEFAULT_GENERATIONS_PATH
+
+
+def trace_root_for_model(model: str) -> Path:
+    # `updated_table1_literal` is the canonical run name expected by
+    # analysis_utils.load_cache. Llama's existing trace already uses it; new
+    # models (e.g. Qwen3-8B) use the same name for parity.
+    return (
+        DUAL_ROUTE_ROOT
+        / "cache"
+        / "improbable_bigrams"
+        / _model_short_name(model)
+        / "updated_table1_literal"
+    )
+
+
+def random_tasks_path_for_model(model: str) -> Path:
+    slug = _model_slug(model)
+    return DUAL_ROUTE_ROOT / "data" / f"{slug}_random_two_token_tasks.json"
 
 
 @dataclass(frozen=True)

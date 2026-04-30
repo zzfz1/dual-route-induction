@@ -81,14 +81,20 @@ def generate_ragged_batch(batch_ents, pile, tok, seq_len):
 
 
 def retrieve_attention(model, tokenized, layer, value_weighting=True):
-    func = {
+    name = model.config._name_or_path
+    table = {
         "meta-llama/Llama-2-7b-hf": get_l2_attn_weights,
         "meta-llama/Meta-Llama-3-8B": get_l3_attn_weights,
+        "meta-llama/Llama-3.1-8B": get_l3_attn_weights,
         "allenai/OLMo-2-1124-7B": get_olmo2_attn_weights,
         "EleutherAI/pythia-6.9b": get_pythia_attn_weights,
-    }[model.config._name_or_path]
-
-    return func(model, tokenized, layer, value_weighting)
+    }
+    if name in table:
+        return table[name](model, tokenized, layer, value_weighting)
+    if "qwen" in name.lower():
+        from utils import get_qwen3_attn_weights
+        return get_qwen3_attn_weights(model, tokenized, layer, value_weighting)
+    raise KeyError(f"No attention extractor for model: {name}")
 
 
 def normalize(d, total):
@@ -112,12 +118,9 @@ def main(args):
             args.model,
             device_map="cuda",
             revision=args.ckpt,
-            cache_dir="/share/u/models",
         )
     else:
-        model = LanguageModel(
-            args.model, device_map="cuda", cache_dir="/share/u/models"
-        )
+        model = LanguageModel(args.model, device_map="cuda")
 
     model_name = args.model.split("/")[-1]
     d = model.tokenizer.decode
@@ -132,19 +135,21 @@ def main(args):
             ]
 
         # otherwise get actual tokens
-        if "llama" in model.config._name_or_path:
+        name = model.config._name_or_path
+        if "llama" in name.lower():
+            ids = model.tokenizer(s)["input_ids"]
+            return ids if bos else ids[1:]
+        if (
+            name in ["allenai/OLMo-2-1124-7B", "EleutherAI/pythia-6.9b"]
+            or "qwen" in name.lower()
+        ):
+            ids = model.tokenizer(s)["input_ids"]
             if not bos:
-                return model.tokenizer(s)["input_ids"][1:]
-            else:
-                return model.tokenizer(s)["input_ids"]
-        elif model.config._name_or_path in [
-            "allenai/OLMo-2-1124-7B",
-            "EleutherAI/pythia-6.9b",
-        ]:
-            if not bos:
-                return model.tokenizer(s)["input_ids"]
-            else:
-                return [model.tokenizer.bos_token_id] + model.tokenizer(s)["input_ids"]
+                return ids
+            # Qwen3 base has bos_token_id is None — skip the prepend.
+            bos_id = model.tokenizer.bos_token_id
+            return [bos_id] + ids if bos_id is not None else ids
+        raise ValueError(f"Unsupported model family: {name}")
 
     # load in pile sample to use as basic material that we shuffle around
     # pile = load_dataset('NeelNanda/pile-10k')['train']
@@ -282,6 +287,7 @@ if __name__ == "__main__":
             "meta-llama/Meta-Llama-3-8B",
             "meta-llama/Llama-3.1-8B",
             "EleutherAI/pythia-6.9b",
+            "Qwen/Qwen3-8B",
         ],
     )
     parser.add_argument("--ckpt", default=None, type=str)

@@ -1,0 +1,8 @@
+{
+  "created_at_utc": "2026-04-30T21:47:34.782134+00:00",
+  "model": "Qwen/Qwen3-8B",
+  "remote": false,
+  "prompt_style": "table1_literal",
+  "tasks_path": "/u/sahuja1/improbable-bigram-causality/dual-route-induction/data/qwen3_8b_selected_two_token_concepts.json",
+  "total_tasks": 36
+}
