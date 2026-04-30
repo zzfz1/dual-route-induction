@@ -1,6 +1,7 @@
 {
   "subset": "hallucinated_second_token",
   "n_examples": 32,
+  "ltm_definition": "sum of attention to all previous-context p2 positions",
   "ntm_definition": "sum of attention to all previous-context p2 positions",
   "per_example_path": "/Users/eugenejang/Workspace/improbable-bigram-causality/dual-route-induction/cache/improbable_bigrams/Llama-3.1-8B/updated_table1_literal/scores/per_example_hallucinated_second_token.pt",
   "per_head_path": "/Users/eugenejang/Workspace/improbable-bigram-causality/dual-route-induction/cache/improbable_bigrams/Llama-3.1-8B/updated_table1_literal/scores/per_head_hallucinated_second_token.json"
