@@ -1,0 +1,15 @@
+[
+  {
+    "task_idx": 82,
+    "bigram": "做‬",
+    "prefix_token_id": 102210,
+    "suffix_token_id": 102380,
+    "quote_string": "\"",
+    "errors": [
+      "Prompt token count mismatch: expected prefix/suffix counts to both be 9, got prefix_count=9, suffix_count=2",
+      "Final repeated occurrence mismatch: expected [102210, 102380], got [102210, 110412]",
+      "Expected final repeated occurrence to end immediately before x_n; got span_end=39, x_n_idx=38",
+      "Expected the final previous-context p2 token to be the suffix token at index 38; got p2_context_indices=[8, 26]"
+    ]
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "task_idx": 5,
+    "bigram": "gro <$",
+    "prefix_token_id": 42511,
+    "suffix_token_id": 40255,
+    "quote_string": "\"",
+    "errors": [
+      "Prompt token count mismatch: expected prefix/suffix counts to both be 9, got prefix_count=9, suffix_count=2",
+      "Final repeated occurrence mismatch: expected [42511, 40255], got [42511, 366]",
+      "Expected the final previous-context p2 token to be the suffix token at index 44; got p2_context_indices=[8, 29]"
+    ]
+  },
+  {
+    "task_idx": 62,
+    "bigram": " NFC>[]",
+    "prefix_token_id": 48305,
+    "suffix_token_id": 71510,
+    "quote_string": "\"",
+    "errors": [
+      "Prompt token count mismatch: expected prefix/suffix counts to both be 9, got prefix_count=9, suffix_count=0",
+      "Final repeated occurrence mismatch: expected [48305, 71510], got [48305, 29]",
+      "Expected the final previous-context p2 token to be the suffix token at index 44; got p2_context_indices=[]"
+    ]
+  }
+]
