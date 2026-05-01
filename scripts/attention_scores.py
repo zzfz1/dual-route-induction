@@ -293,7 +293,7 @@ if __name__ == "__main__":
     parser.add_argument("--ckpt", default=None, type=str)
     parser.add_argument("--n", default=2048, type=int)
     parser.add_argument(
-        "--bsz", default=128, type=int, help="may have bugs with bsz=1."
+        "--bsz", default=512, type=int, help="may have bugs with bsz=1."
     )
     parser.add_argument("--sequence_len", default=30, type=int)
     parser.add_argument("--remote", action="store_true")
