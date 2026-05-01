@@ -55,7 +55,7 @@ def generate_ragged_batch(batch_ents, pile, tok, seq_len):
     assert len({len(e) for e in batch_ents}) == 1
 
     newline = tok("\n", bos=False)[-1]
-    bos = tok("", bos=True)[0]
+    bos_ids = tok("", bos=True) 
 
     sequences = []
     start_idxs, end_idxs = [], []
@@ -66,7 +66,7 @@ def generate_ragged_batch(batch_ents, pile, tok, seq_len):
 
         start_idxs.append(position + 1)
         end_idxs.append(position + len(ent))
-        sequences.append([bos] + rand1 + ent + rand2 + [newline] + rand1)
+        sequences.append(bos_ids + rand1 + ent + rand2 + [newline] + rand1)
 
     # since batches have ragged ends by design, save padding offsets
     flipped_masks = [m - 1 for m in tok(sequences, pad_mask=True)]
