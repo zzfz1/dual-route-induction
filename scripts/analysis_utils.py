@@ -440,10 +440,17 @@ def concept_wrong_dla_hall_series(cache, k: int) -> np.ndarray:
     return aggregate_metric(hall_wrong, concept_heads)
 
 
-def build_pairwise_summary(cache, k: int) -> pd.DataFrame:
+def _ntm_label(weighted: bool) -> str:
+    return "Token NTM (value-weighted)" if weighted else "Token NTM (raw)"
+
+
+def _ltm_label(weighted: bool) -> str:
+    return "Concept LTM (value-weighted)" if weighted else "Concept LTM (raw)"
+
+
+def build_pairwise_summary(cache, k: int, weighted: bool = False) -> pd.DataFrame:
     metric_getters = [
-        ("Token NTM (raw)", token_ntm_series(cache, k, weighted=False)),
-        ("Token NTM (value-weighted)", token_ntm_series(cache, k, weighted=True)),
+        (_ntm_label(weighted), token_ntm_series(cache, k, weighted=weighted)),
         ("Token correct-token DLA", token_correct_dla_series(cache, k)),
     ]
 
@@ -488,10 +495,9 @@ def build_pairwise_summary(cache, k: int) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def build_concept_pairwise_summary(cache, k: int) -> pd.DataFrame:
+def build_concept_pairwise_summary(cache, k: int, weighted: bool = False) -> pd.DataFrame:
     metric_getters = [
-        ("Concept LTM (raw)", concept_ltm_series(cache, k, weighted=False)),
-        ("Concept LTM (value-weighted)", concept_ltm_series(cache, k, weighted=True)),
+        (_ltm_label(weighted), concept_ltm_series(cache, k, weighted=weighted)),
         ("Concept correct-token DLA", concept_correct_dla_series(cache, k)),
     ]
 
@@ -536,8 +542,8 @@ def build_concept_pairwise_summary(cache, k: int) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def interpretation_markdown(cache, k: int = 32) -> str:
-    summary = build_pairwise_summary(cache, k)
+def interpretation_markdown(cache, k: int = 32, weighted: bool = False) -> str:
+    summary = build_pairwise_summary(cache, k, weighted=weighted)
 
     def row(metric: str, comparison: str):
         match = summary[
@@ -545,9 +551,10 @@ def interpretation_markdown(cache, k: int = 32) -> str:
         ]
         return match.iloc[0]
 
-    ntm_hc = row("Token NTM (raw)", "Hallucinated - Copied")
-    ntm_h2c = row("Token NTM (raw)", "Hallucinated - 2-token concepts")
-    ntm_hr = row("Token NTM (raw)", "Hallucinated - Random")
+    ntm_metric = _ntm_label(weighted)
+    ntm_hc = row(ntm_metric, "Hallucinated - Copied")
+    ntm_h2c = row(ntm_metric, "Hallucinated - 2-token concepts")
+    ntm_hr = row(ntm_metric, "Hallucinated - Random")
     dla_hc = row("Token correct-token DLA", "Hallucinated - Copied")
     dla_h2c = row("Token correct-token DLA", "Hallucinated - 2-token concepts")
     dla_hr = row("Token correct-token DLA", "Hallucinated - Random")
@@ -613,8 +620,8 @@ def interpretation_markdown(cache, k: int = 32) -> str:
     )
 
 
-def concept_interpretation_markdown(cache, k: int = 32) -> str:
-    summary = build_concept_pairwise_summary(cache, k)
+def concept_interpretation_markdown(cache, k: int = 32, weighted: bool = False) -> str:
+    summary = build_concept_pairwise_summary(cache, k, weighted=weighted)
 
     def row(metric: str, comparison: str):
         match = summary[
@@ -622,9 +629,10 @@ def concept_interpretation_markdown(cache, k: int = 32) -> str:
         ]
         return match.iloc[0]
 
-    ltm_hc = row("Concept LTM (raw)", "Hallucinated - Copied")
-    ltm_h2c = row("Concept LTM (raw)", "Hallucinated - 2-token concepts")
-    ltm_hr = row("Concept LTM (raw)", "Hallucinated - Random")
+    ltm_metric = _ltm_label(weighted)
+    ltm_hc = row(ltm_metric, "Hallucinated - Copied")
+    ltm_h2c = row(ltm_metric, "Hallucinated - 2-token concepts")
+    ltm_hr = row(ltm_metric, "Hallucinated - Random")
     dla_hc = row("Concept correct-token DLA", "Hallucinated - Copied")
     dla_h2c = row("Concept correct-token DLA", "Hallucinated - 2-token concepts")
     dla_hr = row("Concept correct-token DLA", "Hallucinated - Random")
@@ -760,10 +768,11 @@ def _plot_wrong_dla_comparison(axis, summary: pd.DataFrame, ks):
     axis.legend(frameon=False, loc="best")
 
 
-def plot_k_sweep(cache, ks=(8, 16, 32, 64, 128), save_path: Path | None = None):
+def plot_k_sweep(cache, ks=(8, 16, 32, 64, 128), save_path: Path | None = None, weighted: bool = False):
+    ntm_label = _ntm_label(weighted)
     rows = []
     rows.extend(
-        _metric_sweep_rows(cache, ks, "Token NTM (raw)", lambda c, k: token_ntm_series(c, k, False))
+        _metric_sweep_rows(cache, ks, ntm_label, lambda c, k: token_ntm_series(c, k, weighted))
     )
     rows.extend(
         _metric_sweep_rows(cache, ks, "Token correct-token DLA", token_correct_dla_series)
@@ -787,7 +796,7 @@ def plot_k_sweep(cache, ks=(8, 16, 32, 64, 128), save_path: Path | None = None):
     summary = pd.DataFrame(rows)
 
     fig, axes = plt.subplots(1, 3, figsize=(16, 4.6), constrained_layout=True)
-    for axis, metric in zip(axes[:2], ["Token NTM (raw)", "Token correct-token DLA"]):
+    for axis, metric in zip(axes[:2], [ntm_label, "Token correct-token DLA"]):
         metric_df = summary[summary["metric"] == metric]
         for condition in CONDITION_ORDER:
             condition_df = metric_df[metric_df["condition"] == condition].sort_values("k")
@@ -814,11 +823,14 @@ def plot_k_sweep(cache, ks=(8, 16, 32, 64, 128), save_path: Path | None = None):
     return fig, axes, summary
 
 
-def plot_concept_k_sweep(cache, ks=(8, 16, 32, 64, 128), save_path: Path | None = None):
+def plot_concept_k_sweep(
+    cache, ks=(8, 16, 32, 64, 128), save_path: Path | None = None, weighted: bool = False
+):
+    ltm_label = _ltm_label(weighted)
     rows = []
     rows.extend(
         _metric_sweep_rows(
-            cache, ks, "Concept LTM (raw)", lambda c, k: concept_ltm_series(c, k, False)
+            cache, ks, ltm_label, lambda c, k: concept_ltm_series(c, k, weighted)
         )
     )
     rows.extend(
@@ -843,7 +855,7 @@ def plot_concept_k_sweep(cache, ks=(8, 16, 32, 64, 128), save_path: Path | None 
     summary = pd.DataFrame(rows)
 
     fig, axes = plt.subplots(1, 3, figsize=(16, 4.6), constrained_layout=True)
-    for axis, metric in zip(axes[:2], ["Concept LTM (raw)", "Concept correct-token DLA"]):
+    for axis, metric in zip(axes[:2], [ltm_label, "Concept correct-token DLA"]):
         metric_df = summary[summary["metric"] == metric]
         for condition in CONDITION_ORDER:
             condition_df = metric_df[metric_df["condition"] == condition].sort_values("k")
@@ -901,11 +913,12 @@ def _box_and_strip(axis, values_by_condition, ylabel: str, title: str):
     axis.set_title(title)
 
 
-def plot_distribution_panels(cache, k: int = 32, save_path: Path | None = None):
-    ntm = token_ntm_series(cache, k, weighted=False)
+def plot_distribution_panels(cache, k: int = 32, save_path: Path | None = None, weighted: bool = False):
+    ntm = token_ntm_series(cache, k, weighted=weighted)
     dla = token_correct_dla_series(cache, k)
+    ntm_suffix = "value-weighted" if weighted else "raw"
     fig, axes = plt.subplots(1, 2, figsize=(12, 5.6), constrained_layout=False)
-    _box_and_strip(axes[0], ntm, "Per-example mean", f"Top-{k} token-head NTM")
+    _box_and_strip(axes[0], ntm, "Per-example mean", f"Top-{k} token-head NTM ({ntm_suffix})")
     _box_and_strip(axes[1], dla, "Per-example mean", f"Top-{k} token-head correct-token DLA")
     axes[1].axhline(0.0, color="black", linewidth=1, alpha=0.5)
     _add_top_figure_condition_legend(fig)
@@ -916,11 +929,14 @@ def plot_distribution_panels(cache, k: int = 32, save_path: Path | None = None):
     return fig, axes
 
 
-def plot_concept_distribution_panels(cache, k: int = 32, save_path: Path | None = None):
-    ltm = concept_ltm_series(cache, k, weighted=False)
+def plot_concept_distribution_panels(
+    cache, k: int = 32, save_path: Path | None = None, weighted: bool = False
+):
+    ltm = concept_ltm_series(cache, k, weighted=weighted)
     dla = concept_correct_dla_series(cache, k)
+    ltm_suffix = "value-weighted" if weighted else "raw"
     fig, axes = plt.subplots(1, 2, figsize=(12, 5.6), constrained_layout=False)
-    _box_and_strip(axes[0], ltm, "Per-example mean", f"Top-{k} concept-head LTM")
+    _box_and_strip(axes[0], ltm, "Per-example mean", f"Top-{k} concept-head LTM ({ltm_suffix})")
     _box_and_strip(
         axes[1], dla, "Per-example mean", f"Top-{k} concept-head correct-token DLA"
     )
@@ -1000,11 +1016,15 @@ def plot_concept_hallucinated_dla_pair(cache, k: int = 32, save_path: Path | Non
     return fig, axes
 
 
-def plot_top_head_heatmap(cache, top_k: int = 16, save_path: Path | None = None):
+def plot_top_head_heatmap(
+    cache, top_k: int = 16, save_path: Path | None = None, weighted: bool = False
+):
     heads = cache["token_ranking"][:top_k]
-    ntm_tensor = cache["improbable_scores_all"]["ntm_raw"]
-    concept_ntm = cache["concept_scores_all"]["ntm_raw"]
-    random_ntm = cache["random_scores_all"]["ntm_raw"]
+    ntm_field = "ntm_value_weighted" if weighted else "ntm_raw"
+    ntm_suffix = "value-weighted" if weighted else "raw"
+    ntm_tensor = cache["improbable_scores_all"][ntm_field]
+    concept_ntm = cache["concept_scores_all"][ntm_field]
+    random_ntm = cache["random_scores_all"][ntm_field]
     correct_dla = cache["improbable_dla_all"]["correct_token_dla"]
     wrong_dla = cache["improbable_dla_all"]["predicted_token_dla"]
     concept_correct_dla = cache["concept_dla_all"]["correct_token_dla"]
@@ -1039,7 +1059,7 @@ def plot_top_head_heatmap(cache, top_k: int = 16, save_path: Path | None = None)
 
     fig, axes = plt.subplots(1, 2, figsize=(13.5, max(5, 0.35 * top_k)), constrained_layout=True)
     ntm_image = axes[0].imshow(ntm_matrix, aspect="auto", cmap="viridis")
-    axes[0].set_title(f"Top-{top_k} token heads: NTM")
+    axes[0].set_title(f"Top-{top_k} token heads: NTM ({ntm_suffix})")
     axes[0].set_xticks(range(4))
     axes[0].set_xticklabels(["Hall", "Copied", "Concepts", "Random"])
     axes[0].set_yticks(range(top_k))
@@ -1065,11 +1085,15 @@ def plot_top_head_heatmap(cache, top_k: int = 16, save_path: Path | None = None)
     return fig, axes
 
 
-def plot_concept_head_heatmap(cache, top_k: int = 16, save_path: Path | None = None):
+def plot_concept_head_heatmap(
+    cache, top_k: int = 16, save_path: Path | None = None, weighted: bool = False
+):
     heads = cache["concept_ranking"][:top_k]
-    ltm_tensor = cache["improbable_scores_all"]["ltm_raw"]
-    concept_ltm = cache["concept_scores_all"]["ltm_raw"]
-    random_ltm = cache["random_scores_all"]["ltm_raw"]
+    ltm_field = "ltm_value_weighted" if weighted else "ltm_raw"
+    ltm_suffix = "value-weighted" if weighted else "raw"
+    ltm_tensor = cache["improbable_scores_all"][ltm_field]
+    concept_ltm = cache["concept_scores_all"][ltm_field]
+    random_ltm = cache["random_scores_all"][ltm_field]
     correct_dla = cache["improbable_dla_all"]["correct_token_dla"]
     wrong_dla = cache["improbable_dla_all"]["predicted_token_dla"]
     concept_correct_dla = cache["concept_dla_all"]["correct_token_dla"]
@@ -1104,7 +1128,7 @@ def plot_concept_head_heatmap(cache, top_k: int = 16, save_path: Path | None = N
 
     fig, axes = plt.subplots(1, 2, figsize=(13.5, max(5, 0.35 * top_k)), constrained_layout=True)
     ltm_image = axes[0].imshow(ltm_matrix, aspect="auto", cmap="viridis")
-    axes[0].set_title(f"Top-{top_k} concept heads: LTM")
+    axes[0].set_title(f"Top-{top_k} concept heads: LTM ({ltm_suffix})")
     axes[0].set_xticks(range(4))
     axes[0].set_xticklabels(["Hall", "Copied", "Concepts", "Random"])
     axes[0].set_yticks(range(top_k))

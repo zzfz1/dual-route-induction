@@ -122,18 +122,18 @@
   "p1": {
     "target_token_id": 433,
     "target_logit": 21.0,
-    "target_prob": 0.9725014567375183,
+    "target_prob": 0.9722731113433838,
     "predicted_token_id": 433,
     "predicted_logit": 21.0,
-    "predicted_prob": 0.9725014567375183
+    "predicted_prob": 0.9722731113433838
   },
   "p2": {
     "target_token_id": 5893,
-    "target_logit": 27.375,
-    "target_prob": 0.9998031258583069,
+    "target_logit": 27.5,
+    "target_prob": 0.9998239874839783,
     "predicted_token_id": 5893,
-    "predicted_logit": 27.375,
-    "predicted_prob": 0.9998031258583069
+    "predicted_logit": 27.5,
+    "predicted_prob": 0.9998239874839783
   },
   "flags": {
     "p1_correct": true,

@@ -67,11 +67,20 @@ def load_model(args):
     return model
 
 
+def _qnorm_pre_reshape(model):
+    # OLMo-2 / OLMo-3 apply q_norm/k_norm to the flattened [bsz, seq, hidden]
+    # tensor BEFORE the per-head reshape (RMSNorm weight is hidden_size).
+    # Qwen3 applies them AFTER reshape on [bsz, n_heads, seq, head_dim]
+    # (RMSNorm weight is head_dim). Llama has neither layer. Detect by name
+    # so the correct order is applied at trace time.
+    return "olmo" in model.config._name_or_path.lower()
+
+
 def _capture_pass_state(model, input_ids):
     # Supports any HF model with the standard Llama-style attention layout
     # (q_proj/k_proj/v_proj/o_proj on `self_attn`, position_embeddings exposed
-    # as cos/sin pair). Qwen3's optional q_norm/k_norm RMSNorm layers are
-    # applied conditionally.
+    # as cos/sin pair). Optional q_norm/k_norm RMSNorm layers are applied
+    # conditionally with model-family-specific ordering (see _qnorm_pre_reshape).
     n_layers = model.config.num_hidden_layers
     n_heads = model.config.num_attention_heads
     # Qwen3 (and others) decouple head_dim from hidden_size // n_heads. Prefer
@@ -79,6 +88,7 @@ def _capture_pass_state(model, input_ids):
     head_dim = getattr(
         model.config, "head_dim", model.config.hidden_size // n_heads
     )
+    qnorm_pre = _qnorm_pre_reshape(model)
 
     with torch.no_grad():
         with model.trace(
@@ -115,16 +125,22 @@ def _capture_pass_state(model, input_ids):
                 value_states = torch.repeat_interleave(value_states, n_kv_groups, dim=1)
                 value_norms = torch.linalg.vector_norm(value_states, dim=-1)
 
+                # OLMo-2 / OLMo-3: q_norm/k_norm applied to [bsz, seq, hidden]
+                # BEFORE the per-head reshape.
+                if qnorm_pre and hasattr(attn, "q_norm"):
+                    query_states = attn.q_norm(query_states)
+                if qnorm_pre and hasattr(attn, "k_norm"):
+                    key_states = attn.k_norm(key_states)
+
                 query_states = query_states.view(bsz, seq_len, -1, head_dim).transpose(
                     1, 2
                 )
                 key_states = key_states.view(bsz, seq_len, -1, head_dim).transpose(1, 2)
-                # Qwen3 (and OLMo2) apply RMSNorm to Q/K before rotary; Llama
-                # has no such layer. RMSNorm operates on the last (head_dim)
-                # axis so the post-transpose shape is fine.
-                if hasattr(attn, "q_norm"):
+                # Qwen3: q_norm/k_norm applied to [bsz, n_heads, seq, head_dim]
+                # AFTER reshape (RMSNorm weight is head_dim, not hidden_size).
+                if (not qnorm_pre) and hasattr(attn, "q_norm"):
                     query_states = attn.q_norm(query_states)
-                if hasattr(attn, "k_norm"):
+                if (not qnorm_pre) and hasattr(attn, "k_norm"):
                     key_states = attn.k_norm(key_states)
                 cos = position[0].unsqueeze(1)
                 sin = position[1].unsqueeze(1)
@@ -344,6 +360,8 @@ if __name__ == "__main__":
         choices=[
             "meta-llama/Llama-3.1-8B",
             "Qwen/Qwen3-8B",
+            "allenai/OLMo-2-1124-7B",
+            "allenai/Olmo-3-1025-7B",
         ],
     )
     parser.add_argument("--tasks-path", default=None,

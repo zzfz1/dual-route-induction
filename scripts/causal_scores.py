@@ -581,9 +581,9 @@ def main(args):
             else:
                 return model.tokenizer(s)["input_ids"]
         elif (
-            "OLMo" in model.config._name_or_path
-            or "pythia" in model.config._name_or_path
-            or "Qwen" in model.config._name_or_path
+            "olmo" in model.config._name_or_path.lower()
+            or "pythia" in model.config._name_or_path.lower()
+            or "qwen" in model.config._name_or_path.lower()
         ):
             ids = model.tokenizer(s)["input_ids"]
             if not bos:
@@ -704,6 +704,7 @@ if __name__ == "__main__":
             "meta-llama/Llama-2-7b-hf",
             "meta-llama/Meta-Llama-3-8B",
             "allenai/OLMo-2-1124-7B",
+            "allenai/Olmo-3-1025-7B",
             "EleutherAI/pythia-6.9b",
             "meta-llama/Llama-3.1-8B",
             "meta-llama/Meta-Llama-3.1-70B",

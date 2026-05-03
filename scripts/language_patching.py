@@ -57,11 +57,14 @@ class TranslationPairDataset(Dataset):
                 out = self.tok(s)['input_ids'][1:]
             else:
                 out = self.tok(s)['input_ids']
-        elif 'OLMo' in self.tok.name_or_path or 'pythia' in self.tok.name_or_path:
+        elif 'olmo' in self.tok.name_or_path.lower() or 'pythia' in self.tok.name_or_path.lower():
+            ids = self.tok(s)['input_ids']
             if not bos:
-                out = self.tok(s)['input_ids']
+                out = ids
             else:
-                out = [self.tok.bos_token_id] + self.tok(s)['input_ids']
+                # OLMo-3 has bos_token_id == None; skip prepend then.
+                bos_id = self.tok.bos_token_id
+                out = [bos_id] + ids if bos_id is not None else ids
         
         if self.tok.name_or_path == 'meta-llama/Llama-2-7b-hf' and space:
             return out[1:]
@@ -246,10 +249,11 @@ if __name__ == '__main__':
     parser.add_argument('--k', default=80, type=int)
     parser.add_argument('--model', default='meta-llama/Llama-2-7b-hf', 
                         choices=[
-                            'meta-llama/Llama-2-7b-hf', 
+                            'meta-llama/Llama-2-7b-hf',
                             'meta-llama/Meta-Llama-3-8B',
                             'allenai/OLMo-2-1124-7B',
-                            'EleutherAI/pythia-6.9b', 
+                            'allenai/Olmo-3-1025-7B',
+                            'EleutherAI/pythia-6.9b',
                             'allenai/OLMo-2-0425-1B'
                         ])
     parser.add_argument('--source_from', default='fr')

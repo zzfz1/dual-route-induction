@@ -283,6 +283,8 @@ if __name__ == "__main__":
         choices=[
             "meta-llama/Llama-3.1-8B",
             "Qwen/Qwen3-8B",
+            "allenai/OLMo-2-1124-7B",
+            "allenai/Olmo-3-1025-7B",
         ],
     )
     parser.add_argument("--pass-name", default="p1", choices=["xn", "p1"])

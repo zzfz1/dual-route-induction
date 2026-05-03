@@ -65,7 +65,7 @@
 {"task_idx": 64, "bigram": "섟能", "relative_dir": "064", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 65, "bigram": " 琱от", "relative_dir": "065", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 66, "bigram": " 곱от", "relative_dir": "066", "copy_success": true, "second_token_hallucination": false}
-{"task_idx": 67, "bigram": "ⁱот", "relative_dir": "067", "copy_success": true, "second_token_hallucination": false}
+{"task_idx": 67, "bigram": "ⁱот", "relative_dir": "067", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 68, "bigram": " 廱от", "relative_dir": "068", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 69, "bigram": " 곟能", "relative_dir": "069", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 70, "bigram": " 能", "relative_dir": "070", "copy_success": false, "second_token_hallucination": true}
@@ -86,7 +86,7 @@
 {"task_idx": 85, "bigram": "頫자", "relative_dir": "085", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 86, "bigram": "澱от", "relative_dir": "086", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 87, "bigram": "餱от", "relative_dir": "087", "copy_success": true, "second_token_hallucination": false}
-{"task_idx": 88, "bigram": " 桱от", "relative_dir": "088", "copy_success": true, "second_token_hallucination": false}
+{"task_idx": 88, "bigram": " 桱от", "relative_dir": "088", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 89, "bigram": " 菫자", "relative_dir": "089", "copy_success": true, "second_token_hallucination": false}
 {"task_idx": 90, "bigram": "榱от", "relative_dir": "090", "copy_success": false, "second_token_hallucination": true}
 {"task_idx": 91, "bigram": " 覱от", "relative_dir": "091", "copy_success": false, "second_token_hallucination": true}

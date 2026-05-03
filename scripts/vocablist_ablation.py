@@ -30,6 +30,7 @@ VALID_MODELS = [
     'EleutherAI/pythia-6.9b',
     'allenai/OLMo-2-1124-7B',
     'allenai/OLMo-2-0425-1B',
+    'allenai/Olmo-3-1025-7B',
     'Qwen/Qwen3-8B',
 ]
 TOPKS = [0, 1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 128, 256, 512, 1024] 
@@ -130,8 +131,8 @@ class VocabListDataset(Dataset):
             else:
                 out = self.tok(s)['input_ids']
         elif (
-            'OLMo' in name
-            or 'pythia' in name
+            'olmo' in name.lower()
+            or 'pythia' in name.lower()
             or 'qwen' in name.lower()
         ):
             ids = self.tok(s)['input_ids']
@@ -229,11 +230,13 @@ class NonsenseListDataset(Dataset):
                 return self.tok(s)['input_ids'][1:]
             else:
                 return self.tok(s)['input_ids']
-        elif 'OLMo' in self.tok.name_or_path or 'pythia' in self.tok.name_or_path:
+        elif 'olmo' in self.tok.name_or_path.lower() or 'pythia' in self.tok.name_or_path.lower():
+            ids = self.tok(s)['input_ids']
             if not bos:
-                return self.tok(s)['input_ids']
-            else:
-                return [self.tok.bos_token_id] + self.tok(s)['input_ids']
+                return ids
+            # OLMo-3 / Qwen3 may have bos_token_id == None; skip prepend then.
+            bos_id = self.tok.bos_token_id
+            return [bos_id] + ids if bos_id is not None else ids
 
     def __getitem__(self, index):
         # index indicates which one will be at the end 

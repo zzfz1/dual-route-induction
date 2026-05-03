@@ -1,0 +1,8 @@
+{
+  "created_at_utc": "2026-05-02T20:09:36.126452+00:00",
+  "model": "allenai/Olmo-3-1025-7B",
+  "remote": false,
+  "prompt_style": "table1_literal",
+  "tasks_path": "/u/sahuja1/improbable-bigram-causality/dual-route-induction/data/olmo_3_1025_7b_selected_two_token_concepts.json",
+  "total_tasks": 36
+}

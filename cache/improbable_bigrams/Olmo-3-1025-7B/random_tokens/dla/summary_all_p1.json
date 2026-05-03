@@ -1,0 +1,8 @@
+{
+  "subset": "all",
+  "pass_name": "p1",
+  "n_examples": 35,
+  "n_hallucinated_examples": 0,
+  "per_example_path": "/u/sahuja1/improbable-bigram-causality/dual-route-induction/cache/improbable_bigrams/Olmo-3-1025-7B/random_tokens/dla/per_example_all_p1.pt",
+  "per_head_path": "/u/sahuja1/improbable-bigram-causality/dual-route-induction/cache/improbable_bigrams/Olmo-3-1025-7B/random_tokens/dla/per_head_all_p1.json"
+}

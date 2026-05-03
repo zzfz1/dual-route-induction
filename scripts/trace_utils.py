@@ -117,14 +117,16 @@ class RemoteExecutionContext:
 
 def generate_seq_batch(entities, pile, tok, sequence_len):
     clean, corrupt = [], []
+    newline = tok("\n", bos=False)[-1]
+    bos_ids = tok("", bos=True) 
     for ent in entities:
         rand = pile_chunk(sequence_len - len(ent), pile, tok, shuf_pile=True)
         ent_chunk_full = rand + ent
         ent_chunk_trunc = rand + [ent[0]]
-        clean_prompt = [1] + ent_chunk_full + [13] + ent_chunk_trunc
+        clean_prompt = bos_ids + ent_chunk_full + [newline] + ent_chunk_trunc
 
         rand2 = pile_chunk(sequence_len, pile, tok, shuf_pile=True)
-        corrupt_prompt = [1] + rand2 + [13] + ent_chunk_trunc
+        corrupt_prompt = bos_ids + rand2 + [newline] + ent_chunk_trunc
         clean.append(clean_prompt)
         corrupt.append(corrupt_prompt)
     return clean, corrupt

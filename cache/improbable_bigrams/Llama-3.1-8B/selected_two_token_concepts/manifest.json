@@ -1,8 +1,8 @@
 {
-  "created_at_utc": "2026-04-29T14:46:07.788818+00:00",
+  "created_at_utc": "2026-05-03T16:15:22.133366+00:00",
   "model": "meta-llama/Llama-3.1-8B",
-  "remote": true,
+  "remote": false,
   "prompt_style": "table1_literal",
-  "tasks_path": "/Users/eugenejang/Workspace/improbable-bigram-causality/dual-route-induction/data/llama3.1_selected_two_token_concepts.json",
-  "total_tasks": 34
+  "tasks_path": "/u/sahuja1/improbable-bigram-causality/dual-route-induction/data/llama3.1_selected_two_token_concepts.json",
+  "total_tasks": 36
 }

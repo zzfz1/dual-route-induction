@@ -87,6 +87,10 @@ def retrieve_attention(model, tokenized, layer, value_weighting=True):
         "meta-llama/Meta-Llama-3-8B": get_l3_attn_weights,
         "meta-llama/Llama-3.1-8B": get_l3_attn_weights,
         "allenai/OLMo-2-1124-7B": get_olmo2_attn_weights,
+        # OLMo-3 keeps the same q_norm/k_norm placement as OLMo-2 (applied to
+        # flattened hidden_size before the per-head reshape), so reuse the
+        # OLMo-2 extractor verbatim.
+        "allenai/Olmo-3-1025-7B": get_olmo2_attn_weights,
         "EleutherAI/pythia-6.9b": get_pythia_attn_weights,
     }
     if name in table:
@@ -141,6 +145,7 @@ def main(args):
             return ids if bos else ids[1:]
         if (
             name in ["allenai/OLMo-2-1124-7B", "EleutherAI/pythia-6.9b"]
+            or "olmo" in name.lower()
             or "qwen" in name.lower()
         ):
             ids = model.tokenizer(s)["input_ids"]
@@ -284,8 +289,10 @@ if __name__ == "__main__":
         choices=[
             "meta-llama/Llama-2-7b-hf",
             "allenai/OLMo-2-1124-7B",
+            "allenai/Olmo-3-1025-7B",
             "meta-llama/Meta-Llama-3-8B",
             "meta-llama/Llama-3.1-8B",
+            "Olmo-3-1025-7B",
             "EleutherAI/pythia-6.9b",
             "Qwen/Qwen3-8B",
         ],
