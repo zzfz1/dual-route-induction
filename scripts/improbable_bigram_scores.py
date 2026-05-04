@@ -52,6 +52,23 @@ def value_weight_row(attn_row: torch.Tensor, value_norms: torch.Tensor):
     return weighted / denom
 
 
+def get_p2_prev_index(meta: dict) -> list[int]:
+    positions = meta.get("positions", {})
+    if "p2_prev" not in positions:
+        raise ValueError(
+            f"p2_prev not found in positions for task {meta.get('task_idx')}."
+        )
+    return [int(positions["p2_prev"])]
+
+
+def get_indices(meta: dict, index_type: str) -> list[int]:
+    if index_type == "p2_context":
+        return get_p2_context_indices(meta)
+    if index_type == "p2_prev":
+        return get_p2_prev_index(meta)
+    raise ValueError(f"Unknown index_type: {index_type!r}")
+
+
 def get_p2_context_indices(meta: dict) -> list[int]:
     positions = meta.get("positions", {})
     if "p2_context" in positions:
@@ -133,7 +150,7 @@ def main(args):
 
         xn_state = torch.load(example_dir / "xn_state.pt", map_location="cpu")
         p1_state = torch.load(example_dir / "p1_state.pt", map_location="cpu")
-        p2_context_indices = torch.tensor(get_p2_context_indices(meta), dtype=torch.long)
+        p2_context_indices = torch.tensor(get_indices(meta, args.index_type), dtype=torch.long)
 
         xn_row_raw = xn_state["attn_row_raw"]
         p1_row_raw = p1_state["attn_row_raw"]
@@ -152,7 +169,8 @@ def main(args):
                 "second_token_hallucination": meta["flags"][
                     "second_token_hallucination"
                 ],
-                "p2_context_indices": [int(idx) for idx in p2_context_indices.tolist()],
+                "index_type": args.index_type,
+                "p2_indices": [int(idx) for idx in p2_context_indices.tolist()],
             }
         )
 
@@ -169,7 +187,8 @@ def main(args):
         "ltm_value_weighted": ltm_weighted,
         "ntm_value_weighted": ntm_weighted,
     }
-    torch.save(payload, out_dir / f"per_example_{args.subset}.pt")
+    stem = f"{args.subset}_{args.index_type}"
+    torch.save(payload, out_dir / f"per_example_{stem}.pt")
 
     ltm_raw_mean = ltm_raw.mean(dim=0)
     ntm_raw_mean = ntm_raw.mean(dim=0)
@@ -182,18 +201,24 @@ def main(args):
         flatten_head_scores(ltm_weighted_mean, "ltm_value_weighted"),
         flatten_head_scores(ntm_weighted_mean, "ntm_value_weighted"),
     )
-    with (out_dir / f"per_head_{args.subset}.json").open("w", encoding="utf-8") as f:
+    with (out_dir / f"per_head_{stem}.json").open("w", encoding="utf-8") as f:
         json.dump(metric_rows, f, ensure_ascii=False, indent=2)
 
+    index_descriptions = {
+        "p2_context": "sum of attention to all previous-context positions where p2 (suffix token) appears",
+        "p2_prev": "attention to the single p2_prev position (immediate predecessor of p1 in context)",
+    }
+    index_desc = index_descriptions[args.index_type]
     summary = {
         "subset": args.subset,
+        "index_type": args.index_type,
         "n_examples": len(entries),
-        "ltm_definition": "sum of attention to all previous-context p2 positions",
-        "ntm_definition": "sum of attention to all previous-context p2 positions",
-        "per_example_path": str((out_dir / f"per_example_{args.subset}.pt").resolve()),
-        "per_head_path": str((out_dir / f"per_head_{args.subset}.json").resolve()),
+        "ltm_definition": index_desc,
+        "ntm_definition": index_desc,
+        "per_example_path": str((out_dir / f"per_example_{stem}.pt").resolve()),
+        "per_head_path": str((out_dir / f"per_head_{stem}.json").resolve()),
     }
-    with (out_dir / f"summary_{args.subset}.json").open("w", encoding="utf-8") as f:
+    with (out_dir / f"summary_{stem}.json").open("w", encoding="utf-8") as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)
 
 
@@ -206,5 +231,15 @@ if __name__ == "__main__":
         choices=["all", "copied", "hallucinated_second_token"],
     )
     parser.add_argument("--out-dir", default=None)
+    parser.add_argument(
+        "--index-type",
+        default="p2_context",
+        choices=["p2_context", "p2_prev"],
+        help=(
+            "p2_context: sum attention over all positions in previous context where "
+            "the suffix token appears (original behaviour). "
+            "p2_prev: attention to the single p2_prev position only."
+        ),
+    )
     parser.add_argument("--seed", default=8, type=int)
     main(parser.parse_args())

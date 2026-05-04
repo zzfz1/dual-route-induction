@@ -111,12 +111,40 @@ def load_json_if_exists(path: Path):
     return None
 
 
+def _score_path(run_dir: Path, subset: str, index_type: str, required: bool = True) -> Path | None:
+    """Resolve per_example score file.
+
+    Resolution order:
+      1. per_example_{subset}_{index_type}.pt  (new-style, preferred)
+      2. per_example_{subset}.pt               (old unsuffixed, fallback for any index_type)
+    If required=False and nothing exists, returns None. If required=True, returns the
+    new-style path so torch.load raises a clear FileNotFoundError.
+    """
+    new_path = run_dir / "scores" / f"per_example_{subset}_{index_type}.pt"
+    if new_path.exists():
+        return new_path
+    old_path = run_dir / "scores" / f"per_example_{subset}.pt"
+    if old_path.exists():
+        if index_type != "p2_context":
+            import warnings
+            warnings.warn(
+                f"{new_path.name} not found in {run_dir.name}; "
+                f"falling back to {old_path.name} (p2_context behaviour).",
+                stacklevel=3,
+            )
+        return old_path
+    if not required:
+        return None
+    return new_path  # let torch.load raise with a descriptive FileNotFoundError
+
+
 def load_cache(
     root: Path | str,
     model_name: str = "Llama-3.1-8B",
     improbable_run: str = "updated_table1_literal",
     concept_run: str = "selected_two_token_concepts",
     random_run: str = "random_tokens",
+    index_type: str = "p2_context",
 ):
     root = Path(root).resolve()
     head_dir = root / "cache" / "head_orderings" / model_name
@@ -165,11 +193,12 @@ def load_cache(
             if line.strip()
         ],
         "improbable_scores_all": torch.load(
-            improbable_dir / "scores" / "per_example_all.pt", map_location="cpu"
+            _score_path(improbable_dir, "all", index_type), map_location="cpu"
         ),
-        "improbable_scores_hall": torch.load(
-            improbable_dir / "scores" / "per_example_hallucinated_second_token.pt",
-            map_location="cpu",
+        "improbable_scores_hall": (
+            torch.load(p, map_location="cpu")
+            if (p := _score_path(improbable_dir, "hallucinated_second_token", index_type, required=False))
+            else None
         ),
         "improbable_dla_all": torch.load(
             improbable_dir / "dla" / "per_example_all_p1.pt", map_location="cpu"
@@ -179,13 +208,13 @@ def load_cache(
             map_location="cpu",
         ),
         "concept_scores_all": torch.load(
-            concept_dir / "scores" / "per_example_all.pt", map_location="cpu"
+            _score_path(concept_dir, "all", index_type), map_location="cpu"
         ),
         "concept_dla_all": torch.load(
             concept_dir / "dla" / "per_example_all_p1.pt", map_location="cpu"
         ),
         "random_scores_all": torch.load(
-            random_dir / "scores" / "per_example_all.pt", map_location="cpu"
+            _score_path(random_dir, "all", index_type), map_location="cpu"
         ),
         "random_dla_all": torch.load(
             random_dir / "dla" / "per_example_all_p1.pt", map_location="cpu"
