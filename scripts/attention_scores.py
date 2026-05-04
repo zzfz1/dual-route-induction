@@ -64,8 +64,14 @@ def generate_ragged_batch(batch_ents, pile, tok, seq_len):
         rand1 = pile_chunk(position, pile, tok)
         rand2 = pile_chunk(seq_len - position - len(ent), pile, tok)
 
-        start_idxs.append(position + 1)
-        end_idxs.append(position + len(ent))
+        # ent[0] sits at len(bos_ids) + position (not position + 1):
+        # the original constants only matched the intended tokens for
+        # Llama-style models that auto-prepend a 1-token BOS. Qwen3 and
+        # Olmo-3 have bos_token_id == None, so bos_ids == [] and the
+        # script was reading attention to ent[1] / rand2[0] instead of
+        # ent[0] / ent[-1] — flattening the apparent induction signal.
+        start_idxs.append(len(bos_ids) + position)
+        end_idxs.append(len(bos_ids) + position + len(ent) - 1)
         sequences.append(bos_ids + rand1 + ent + rand2 + [newline] + rand1)
 
     # since batches have ragged ends by design, save padding offsets
@@ -292,7 +298,6 @@ if __name__ == "__main__":
             "allenai/Olmo-3-1025-7B",
             "meta-llama/Meta-Llama-3-8B",
             "meta-llama/Llama-3.1-8B",
-            "Olmo-3-1025-7B",
             "EleutherAI/pythia-6.9b",
             "Qwen/Qwen3-8B",
         ],
