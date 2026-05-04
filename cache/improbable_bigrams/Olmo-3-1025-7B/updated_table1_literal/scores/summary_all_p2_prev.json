@@ -1,0 +1,9 @@
+{
+  "subset": "all",
+  "index_type": "p2_prev",
+  "n_examples": 100,
+  "ltm_definition": "attention to the single p2_prev position (immediate predecessor of p1 in context)",
+  "ntm_definition": "attention to the single p2_prev position (immediate predecessor of p1 in context)",
+  "per_example_path": "/u/sahuja1/improbable-bigram-causality/dual-route-induction/cache/improbable_bigrams/Olmo-3-1025-7B/updated_table1_literal/scores/per_example_all_p2_prev.pt",
+  "per_head_path": "/u/sahuja1/improbable-bigram-causality/dual-route-induction/cache/improbable_bigrams/Olmo-3-1025-7B/updated_table1_literal/scores/per_head_all_p2_prev.json"
+}
