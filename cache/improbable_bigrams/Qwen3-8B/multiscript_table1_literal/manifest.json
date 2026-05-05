@@ -1,0 +1,8 @@
+{
+  "created_at_utc": "2026-05-05T20:11:49.291264+00:00",
+  "model": "Qwen/Qwen3-8B",
+  "remote": false,
+  "prompt_style": "table1_literal",
+  "tasks_path": "/u/sahuja1/improbable-bigram-causality/data/qwen3_multiscript_bigrams.json",
+  "total_tasks": 98
+}

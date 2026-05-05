@@ -1,0 +1,8 @@
+{
+  "created_at_utc": "2026-05-05T20:12:00.628337+00:00",
+  "model": "allenai/Olmo-3-1025-7B",
+  "remote": false,
+  "prompt_style": "table1_literal",
+  "tasks_path": "/u/sahuja1/improbable-bigram-causality/data/olmo3_multiscript_bigrams.json",
+  "total_tasks": 100
+}

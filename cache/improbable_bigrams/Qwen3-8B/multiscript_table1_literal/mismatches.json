@@ -1,0 +1,27 @@
+[
+  {
+    "task_idx": 86,
+    "bigram": "肺》，",
+    "prefix_token_id": 100887,
+    "suffix_token_id": 87243,
+    "quote_string": "\"",
+    "errors": [
+      "Prompt token count mismatch: expected prefix/suffix counts to both be at least 9, got prefix_count=9, suffix_count=2",
+      "Final repeated occurrence mismatch: expected [100887, 87243], got [100887, 25067]",
+      "Expected the final previous-context p2 token to be the suffix token at index 43; got p2_context_indices=[7, 28]"
+    ]
+  },
+  {
+    "task_idx": 98,
+    "bigram": "画像；",
+    "prefix_token_id": 116542,
+    "suffix_token_id": 24968,
+    "quote_string": "\"",
+    "errors": [
+      "Prompt token count mismatch: expected prefix/suffix counts to both be at least 9, got prefix_count=9, suffix_count=2",
+      "Final repeated occurrence mismatch: expected [116542, 24968], got [116542, 59217]",
+      "Expected final repeated occurrence to end immediately before x_n; got span_end=38, x_n_idx=37",
+      "Expected the final previous-context p2 token to be the suffix token at index 37; got p2_context_indices=[7, 25]"
+    ]
+  }
+]

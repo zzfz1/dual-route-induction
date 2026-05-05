@@ -269,12 +269,16 @@ def main(args):
 
     tasks = load_bigram_tasks(args.tasks_path)
     layouts, mismatches = validate_prompt_layouts(tasks, tok)
-    if mismatches and "two_token_concepts" not in args.tasks_path:
+    allow_mismatches = args.allow_mismatches or "two_token_concepts" in args.tasks_path
+    if mismatches and not allow_mismatches:
         atomic_write_json(out_dir / "mismatches.json", mismatches)
         raise ValueError(
             f"Found {len(mismatches)} prompt/tokenization mismatches. "
             f"See {out_dir / 'mismatches.json'}."
         )
+    if mismatches and allow_mismatches:
+        atomic_write_json(out_dir / "mismatches.json", mismatches)
+        print(f"⚠ Skipping {len(mismatches)} mismatched tasks (--allow-mismatches).")
 
     write_manifest(out_dir, args, len(layouts))
 
@@ -376,7 +380,12 @@ if __name__ == "__main__":
     parser.add_argument("--remote-backoff-base", default=2.0, type=float)
     parser.add_argument("--remote-backoff-max", default=30.0, type=float)
     parser.add_argument("--seed", default=8, type=int)
-    parser.set_defaults(remote=False, overwrite=False)
+    parser.add_argument(
+        "--allow-mismatches",
+        action="store_true",
+        help="Log tokenization mismatches to mismatches.json and continue rather than raising.",
+    )
+    parser.set_defaults(remote=False, overwrite=False, allow_mismatches=False)
     args = parser.parse_args()
     if args.tasks_path is None:
         args.tasks_path = str(tasks_path_for_model(args.model))

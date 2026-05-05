@@ -23,6 +23,7 @@ CONDITION_COLORS = {
     "Copied improbable": "#2e86de",
     "2-token concepts": "#8e44ad",
     "Random phrases": "#27ae60",
+    "Multiscript improbable": "#00b4d8",
 }
 
 WRONG_DLA_COLORS = {
@@ -144,6 +145,7 @@ def load_cache(
     improbable_run: str = "updated_table1_literal",
     concept_run: str = "selected_two_token_concepts",
     random_run: str = "random_tokens",
+    multiscript_run: str | None = None,
     index_type: str = "p2_context",
 ):
     root = Path(root).resolve()
@@ -197,8 +199,9 @@ def load_cache(
         ),
         "improbable_scores_hall": (
             torch.load(p, map_location="cpu")
-            if (p := _score_path(improbable_dir, "hallucinated_second_token", index_type, required=False))
+            if (p is not None)
             else None
+            for p in [None]
         ),
         "improbable_dla_all": torch.load(
             improbable_dir / "dla" / "per_example_all_p1.pt", map_location="cpu"
@@ -247,6 +250,20 @@ def load_cache(
     cache["concept_task_ids"] = concept_score_task_ids
     cache["concept_count"] = len(cache["concept_scores_all"]["examples"])
     cache["random_count"] = len(cache["random_scores_all"]["examples"])
+
+    if multiscript_run is not None:
+        multiscript_dir = root / "cache" / "improbable_bigrams" / model_name / multiscript_run
+        ms_score_path = _score_path(multiscript_dir, "all", index_type, required=False)
+        if ms_score_path is not None and ms_score_path.exists():
+            cache["multiscript_scores_all"] = torch.load(ms_score_path, map_location="cpu")
+            cache["multiscript_count"] = len(cache["multiscript_scores_all"]["examples"])
+        else:
+            import warnings
+            warnings.warn(
+                f"Multiscript scores not found at {ms_score_path}; "
+                "run slurm/slurm_multiscript_pipeline.sh for this model first.",
+                stacklevel=2,
+            )
 
     # Derive (n_layers, n_heads) from any score tensor so head_mask sizes itself
     # to the actual model rather than the Llama-3.1-8B (32, 32) default.
@@ -439,6 +456,22 @@ def concept_ltm_series(cache, k: int, weighted: bool = False) -> dict[str, np.nd
     concepts = cache["concept_scores_all"][field]
     random_scores = cache["random_scores_all"][field]
     return _condition_series(improbable, concepts, random_scores, concept_heads, cache)
+
+
+def multiscript_ntm_series(cache, k: int, weighted: bool = False) -> np.ndarray | None:
+    if "multiscript_scores_all" not in cache:
+        return None
+    token_heads = _token_mask(cache, k)
+    field = "ntm_value_weighted" if weighted else "ntm_raw"
+    return aggregate_metric(cache["multiscript_scores_all"][field], token_heads)
+
+
+def multiscript_ltm_series(cache, k: int, weighted: bool = False) -> np.ndarray | None:
+    if "multiscript_scores_all" not in cache:
+        return None
+    concept_heads = _concept_mask(cache, k)
+    field = "ltm_value_weighted" if weighted else "ltm_raw"
+    return aggregate_metric(cache["multiscript_scores_all"][field], concept_heads)
 
 
 def token_correct_dla_series(cache, k: int) -> dict[str, np.ndarray]:
@@ -822,13 +855,25 @@ def plot_k_sweep(cache, ks=(8, 16, 32, 64, 128), save_path: Path | None = None, 
             concept_wrong_dla_hall_series,
         )
     )
+    has_multiscript = "multiscript_scores_all" in cache
+    if has_multiscript:
+        for k in ks:
+            ms_ntm = multiscript_ntm_series(cache, k, weighted)
+            ci_low, ci_high = bootstrap_mean_ci(ms_ntm)
+            rows.append({
+                "metric": ntm_label, "condition": "Multiscript improbable",
+                "k": k, "mean": float(ms_ntm.mean()), "ci_low": ci_low, "ci_high": ci_high,
+            })
     summary = pd.DataFrame(rows)
 
+    plot_conditions = list(CONDITION_ORDER) + (["Multiscript improbable"] if has_multiscript else [])
     fig, axes = plt.subplots(1, 3, figsize=(16, 4.6), constrained_layout=True)
     for axis, metric in zip(axes[:2], [ntm_label, "Token correct-token DLA"]):
         metric_df = summary[summary["metric"] == metric]
-        for condition in CONDITION_ORDER:
+        for condition in plot_conditions:
             condition_df = metric_df[metric_df["condition"] == condition].sort_values("k")
+            if condition_df.empty:
+                continue
             x = condition_df["k"].to_numpy(dtype=float)
             mean = condition_df["mean"].to_numpy(dtype=float)
             lower = condition_df["ci_low"].to_numpy(dtype=float)
@@ -845,6 +890,15 @@ def plot_k_sweep(cache, ks=(8, 16, 32, 64, 128), save_path: Path | None = None, 
 
     _add_condition_legend(axes[0])
     _add_condition_legend(axes[1])
+    if has_multiscript:
+        for axis in axes[:2]:
+            axis.legend(
+                handles=_condition_legend_handles() + [
+                    Line2D([0], [0], color=CONDITION_COLORS["Multiscript improbable"],
+                           marker="o", linewidth=2, markersize=6, label="Multiscript improbable")
+                ],
+                title="Setups", frameon=False, loc="upper right", fontsize=9, title_fontsize=9,
+            )
     _plot_wrong_dla_comparison(axes[2], summary, ks)
     if save_path is not None:
         save_path.parent.mkdir(parents=True, exist_ok=True)
@@ -881,13 +935,25 @@ def plot_concept_k_sweep(
             token_wrong_dla_hall_series,
         )
     )
+    has_multiscript = "multiscript_scores_all" in cache
+    if has_multiscript:
+        for k in ks:
+            ms_ltm = multiscript_ltm_series(cache, k, weighted)
+            ci_low, ci_high = bootstrap_mean_ci(ms_ltm)
+            rows.append({
+                "metric": ltm_label, "condition": "Multiscript improbable",
+                "k": k, "mean": float(ms_ltm.mean()), "ci_low": ci_low, "ci_high": ci_high,
+            })
     summary = pd.DataFrame(rows)
 
+    plot_conditions = list(CONDITION_ORDER) + (["Multiscript improbable"] if has_multiscript else [])
     fig, axes = plt.subplots(1, 3, figsize=(16, 4.6), constrained_layout=True)
     for axis, metric in zip(axes[:2], [ltm_label, "Concept correct-token DLA"]):
         metric_df = summary[summary["metric"] == metric]
-        for condition in CONDITION_ORDER:
+        for condition in plot_conditions:
             condition_df = metric_df[metric_df["condition"] == condition].sort_values("k")
+            if condition_df.empty:
+                continue
             x = condition_df["k"].to_numpy(dtype=float)
             mean = condition_df["mean"].to_numpy(dtype=float)
             lower = condition_df["ci_low"].to_numpy(dtype=float)
@@ -904,6 +970,15 @@ def plot_concept_k_sweep(
 
     _add_condition_legend(axes[0])
     _add_condition_legend(axes[1])
+    if has_multiscript:
+        for axis in axes[:2]:
+            axis.legend(
+                handles=_condition_legend_handles() + [
+                    Line2D([0], [0], color=CONDITION_COLORS["Multiscript improbable"],
+                           marker="o", linewidth=2, markersize=6, label="Multiscript improbable")
+                ],
+                title="Setups", frameon=False, loc="upper right", fontsize=9, title_fontsize=9,
+            )
     _plot_wrong_dla_comparison(axes[2], summary, ks)
     if save_path is not None:
         save_path.parent.mkdir(parents=True, exist_ok=True)
@@ -1291,3 +1366,266 @@ def summarize_top_dla_membership(
             }
         )
     return pd.DataFrame(rows)
+
+
+# ---------------------------------------------------------------------------
+# Vocablist ablation helpers
+# ---------------------------------------------------------------------------
+
+ABLATION_ORDERING_STYLES: dict[str, dict] = {
+    "concept_copying": {
+        "color": "#8e44ad",
+        "linestyle": "-",
+        "linewidth": 2,
+        "label": "concept-copying heads",
+    },
+    "token_copying": {
+        "color": "#2e86de",
+        "linestyle": "--",
+        "linewidth": 2,
+        "label": "token-copying heads",
+    },
+}
+
+ABLATION_TASK_LABELS: dict[str, str] = {
+    "fr-en": "French → English",
+    "de-en": "German → English",
+    "es-en": "Spanish → English",
+    "copy": "Copying",
+    "synonym": "Synonyms",
+    "antonym": "Antonyms",
+    "title": "lower → Title",
+    "CAPS": "lower → CAPS",
+}
+
+
+def load_ablation_results(
+    root: Path,
+    model_name: str,
+    task: str,
+    head_ordering: str,
+    word_len: int = 0,
+    seq_len: int = 10,
+    max_n: int = 1024,
+) -> dict | None:
+    fname = f"wordlen{word_len}_seqlen{seq_len}_maxn{max_n}_{head_ordering}.json"
+    path = root / "cache" / "vocablist_ablation" / model_name / task / fname
+    if not path.exists():
+        return None
+    return load_json(path)
+
+
+def plot_ablation_curves(
+    root: Path,
+    models: list[str],
+    tasks: list[str],
+    head_orderings: list[str] | None = None,
+    metric: str = "accs",
+    word_len: int = 0,
+    seq_len: int = 10,
+    max_n: int = 1024,
+    x_max: int | None = 128,
+    save_path: Path | None = None,
+) -> tuple:
+    """Grid of ablation curves: rows=tasks, cols=models, lines=head orderings.
+
+    Returns (fig, axes).  Subplots with no cached data show a "No data" label.
+    """
+    if head_orderings is None:
+        head_orderings = ["concept_copying", "token_copying"]
+
+    n_rows, n_cols = len(tasks), len(models)
+    fig, axes = plt.subplots(
+        n_rows,
+        n_cols,
+        figsize=(4.5 * n_cols, 3.2 * n_rows),
+        squeeze=False,
+    )
+
+    for row, task in enumerate(tasks):
+        task_label = ABLATION_TASK_LABELS.get(task, task)
+        for col, model_name in enumerate(models):
+            ax = axes[row, col]
+            any_data = False
+            for ordering in head_orderings:
+                results = load_ablation_results(
+                    root, model_name, task, ordering, word_len, seq_len, max_n
+                )
+                if results is None:
+                    continue
+                metric_data = results[metric]
+                ks = sorted(int(k) for k in metric_data)
+                vals = [float(metric_data[str(k)]) for k in ks]
+                if x_max is not None:
+                    pairs = [(k, v) for k, v in zip(ks, vals) if k <= x_max]
+                    if pairs:
+                        ks, vals = zip(*pairs)
+                style = ABLATION_ORDERING_STYLES.get(ordering, {})
+                ax.plot(ks, vals, marker="o", markersize=3, **style)
+                any_data = True
+
+            if not any_data:
+                ax.text(
+                    0.5,
+                    0.5,
+                    "No data",
+                    ha="center",
+                    va="center",
+                    transform=ax.transAxes,
+                    color="gray",
+                    fontsize=9,
+                )
+
+            if row == 0:
+                ax.set_title(model_name, fontsize=10)
+            if col == 0:
+                ax.set_ylabel(f"{task_label}\nAccuracy", fontsize=9)
+            if row == n_rows - 1:
+                ax.set_xlabel("Heads ablated", fontsize=9)
+
+    metric_label = {"accs": "top-1", "top5_accs": "top-5", "top10_accs": "top-10"}.get(
+        metric, metric
+    )
+    fig.suptitle(f"Vocablist ablation — {metric_label} accuracy", fontsize=11, y=1.01)
+
+    handles = [
+        Line2D(
+            [0],
+            [0],
+            color=ABLATION_ORDERING_STYLES[o]["color"],
+            linestyle=ABLATION_ORDERING_STYLES[o]["linestyle"],
+            linewidth=2,
+            marker="o",
+            markersize=4,
+            label=ABLATION_ORDERING_STYLES[o]["label"],
+        )
+        for o in head_orderings
+        if o in ABLATION_ORDERING_STYLES
+    ]
+    fig.legend(
+        handles=handles,
+        loc="upper center",
+        bbox_to_anchor=(0.5, 1.0),
+        ncol=len(handles),
+        frameon=False,
+        fontsize=9,
+    )
+    fig.tight_layout()
+
+    if save_path is not None:
+        fig.savefig(save_path, bbox_inches="tight")
+
+    return fig, axes
+
+
+# ---------------------------------------------------------------------------
+# Improbable-bigram ablation helpers
+# ---------------------------------------------------------------------------
+
+def load_bigram_ablation_summary(
+    root: Path,
+    model_name: str,
+    start: int = 0,
+    stop: int | None = None,
+) -> list[dict] | None:
+    """Load cache/ablation/{model_name}/summary_start{start}_stop{stop|end}.json."""
+    stop_tag = str(stop) if stop is not None else "end"
+    path = root / "cache" / "ablation" / model_name / f"summary_start{start}_stop{stop_tag}.json"
+    if not path.exists():
+        return None
+    return load_json(path)
+
+
+_BIGRAM_METRIC_STYLES: dict[str, dict] = {
+    "hallucination_rate": {"color": "#c0392b", "label": "hallucination rate"},
+    "copy_success_rate": {"color": "#2e86de", "label": "copy success rate"},
+}
+
+_BIGRAM_HEAD_LINESTYLES: dict[str, str] = {
+    "concept": "-",
+    "token": "--",
+}
+
+
+def plot_bigram_ablation_curves(
+    root: Path,
+    models: list[str],
+    head_types: list[str] | None = None,
+    start: int = 0,
+    stop: int | None = None,
+    save_path: Path | None = None,
+) -> tuple:
+    """Plot hallucination rate and copy success rate on the same axes.
+
+    Rows = models. Color = metric (red=hallucination, blue=copy success).
+    Line style = head type (solid=concept, dashed=token).
+    Dotted horizontal lines show the no-ablation baseline for each metric.
+    Returns (fig, axes).
+    """
+    if head_types is None:
+        head_types = ["concept", "token"]
+
+    metrics = ["hallucination_rate", "copy_success_rate"]
+
+    n_cols = len(models)
+    fig, axes = plt.subplots(1, n_cols, figsize=(5 * n_cols, 4), squeeze=False)
+
+    for col, model_name in enumerate(models):
+        ax = axes[0, col]
+        summary = load_bigram_ablation_summary(root, model_name, start, stop)
+
+        if summary is None:
+            ax.text(
+                0.5, 0.5, "No data", ha="center", va="center",
+                transform=ax.transAxes, color="gray", fontsize=9,
+            )
+            ax.set_title(model_name, fontsize=10)
+            continue
+
+        baseline_rows = [r for r in summary if r["n_ablated"] == 0]
+
+        for metric in metrics:
+            mstyle = _BIGRAM_METRIC_STYLES[metric]
+
+            # Baseline dotted line
+            if baseline_rows:
+                ax.axhline(
+                    float(baseline_rows[0][metric]),
+                    color=mstyle["color"],
+                    linestyle=":",
+                    linewidth=1.2,
+                    alpha=0.6,
+                )
+
+            for head_type in head_types:
+                rows = sorted(
+                    [r for r in summary if f"_{head_type}" in r["label"] and r["n_ablated"] > 0],
+                    key=lambda r: r["n_ablated"],
+                )
+                if not rows:
+                    continue
+                ks = [r["n_ablated"] for r in rows]
+                vals = [float(r[metric]) for r in rows]
+                ax.plot(
+                    ks, vals,
+                    marker="o", markersize=4,
+                    color=mstyle["color"],
+                    linestyle=_BIGRAM_HEAD_LINESTYLES.get(head_type, "-"),
+                    linewidth=2,
+                    label=f"{mstyle['label']} ({head_type})",
+                )
+
+        ax.set_title(model_name, fontsize=10)
+        if col == 0:
+            ax.set_ylabel("Rate", fontsize=9)
+        ax.set_xlabel("Heads ablated", fontsize=9)
+        ax.set_ylim(0, 1)
+        ax.legend(frameon=False, fontsize=7, ncol=2)
+
+    fig.suptitle("Improbable-bigram ablation", fontsize=11, y=1.01)
+    fig.tight_layout()
+
+    if save_path is not None:
+        fig.savefig(save_path, bbox_inches="tight")
+
+    return fig, axes
