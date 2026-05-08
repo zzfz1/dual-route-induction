@@ -1546,6 +1546,11 @@ _BIGRAM_HEAD_LINESTYLES: dict[str, str] = {
     "token": "--",
 }
 
+_BIGRAM_COPY_HEAD_COLORS: dict[str, str] = {
+    "concept": "#2e86de",
+    "token": "#16a085",
+}
+
 
 def plot_bigram_ablation_curves(
     root: Path,
@@ -1612,13 +1617,25 @@ def plot_bigram_ablation_curves(
                     continue
                 ks = [r["n_ablated"] for r in rows]
                 vals = [float(r[metric]) for r in rows]
+                line_color = mstyle["color"]
+                # copy-success single-metric: use per-head-type copy colors and simple labels
+                line_color_2 = _BIGRAM_COPY_HEAD_COLORS.get(head_type, line_color)
+                if len(metrics) == 1 and metric == "copy_success_rate":
+                    legend_label = head_type
+                    plot_color = line_color_2
+                    plot_linestyle = "-"
+                else:
+                    legend_label = f"{mstyle['label']} ({head_type} heads)"
+                    plot_color = line_color
+                    plot_linestyle = _BIGRAM_HEAD_LINESTYLES.get(head_type, "-")
+
                 ax.plot(
                     ks, vals,
                     marker="o", markersize=4,
-                    color=mstyle["color"],
-                    linestyle=_BIGRAM_HEAD_LINESTYLES.get(head_type, "-"),
+                    color=plot_color,
+                    linestyle=plot_linestyle,
                     linewidth=2,
-                    label=f"{mstyle['label']} ({head_type})",
+                    label=legend_label,
                 )
 
         ax.set_title(model_name, fontsize=10)
