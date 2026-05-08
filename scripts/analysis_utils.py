@@ -1553,9 +1553,10 @@ def plot_bigram_ablation_curves(
     head_types: list[str] | None = None,
     start: int = 0,
     stop: int | None = None,
+    metric: str | None = None,
     save_path: Path | None = None,
 ) -> tuple:
-    """Plot hallucination rate and copy success rate on the same axes.
+    """Plot one or both improbable-bigram ablation metrics.
 
     Rows = models. Color = metric (red=hallucination, blue=copy success).
     Line style = head type (solid=concept, dashed=token).
@@ -1565,7 +1566,12 @@ def plot_bigram_ablation_curves(
     if head_types is None:
         head_types = ["concept", "token"]
 
-    metrics = ["hallucination_rate", "copy_success_rate"]
+    if metric is None:
+        metrics = ["hallucination_rate", "copy_success_rate"]
+    else:
+        if metric not in _BIGRAM_METRIC_STYLES:
+            raise ValueError(f"Unknown bigram ablation metric: {metric}")
+        metrics = [metric]
 
     n_cols = len(models)
     fig, axes = plt.subplots(1, n_cols, figsize=(5 * n_cols, 4), squeeze=False)
@@ -1617,12 +1623,19 @@ def plot_bigram_ablation_curves(
 
         ax.set_title(model_name, fontsize=10)
         if col == 0:
-            ax.set_ylabel("Rate", fontsize=9)
+            ax.set_ylabel("Copy Success Rate", fontsize=9)
         ax.set_xlabel("Heads ablated", fontsize=9)
         ax.set_ylim(0, 1)
         ax.legend(frameon=False, fontsize=7, ncol=2)
 
-    fig.suptitle("Improbable-bigram ablation", fontsize=11, y=1.01)
+    if len(metrics) == 1:
+        fig.suptitle(
+            f"Improbable-bigram ablation - {_BIGRAM_METRIC_STYLES[metrics[0]]['label']}",
+            fontsize=11,
+            y=1.01,
+        )
+    else:
+        fig.suptitle("Improbable-bigram ablation", fontsize=11, y=1.01)
     fig.tight_layout()
 
     if save_path is not None:
