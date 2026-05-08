@@ -23,7 +23,7 @@ CONDITION_COLORS = {
     "Copied improbable": "#2e86de",
     "2-token concepts": "#8e44ad",
     "Random phrases": "#27ae60",
-    "Multiscript improbable": "#00b4d8",
+    "Multiscript Random": "#00b4d8",
 }
 
 WRONG_DLA_COLORS = {
@@ -861,12 +861,12 @@ def plot_k_sweep(cache, ks=(8, 16, 32, 64, 128), save_path: Path | None = None, 
             ms_ntm = multiscript_ntm_series(cache, k, weighted)
             ci_low, ci_high = bootstrap_mean_ci(ms_ntm)
             rows.append({
-                "metric": ntm_label, "condition": "Multiscript improbable",
+                "metric": ntm_label, "condition": "Multiscript Random",
                 "k": k, "mean": float(ms_ntm.mean()), "ci_low": ci_low, "ci_high": ci_high,
             })
     summary = pd.DataFrame(rows)
 
-    plot_conditions = list(CONDITION_ORDER) + (["Multiscript improbable"] if has_multiscript else [])
+    plot_conditions = list(CONDITION_ORDER) + (["Multiscript Random"] if has_multiscript else [])
     fig, axes = plt.subplots(1, 3, figsize=(16, 4.6), constrained_layout=True)
     for axis, metric in zip(axes[:2], [ntm_label, "Token correct-token DLA"]):
         metric_df = summary[summary["metric"] == metric]
@@ -894,8 +894,8 @@ def plot_k_sweep(cache, ks=(8, 16, 32, 64, 128), save_path: Path | None = None, 
         for axis in axes[:2]:
             axis.legend(
                 handles=_condition_legend_handles() + [
-                    Line2D([0], [0], color=CONDITION_COLORS["Multiscript improbable"],
-                           marker="o", linewidth=2, markersize=6, label="Multiscript improbable")
+                    Line2D([0], [0], color=CONDITION_COLORS["Multiscript Random"],
+                           marker="o", linewidth=2, markersize=6, label="Multiscript Random")
                 ],
                 title="Setups", frameon=False, loc="upper right", fontsize=9, title_fontsize=9,
             )
@@ -941,12 +941,12 @@ def plot_concept_k_sweep(
             ms_ltm = multiscript_ltm_series(cache, k, weighted)
             ci_low, ci_high = bootstrap_mean_ci(ms_ltm)
             rows.append({
-                "metric": ltm_label, "condition": "Multiscript improbable",
+                "metric": ltm_label, "condition": "Multiscript Random",
                 "k": k, "mean": float(ms_ltm.mean()), "ci_low": ci_low, "ci_high": ci_high,
             })
     summary = pd.DataFrame(rows)
 
-    plot_conditions = list(CONDITION_ORDER) + (["Multiscript improbable"] if has_multiscript else [])
+    plot_conditions = list(CONDITION_ORDER) + (["Multiscript Random"] if has_multiscript else [])
     fig, axes = plt.subplots(1, 3, figsize=(16, 4.6), constrained_layout=True)
     for axis, metric in zip(axes[:2], [ltm_label, "Concept correct-token DLA"]):
         metric_df = summary[summary["metric"] == metric]
@@ -974,8 +974,8 @@ def plot_concept_k_sweep(
         for axis in axes[:2]:
             axis.legend(
                 handles=_condition_legend_handles() + [
-                    Line2D([0], [0], color=CONDITION_COLORS["Multiscript improbable"],
-                           marker="o", linewidth=2, markersize=6, label="Multiscript improbable")
+                    Line2D([0], [0], color=CONDITION_COLORS["Multiscript Random"],
+                           marker="o", linewidth=2, markersize=6, label="Multiscript Random")
                 ],
                 title="Setups", frameon=False, loc="upper right", fontsize=9, title_fontsize=9,
             )
